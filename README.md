@@ -11468,3 +11468,54 @@ In this RESTful request, the authorization token is included with each request, 
 - **Stateful**: The server retains information between requests. Common in SOAP services but can also be used in REST if session management is implemented.
 
 Understanding the distinction helps in designing scalable and maintainable systems. Stateless systems like REST are generally easier to scale and manage because they don’t require server-side session management. Stateful systems, while potentially more complex, can offer richer interactions and maintain continuity in scenarios where session management is critical.
+
+
+In Java, you can work with codepoints through the `Character` class, which provides methods to handle Unicode codepoints. Here's a simple example to illustrate how you can use codepoints in Java:
+
+### Example Code
+
+```java
+public class CodepointExample {
+    public static void main(String[] args) {
+        // Character example: letter 'A'
+        char letter = 'A';
+        int codepoint = Character.codePointAt(new char[] { letter }, 0);
+        System.out.println("Codepoint for 'A': " + Integer.toHexString(codepoint)); // Output: 41
+
+        // Unicode character example: smiley face
+        String smiley = "😊";
+        int smileyCodepoint = smiley.codePointAt(0);
+        System.out.println("Codepoint for '😊': " + Integer.toHexString(smileyCodepoint)); // Output: 1f60a
+
+        // Codepoint from a string of multiple characters
+        String text = "Hello 😊";
+        int[] codepoints = text.codePoints().toArray();
+        System.out.println("Codepoints in 'Hello 😊':");
+        for (int point : codepoints) {
+            System.out.println(Integer.toHexString(point));
+        }
+    }
+}
+```
+
+### Description
+
+1. **Character.codePointAt()**:
+   - **Purpose**: Retrieves the codepoint of a character in a `char` array.
+   - **Usage**: In the example, `Character.codePointAt(new char[] { letter }, 0)` retrieves the codepoint of the character 'A'. The result is `0x41`, which is the Unicode codepoint for 'A'.
+
+2. **String.codePointAt()**:
+   - **Purpose**: Retrieves the codepoint of a character at a specific index in a `String`.
+   - **Usage**: For the smiley face emoji "😊", `smiley.codePointAt(0)` retrieves its codepoint, which is `0x1F60A`. This is because emojis and other special characters can have codepoints that require more than one `char` to represent them in UTF-16.
+
+3. **String.codePoints()**:
+   - **Purpose**: Returns an `IntStream` of Unicode codepoints from a `String`.
+   - **Usage**: In the example, `text.codePoints().toArray()` converts the string "Hello 😊" into an array of codepoints. Each codepoint is printed in hexadecimal format.
+
+### Key Points
+
+- **Codepoints**: Represent individual Unicode characters. They can be more than one `char` in UTF-16, especially for characters outside the Basic Multilingual Plane (BMP) like emojis.
+- **UTF-16**: Java uses UTF-16 to represent characters internally. Some Unicode characters require a pair of `char` values known as surrogate pairs.
+- **Integer.toHexString()**: Converts integer values (codepoints) to their hexadecimal string representation, which is often used when dealing with codepoints.
+
+This example demonstrates how Java handles Unicode codepoints and how you can retrieve and work with them in different contexts.
