@@ -7247,3 +7247,119 @@ docker run -d --restart always myservice:latest
 - **Docker Restart Policies**: Configure Docker to restart containers on failure.
 
 By implementing these strategies, you can effectively manage and mitigate failures in a microservice architecture using Kubernetes and Docker.
+
+Certainly! Here is a comprehensive table of commonly used Kubernetes commands along with their purposes:
+
+| **Command**                              | **Purpose**                                                                                                  |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `kubectl get nodes`                      | List all nodes in the cluster.                                                                              |
+| `kubectl describe node <node-name>`      | Show detailed information about a specific node.                                                            |
+| `kubectl get pods`                       | List all pods in the current namespace.                                                                     |
+| `kubectl describe pod <pod-name>`        | Show detailed information about a specific pod.                                                             |
+| `kubectl get services`                   | List all services in the current namespace.                                                                  |
+| `kubectl describe service <service-name>`| Show detailed information about a specific service.                                                          |
+| `kubectl get deployments`                | List all deployments in the current namespace.                                                               |
+| `kubectl describe deployment <deploy-name>` | Show detailed information about a specific deployment.                                                        |
+| `kubectl get replicasets`                | List all replica sets in the current namespace.                                                              |
+| `kubectl describe replicaset <rs-name>`  | Show detailed information about a specific replica set.                                                       |
+| `kubectl get namespaces`                 | List all namespaces in the cluster.                                                                         |
+| `kubectl describe namespace <namespace-name>` | Show detailed information about a specific namespace.                                                        |
+| `kubectl create -f <file.yaml>`          | Create resources defined in a YAML or JSON file.                                                            |
+| `kubectl apply -f <file.yaml>`           | Apply changes to resources defined in a YAML or JSON file.                                                    |
+| `kubectl delete -f <file.yaml>`          | Delete resources defined in a YAML or JSON file.                                                            |
+| `kubectl delete pod <pod-name>`          | Delete a specific pod.                                                                                      |
+| `kubectl delete service <service-name>`  | Delete a specific service.                                                                                  |
+| `kubectl logs <pod-name>`                | View logs of a specific pod.                                                                               |
+| `kubectl exec -it <pod-name> -- <command>` | Execute a command inside a specific pod.                                                                    |
+| `kubectl port-forward <pod-name> <local-port>:<pod-port>` | Forward a local port to a port on a pod.                                                                     |
+| `kubectl scale deployment <deploy-name> --replicas=<number>` | Scale the number of replicas in a deployment.                                                                |
+| `kubectl rollout status deployment <deploy-name>` | Check the status of a rollout for a specific deployment.                                                     |
+| `kubectl rollout history deployment <deploy-name>` | View the rollout history for a specific deployment.                                                           |
+| `kubectl rollout undo deployment <deploy-name>` | Roll back to the previous revision of a deployment.                                                           |
+| `kubectl top nodes`                     | Show resource usage (CPU/Memory) of nodes.                                                                  |
+| `kubectl top pods`                      | Show resource usage (CPU/Memory) of pods.                                                                   |
+| `kubectl config view`                   | View the Kubernetes configuration.                                                                          |
+| `kubectl config use-context <context-name>` | Switch to a different context in the Kubernetes configuration.                                                |
+| `kubectl cluster-info`                  | Display information about the Kubernetes cluster.                                                            |
+| `kubectl get events`                    | List events in the current namespace.                                                                       |
+| `kubectl describe <resource> <resource-name>` | Show detailed information about a specific resource.                                                          |
+| `kubectl get configmaps`                | List all config maps in the current namespace.                                                               |
+| `kubectl describe configmap <configmap-name>` | Show detailed information about a specific config map.                                                         |
+| `kubectl get secrets`                  | List all secrets in the current namespace.                                                                   |
+| `kubectl describe secret <secret-name>` | Show detailed information about a specific secret.                                                            |
+| `kubectl apply -k <directory>`           | Apply Kubernetes resources using Kustomize from a directory.                                                  |
+| `kubectl get ingress`                   | List all ingress resources in the current namespace.                                                        |
+| `kubectl describe ingress <ingress-name>` | Show detailed information about a specific ingress resource.                                                  |
+| `kubectl cp <local-file> <pod-name>:<container-path>` | Copy files to/from a container in a pod.                                                                      |
+| `kubectl run <name> --image=<image>`    | Run a new pod with a specific image.                                                                         |
+| `kubectl wait --for=condition=<condition> <resource>` | Wait for a specific condition to be met for a resource.                                                       |
+| `kubectl top pod <pod-name>`            | Show resource usage (CPU/Memory) of a specific pod.                                                          |
+
+### **Additional Commands**
+
+| **Command**                              | **Purpose**                                                                                                  |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `kubectl apply -f <file.yaml> --dry-run` | Validate a resource file without applying changes.                                                           |
+| `kubectl patch <resource> <resource-name> -p <patch>` | Update a resource with a JSON patch.                                                                         |
+| `kubectl auth can-i <verb> <resource>`  | Check if the current user can perform a specific action on a resource.                                       |
+| `kubectl edit <resource> <resource-name>` | Edit a resource in your default editor.                                                                      |
+| `kubectl version`                       | Show the Kubernetes client and server version.                                                              |
+
+These commands cover a wide range of Kubernetes operations, from managing resources and troubleshooting to scaling and configuration.
+
+Here's a comprehensive table of commonly used Docker commands along with their purposes:
+
+| **Command**                            | **Purpose**                                                                                              |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `docker --version`                     | Show the Docker version information.                                                                     |
+| `docker pull <image>`                  | Download a Docker image from a registry.                                                                  |
+| `docker build -t <image>:<tag> <context>` | Build a Docker image from a Dockerfile in the specified context.                                         |
+| `docker images`                        | List all Docker images on the local system.                                                               |
+| `docker rmi <image>`                   | Remove a Docker image from the local system.                                                              |
+| `docker tag <source-image>:<tag> <target-image>:<tag>` | Tag an existing Docker image with a new name or tag.                                                     |
+| `docker run <options> <image>`         | Run a command in a new container based on the specified image.                                            |
+| `docker ps`                            | List all running containers.                                                                             |
+| `docker ps -a`                         | List all containers, including those that are stopped.                                                    |
+| `docker stop <container>`              | Stop a running container.                                                                              |
+| `docker start <container>`             | Start a stopped container.                                                                             |
+| `docker restart <container>`           | Restart a running or stopped container.                                                                  |
+| `docker rm <container>`                | Remove a stopped container from the local system.                                                        |
+| `docker exec -it <container> <command>` | Run a command inside a running container in interactive mode.                                             |
+| `docker logs <container>`              | View the logs of a running or stopped container.                                                          |
+| `docker inspect <container>`           | Show detailed information about a container or image.                                                    |
+| `docker network ls`                    | List all Docker networks.                                                                               |
+| `docker network inspect <network>`     | Show detailed information about a specific Docker network.                                                |
+| `docker volume ls`                     | List all Docker volumes.                                                                               |
+| `docker volume inspect <volume>`       | Show detailed information about a specific Docker volume.                                                |
+| `docker-compose --version`             | Show the Docker Compose version information.                                                              |
+| `docker-compose up`                    | Start up services defined in a `docker-compose.yml` file.                                                 |
+| `docker-compose down`                  | Stop and remove all services defined in a `docker-compose.yml` file.                                     |
+| `docker-compose logs`                  | View logs for services defined in a `docker-compose.yml` file.                                            |
+| `docker-compose build`                 | Build or rebuild services defined in a `docker-compose.yml` file.                                         |
+| `docker-compose exec <service> <command>` | Run a command inside a running service container defined in a `docker-compose.yml` file.                  |
+| `docker-compose ps`                    | List containers for services defined in a `docker-compose.yml` file.                                      |
+| `docker-compose pull`                  | Pull the latest images for services defined in a `docker-compose.yml` file.                              |
+| `docker system df`                     | Show disk usage by Docker objects (images, containers, volumes).                                          |
+| `docker system prune`                  | Remove unused data (stopped containers, unused images, and networks).                                      |
+| `docker volume create <volume>`        | Create a new Docker volume.                                                                             |
+| `docker volume rm <volume>`            | Remove a Docker volume.                                                                                   |
+| `docker network create <network>`      | Create a new Docker network.                                                                            |
+| `docker network rm <network>`          | Remove a Docker network.                                                                               |
+| `docker info`                          | Display system-wide information about Docker.                                                             |
+| `docker login`                         | Log in to a Docker registry.                                                                             |
+| `docker logout`                        | Log out from a Docker registry.                                                                           |
+| `docker save -o <path> <image>`         | Save a Docker image to a tarball archive file.                                                            |
+| `docker load -i <path>`                 | Load a Docker image from a tarball archive file.                                                          |
+| `docker export <container> > <file>`    | Export a container’s filesystem as a tarball archive.                                                     |
+| `docker import <file> <image>`          | Import a tarball archive as a Docker image.                                                               |
+| `docker history <image>`               | Show the history of an image including the layers and their sizes.                                        |
+| `docker top <container>`               | Display the running processes in a container.                                                            |
+| `docker attach <container>`            | Attach to a running container’s main process.                                                             |
+| `docker update <container>`            | Update container configurations (e.g., resource limits).                                                   |
+| `docker cp <container>:<path> <local-path>` | Copy files from a container to the local filesystem.                                                       |
+| `docker cp <local-path> <container>:<path>` | Copy files from the local filesystem to a container.                                                        |
+| `docker stats`                         | Display real-time statistics for running containers.                                                      |
+| `docker diff <container>`              | Show the differences in the filesystem of a container.                                                     |
+| `docker run --rm`                      | Run a container and automatically remove it after it exits.                                                |
+
+These commands provide a robust set of tools for managing Docker containers, images, networks, and volumes, as well as handling various aspects of Docker Compose for orchestrating multi-container applications.
