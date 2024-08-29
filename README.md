@@ -14189,3 +14189,262 @@ While these methods allow you to access beans globally without using dependency 
 - **Custom BeanFactory:** Mimics some DI container features but requires manual management.
 
 For most cases, sticking with Spring’s DI and IoC (Inversion of Control) container is recommended due to its robustness and features for managing dependencies efficiently. However, if you need to access beans globally without using Spring’s DI, the above methods can serve as alternatives.
+
+### Singleton Class in Java
+
+A Singleton class in Java is a design pattern that ensures only one instance of the class is created throughout the application. This pattern is useful when exactly one object is needed to coordinate actions across the system.
+
+**Key Characteristics of Singleton Class:**
+
+1. **Private Constructor:** Prevents instantiation from outside the class.
+2. **Static Instance:** Provides a global access point to the instance.
+3. **Thread-Safe:** Typically includes mechanisms to ensure that the singleton instance is created in a thread-safe manner.
+
+**Basic Implementation:**
+
+```java
+public class Singleton {
+    // The unique instance of the Singleton class
+    private static Singleton instance;
+
+    // Private constructor to prevent instantiation
+    private Singleton() {
+    }
+
+    // Public method to provide access to the instance
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+### Serialization of Singleton Class
+
+Serialization is the process of converting an object into a byte stream to save it to a file or transmit it over a network. Deserialization is the reverse process, converting the byte stream back into an object.
+
+**Can Singleton Classes Be Serialized?**
+
+Yes, Singleton classes can be serialized. However, special care must be taken to ensure that the Singleton property (i.e., only one instance) is preserved even after deserialization.
+
+**Serialization and Singleton Class:**
+
+1. **Default Behavior:** By default, Java's serialization mechanism can break the Singleton pattern. During deserialization, a new instance of the Singleton class can be created.
+
+2. **Preventing Multiple Instances:** To ensure that the Singleton property is maintained during serialization and deserialization, you can implement the `readResolve` method in the Singleton class.
+
+**Example of a Serializable Singleton Class:**
+
+```java
+import java.io.Serializable;
+
+public class Singleton implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    // The unique instance of the Singleton class
+    private static Singleton instance;
+
+    // Private constructor to prevent instantiation
+    private Singleton() {
+    }
+
+    // Public method to provide access to the instance
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+
+    // Method to preserve Singleton property during deserialization
+    private Object readResolve() {
+        return getInstance();
+    }
+}
+```
+
+### Benefits of Using Serialization with Singleton Class
+
+1. **Persistence:** Serialization allows the Singleton instance to be persisted across application restarts. This can be useful for saving application state.
+
+2. **Distributed Systems:** In distributed systems, Singleton instances may need to be serialized to pass them between different JVMs or systems.
+
+3. **Caching:** Serialized Singleton instances can be used for caching purposes, allowing them to be rehydrated quickly.
+
+### Important Considerations
+
+1. **Thread Safety:** Ensure that the Singleton instance is thread-safe and that its `getInstance` method is properly synchronized.
+
+2. **Deserialization:** Implement the `readResolve` method to prevent the creation of additional instances during deserialization.
+
+3. **Serialization ID:** Define a `serialVersionUID` to ensure compatibility between different versions of the class.
+
+**Example of Serialization and Deserialization:**
+
+```java
+import java.io.*;
+
+public class SingletonTest {
+    public static void main(String[] args) {
+        try {
+            Singleton instance1 = Singleton.getInstance();
+            // Serialize the singleton instance
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
+            out.writeObject(instance1);
+            out.close();
+            
+            // Deserialize the singleton instance
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("singleton.ser"));
+            Singleton instance2 = (Singleton) in.readObject();
+            in.close();
+
+            System.out.println(instance1 == instance2); // Should print true
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Summary
+
+- **Singleton Class:** Ensures only one instance of the class exists.
+- **Serialization of Singleton Class:** Possible but requires special handling to maintain the Singleton property, typically using the `readResolve` method.
+- **Benefits:** Allows persistence, supports distributed systems, and can be useful for caching.
+
+By carefully implementing serialization in a Singleton class, you can maintain the Singleton pattern and leverage the benefits of serialization effectively.
+
+### Immutable Class in Java
+
+An immutable class is a class whose instances cannot be modified after they are created. Immutable objects are inherently thread-safe and can be shared between threads without synchronization.
+
+**Benefits of Immutable Classes:**
+1. **Thread-Safety:** Immutable objects are inherently thread-safe, as their state cannot be changed after they are created.
+2. **Simplicity:** Since the state cannot change, the objects are easier to reason about and less prone to bugs.
+3. **HashCode Consistency:** Immutable objects have consistent hash codes, which makes them reliable as keys in hash-based collections.
+
+### Rules for Creating an Immutable Class
+
+To create an immutable class, you should follow these rules:
+
+1. **Declare the Class as `final`:**
+   - This prevents subclasses from altering the immutability.
+   - Example:
+     ```java
+     public final class ImmutableClass {
+     }
+     ```
+
+2. **Make All Fields `private` and `final`:**
+   - Fields should be `private` to prevent direct access and `final` to ensure that they are initialized once and never modified.
+   - Example:
+     ```java
+     private final int value;
+     ```
+
+3. **Initialize Fields via Constructor:**
+   - Use a constructor to initialize all fields. Ensure that fields are assigned values only once.
+   - Example:
+     ```java
+     public ImmutableClass(int value) {
+         this.value = value;
+     }
+     ```
+
+4. **Do Not Provide "Setter" Methods:**
+   - Do not provide methods that modify fields or alter the state of the object.
+   - Example:
+     ```java
+     // No setter methods
+     ```
+
+5. **If Fields are Mutable Objects, Ensure They are Deeply Copied:**
+   - If the class has fields that are mutable objects (e.g., arrays or collections), provide copies of these objects in getters and constructors to prevent modification from outside.
+   - Example:
+     ```java
+     private final int[] values;
+
+     public ImmutableClass(int[] values) {
+         this.values = values.clone(); // Deep copy
+     }
+
+     public int[] getValues() {
+         return values.clone(); // Return a copy
+     }
+     ```
+
+6. **Ensure Proper Thread-Safety:**
+   - Since immutable objects are thread-safe, you don't need explicit synchronization for accessing their fields. Just ensure all fields are initialized properly.
+
+### Example of an Immutable Class
+
+Here's a complete example of an immutable class:
+
+```java
+public final class ImmutablePerson {
+    private final String name;
+    private final int age;
+
+    public ImmutablePerson(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+```
+
+### Rules for the `final` Keyword
+
+The `final` keyword in Java is used to restrict the modification of variables, methods, and classes. Here are the rules and uses for `final`:
+
+1. **Final Variables:**
+   - **Local Variables:** Once initialized, their value cannot be changed.
+     ```java
+     final int MAX_VALUE = 100;
+     ```
+   - **Instance Variables:** Must be initialized once, either at declaration or in the constructor.
+     ```java
+     private final int id;
+     public MyClass(int id) {
+         this.id = id;
+     }
+     ```
+
+2. **Final Methods:**
+   - **Cannot Be Overridden:** Methods marked as `final` cannot be overridden by subclasses.
+     ```java
+     public final void display() {
+         // method code
+     }
+     ```
+
+3. **Final Classes:**
+   - **Cannot Be Subclassed:** Classes marked as `final` cannot be extended. This is useful for creating immutable classes and ensuring that no further inheritance is allowed.
+     ```java
+     public final class Utility {
+         // class code
+     }
+     ```
+
+**Summary:**
+- **Immutable Class:** A class that, once instantiated, cannot have its state changed. To ensure immutability, use `final` for the class, make fields `private` and `final`, provide no setters, and handle mutable objects with care.
+- **Final Keyword:** Used to restrict modification—`final` variables cannot be changed once set, `final` methods cannot be overridden, and `final` classes cannot be subclassed.
+
+By following these rules, you can create robust, immutable classes and use the `final` keyword effectively to control the behavior and modification of your classes and their members.
