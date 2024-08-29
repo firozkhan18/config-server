@@ -5352,3 +5352,56 @@ public class CreateThreadRunnable {
    - The `join()` method ensures that the main thread waits for the other threads to complete before it exits.
 
 By naming your threads, you can easily identify them in log messages, stack traces, or debugging sessions. This makes it easier to understand which thread is performing which task.
+
+
+ACID properties are a set of principles that ensure reliable processing of database transactions. These principles are critical for maintaining data integrity and consistency in relational databases. Here's a breakdown of each property:
+
+### ACID Properties
+
+1. **Atomicity**
+   - **Definition**: Atomicity ensures that a transaction is treated as a single, indivisible unit. This means that either all of the operations in the transaction are completed successfully, or none of them are applied. If any operation within the transaction fails, the entire transaction is rolled back, and the database remains unchanged.
+   - **Example**: Consider a banking transaction where money is transferred from one account to another. Atomicity ensures that either both the debit and credit operations are completed successfully, or neither operation takes place if there is an error.
+
+2. **Consistency**
+   - **Definition**: Consistency ensures that a transaction brings the database from one valid state to another valid state, maintaining all predefined rules and constraints. The database must always be in a consistent state before and after the transaction.
+   - **Example**: If a database has a constraint that no account balance can be negative, consistency ensures that this rule is not violated after the transaction is completed.
+
+3. **Isolation**
+   - **Definition**: Isolation ensures that the operations of a transaction are isolated from those of other concurrent transactions. Each transaction should appear as if it is executed in isolation, without being affected by or affecting other transactions.
+   - **Example**: If two transactions are occurring simultaneously, isolation ensures that one transaction does not see the intermediate states of the other transaction. For instance, if one transaction is updating a bank account balance, the second transaction should not see the account balance until the first transaction is completed.
+
+4. **Durability**
+   - **Definition**: Durability guarantees that once a transaction has been committed, its changes are permanent and will survive any subsequent system failures. The changes made by the transaction will be saved in non-volatile storage.
+   - **Example**: After a transaction commits a change to the database, that change must be preserved even if there is a system crash or power failure immediately afterward.
+
+### Framework for ACID Properties
+
+To achieve ACID properties, databases implement various mechanisms and frameworks, including:
+
+1. **Transaction Management Systems**
+   - **Commit and Rollback Mechanisms**: Transactions are either committed (changes are saved) or rolled back (changes are undone) to ensure atomicity and consistency.
+
+2. **Concurrency Control**
+   - **Locking Mechanisms**: Locks prevent other transactions from accessing data that is being modified by the current transaction, thus ensuring isolation.
+   - **Two-Phase Locking (2PL)**: A protocol to manage concurrency by dividing the locking process into two phases: growing (acquiring locks) and shrinking (releasing locks).
+
+3. **Logging and Recovery**
+   - **Write-Ahead Logging (WAL)**: A technique to ensure durability by writing changes to a log before applying them to the database.
+   - **Checkpointing**: Periodically saving the database state to reduce recovery time after a failure.
+
+4. **Isolation Levels**
+   - **Read Uncommitted**: Allows transactions to read data that has not yet been committed.
+   - **Read Committed**: Ensures that transactions only read committed data.
+   - **Repeatable Read**: Ensures that if a transaction reads a value, it will see the same value if it reads it again within the same transaction.
+   - **Serializable**: The highest isolation level, ensuring complete isolation from other transactions, as if transactions were executed sequentially.
+
+### Example in Practice
+
+Consider an online shopping system:
+
+- **Atomicity**: If a user places an order, the system must deduct the stock and charge the user. If any of these actions fail, the order should be canceled entirely.
+- **Consistency**: The system must ensure that the stock quantity does not become negative and that all business rules are adhered to.
+- **Isolation**: If two users place orders for the last item simultaneously, isolation ensures that they are processed without interfering with each other.
+- **Durability**: Once the order is confirmed and the payment is processed, the changes must be recorded permanently, even if the server crashes immediately after.
+
+In summary, ACID properties and frameworks are essential for ensuring that database transactions are processed reliably and consistently, maintaining data integrity and trustworthiness in systems where data accuracy and stability are crucial.
