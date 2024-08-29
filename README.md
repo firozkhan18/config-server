@@ -6101,3 +6101,165 @@ public class CustomHealthIndicator implements HealthIndicator {
 - **Server Startup Failures**: Use detailed logging, verify configurations, handle resource constraints, implement graceful shutdowns, and set up health checks.
 
 By following these practices and examples, you can effectively manage and mitigate memory leaks and startup failures in your applications.
+
+Ensuring that your application has sufficient CPU and memory resources is critical for its performance and stability. Here are detailed strategies and best practices to allocate and manage CPU and memory resources effectively:
+
+### **1. Configuring JVM Memory Settings**
+
+Java applications run on the Java Virtual Machine (JVM), and you can configure memory settings to ensure the application has enough memory.
+
+#### **1.1. **Heap Memory Configuration**
+
+- **Initial Heap Size (`-Xms`)**: Sets the initial heap size. Start with a value that reflects the minimum memory needed by the application.
+- **Maximum Heap Size (`-Xmx`)**: Sets the maximum heap size. Ensure this is set to a value that provides enough memory for your application to run efficiently.
+
+Example:
+
+```bash
+java -Xms512m -Xmx4g -jar yourapplication.jar
+```
+
+In this example:
+- `-Xms512m` sets the initial heap size to 512 MB.
+- `-Xmx4g` sets the maximum heap size to 4 GB.
+
+#### **1.2. **Garbage Collection (GC) Settings**
+
+Tuning garbage collection can also help manage memory usage:
+
+- **GC Algorithms**: Use different GC algorithms based on your application's needs (e.g., G1GC, CMS).
+
+Example:
+
+```bash
+java -XX:+UseG1GC -Xms512m -Xmx4g -jar yourapplication.jar
+```
+
+The `-XX:+UseG1GC` option enables the G1 Garbage Collector, which is often a good choice for applications with large heaps.
+
+### **2. Configuring CPU Resources**
+
+#### **2.1. **Resource Limits in Containers**
+
+If you are running your application in a containerized environment (e.g., Docker), you can set CPU and memory limits:
+
+- **CPU Limits**: Restrict the number of CPUs allocated to a container.
+- **Memory Limits**: Set limits on the memory usage of a container.
+
+**Docker Example:**
+
+```bash
+docker run -d --name myapp \
+  --memory="2g" --memory-swap="2g" \
+  --cpus="2.0" \
+  yourimage:latest
+```
+
+In this example:
+- `--memory="2g"` limits memory usage to 2 GB.
+- `--memory-swap="2g"` sets the swap space limit to 2 GB.
+- `--cpus="2.0"` restricts the container to 2 CPUs.
+
+#### **2.2. **Resource Limits in Kubernetes**
+
+For applications running in Kubernetes, you can set CPU and memory requests and limits in your Pod specifications:
+
+**Kubernetes Example:**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: yourimage:latest
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "2Gi"
+        cpu: "2"
+```
+
+In this example:
+- `requests` specify the minimum amount of resources required.
+- `limits` set the maximum amount of resources the container can use.
+
+### **3. Monitoring and Scaling**
+
+#### **3.1. **Monitoring Resource Usage**
+
+Use monitoring tools to track CPU and memory usage:
+
+- **Prometheus and Grafana**: Popular for collecting and visualizing metrics.
+- **JVM Monitoring Tools**: Tools like VisualVM, JConsole, or JMX can help monitor JVM metrics.
+
+**Example with Prometheus:**
+
+Configure Prometheus to scrape metrics from your application and use Grafana for visualization.
+
+**Prometheus Configuration:**
+
+```yaml
+scrape_configs:
+  - job_name: 'myapp'
+    static_configs:
+      - targets: ['localhost:8080']  # Adjust to your application's endpoint
+```
+
+#### **3.2. **Auto-Scaling**
+
+Implement auto-scaling to adjust resources based on demand:
+
+- **Horizontal Scaling**: Add more instances of your application based on CPU or memory usage. This is commonly used in cloud environments and container orchestration platforms like Kubernetes.
+
+**Kubernetes Horizontal Pod Autoscaler Example:**
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: myapp-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: myapp-deployment
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+```
+
+- **Vertical Scaling**: Increase the resources allocated to an existing instance. This may involve adjusting container or VM resource limits.
+
+**Example of Adjusting VM Resources:**
+
+In a cloud environment like AWS, you can modify the instance type to provide more CPU and memory.
+
+### **4. Application-Specific Tuning**
+
+#### **4.1. **Application Configuration**
+
+Some applications have specific configuration options for tuning performance:
+
+- **Thread Pools**: Configure thread pools to handle concurrency effectively.
+- **Connection Pools**: Tune connection pool settings for databases and other services.
+
+**Example of Configuring a Connection Pool in Spring Boot:**
+
+```properties
+spring.datasource.hikari.maximum-pool-size=20
+spring.datasource.hikari.minimum-idle=10
+spring.datasource.hikari.idle-timeout=30000
+```
+
+### **5. Best Practices**
+
+- **Testing**: Regularly test your application under different load conditions to identify performance bottlenecks.
+- **Capacity Planning**: Perform capacity planning to estimate the resources needed based on expected load.
+- **Resource Monitoring**: Continuously monitor resource usage and adjust configurations as needed.
+
+By following these practices, you can ensure that your application has adequate CPU and memory resources, improve performance, and maintain stability under varying load conditions.
