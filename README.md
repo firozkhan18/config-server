@@ -13771,3 +13771,104 @@ In this setup:
 ### Summary
 
 Microservice architecture is a powerful approach for building complex, scalable applications by decomposing them into small, manageable services. It emphasizes independence, scalability, and flexibility but also introduces complexity in areas like inter-service communication, data consistency, and security. Understanding the principles, patterns, and tools associated with microservices helps in designing robust and maintainable systems.
+
+In Java, `sleep` and `wait` are two methods used to pause the execution of a thread, but they serve different purposes and operate in different ways. Here’s a detailed comparison of the two:
+
+### 1. **`Thread.sleep(long millis)`**
+
+**Purpose:**
+- The `sleep` method is used to pause the execution of the current thread for a specified number of milliseconds. It is a static method in the `Thread` class.
+
+**Key Characteristics:**
+
+- **Static Method:** `sleep` is a static method of the `Thread` class, meaning it affects the thread that calls it, and it does not require synchronization.
+  
+- **No Object Lock:** `sleep` does not release any locks held by the thread. It simply pauses the thread's execution without affecting any other threads or resources.
+  
+- **Interruptible:** `sleep` can throw an `InterruptedException` if another thread interrupts the sleeping thread.
+  
+- **Precision:** The actual sleep time may be longer than the specified time due to system scheduling.
+
+**Example Usage:**
+```java
+public class SleepExample {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Thread going to sleep");
+            Thread.sleep(2000); // Sleep for 2 seconds
+            System.out.println("Thread woke up");
+        } catch (InterruptedException e) {
+            System.out.println("Thread was interrupted");
+        }
+    }
+}
+```
+
+### 2. **`Object.wait()`**
+
+**Purpose:**
+- The `wait` method is used for inter-thread communication and synchronization. It causes the current thread to wait until another thread invokes `notify()` or `notifyAll()` on the same object.
+
+**Key Characteristics:**
+
+- **Instance Method:** `wait` is an instance method of the `Object` class, so it is called on an object and requires the thread to hold the object's monitor lock.
+
+- **Releases Lock:** When a thread calls `wait`, it releases the monitor lock it holds on the object, allowing other threads to acquire the lock and proceed.
+
+- **Synchronization Required:** `wait` must be called from within a synchronized block or method. If not, it will throw `IllegalMonitorStateException`.
+
+- **Interruptible:** `wait` can also throw an `InterruptedException` if the thread is interrupted while waiting.
+
+- **Conditional Waiting:** Threads can wait for a specific condition to be met before resuming execution.
+
+**Example Usage:**
+```java
+public class WaitNotifyExample {
+    private static final Object lock = new Object();
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread waiter = new Thread(() -> {
+            synchronized (lock) {
+                try {
+                    System.out.println("Waiting for notification");
+                    lock.wait(); // Wait for notification
+                    System.out.println("Notified and resumed");
+                } catch (InterruptedException e) {
+                    System.out.println("Thread was interrupted");
+                }
+            }
+        });
+
+        Thread notifier = new Thread(() -> {
+            synchronized (lock) {
+                try {
+                    Thread.sleep(2000); // Sleep for 2 seconds before notifying
+                    System.out.println("Sending notification");
+                    lock.notify(); // Notify the waiting thread
+                } catch (InterruptedException e) {
+                    System.out.println("Thread was interrupted");
+                }
+            }
+        });
+
+        waiter.start();
+        notifier.start();
+
+        waiter.join();
+        notifier.join();
+    }
+}
+```
+
+### Summary of Differences
+
+| **Feature**                | **`Thread.sleep`**                                           | **`Object.wait`**                                          |
+|----------------------------|--------------------------------------------------------------|------------------------------------------------------------|
+| **Belongs to**             | `Thread` class (static method)                              | `Object` class (instance method)                           |
+| **Lock Handling**          | Does not affect any locks                                  | Releases the monitor lock on the object                    |
+| **Synchronization**        | No need for synchronization                                | Must be called from within a synchronized block or method |
+| **Interruptions**          | Can be interrupted, throws `InterruptedException`           | Can be interrupted, throws `InterruptedException`          |
+| **Purpose**                | Pauses the thread for a fixed amount of time               | Waits until notified or interrupted, used for inter-thread communication |
+| **Releasing Resources**    | Does not release any resources                             | Releases the monitor lock on the object                    |
+
+Understanding these differences is crucial for correctly managing thread behavior and synchronization in a Java application.
