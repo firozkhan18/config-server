@@ -14008,3 +14008,184 @@ management.endpoints.web.exposure.include=health,metrics
 ### Summary
 
 Effective memory management in Java and Spring Boot microservices involves understanding JVM internals, tuning garbage collection, and monitoring applications. In microservices architectures, additional considerations include managing memory at the service level, optimizing resource usage, and employing proper infrastructure management practices. Using profiling tools, configuring appropriate JVM options, and monitoring service performance are key practices for maintaining efficient memory usage.
+
+In Spring, dependency injection (DI) is the primary method for managing beans and their dependencies. However, if you want to access beans globally without using traditional DI techniques, there are a few alternative approaches you can use. Here’s how you can register and access multiple beans globally without relying on DI:
+
+### 1. **Using a Singleton Container**
+
+You can create a singleton container class that manually manages the registration and retrieval of beans. This method allows you to access beans globally but does not leverage Spring's DI features directly.
+
+**Example:**
+
+```java
+public class BeanContainer {
+
+    private static final Map<String, Object> beans = new HashMap<>();
+
+    // Register a bean
+    public static void registerBean(String name, Object bean) {
+        beans.put(name, bean);
+    }
+
+    // Retrieve a bean by name
+    public static Object getBean(String name) {
+        return beans.get(name);
+    }
+}
+```
+
+**Registering Beans:**
+
+```java
+public class MainApp {
+    public static void main(String[] args) {
+        // Create beans
+        MyBean1 bean1 = new MyBean1();
+        MyBean2 bean2 = new MyBean2();
+
+        // Register beans in the container
+        BeanContainer.registerBean("bean1", bean1);
+        BeanContainer.registerBean("bean2", bean2);
+
+        // Access beans globally
+        MyBean1 retrievedBean1 = (MyBean1) BeanContainer.getBean("bean1");
+        MyBean2 retrievedBean2 = (MyBean2) BeanContainer.getBean("bean2");
+
+        // Use the beans
+        retrievedBean1.doSomething();
+        retrievedBean2.doSomethingElse();
+    }
+}
+```
+
+### 2. **Using Static Fields**
+
+You can use static fields in a class to hold instances of beans. This approach allows global access to these instances but lacks the flexibility and manageability of Spring's DI.
+
+**Example:**
+
+```java
+public class GlobalBeans {
+    public static MyBean1 bean1;
+    public static MyBean2 bean2;
+}
+```
+
+**Initializing Beans:**
+
+```java
+public class MainApp {
+    public static void main(String[] args) {
+        // Initialize beans
+        GlobalBeans.bean1 = new MyBean1();
+        GlobalBeans.bean2 = new MyBean2();
+
+        // Access beans globally
+        GlobalBeans.bean1.doSomething();
+        GlobalBeans.bean2.doSomethingElse();
+    }
+}
+```
+
+### 3. **Using ServiceLoader**
+
+Java’s `ServiceLoader` mechanism provides a way to load service implementations dynamically. While it's not a typical approach for accessing Spring beans, it can be used for similar purposes.
+
+**Service Interface:**
+
+```java
+public interface MyService {
+    void perform();
+}
+```
+
+**Service Implementation:**
+
+```java
+public class MyServiceImpl1 implements MyService {
+    @Override
+    public void perform() {
+        System.out.println("Service 1 performing");
+    }
+}
+
+public class MyServiceImpl2 implements MyService {
+    @Override
+    public void perform() {
+        System.out.println("Service 2 performing");
+    }
+}
+```
+
+**Register Services (in `META-INF/services` directory):**
+
+Create a file named `MyService` in the `META-INF/services` directory of your JAR, containing the fully qualified names of the implementations:
+
+```
+com.example.MyServiceImpl1
+com.example.MyServiceImpl2
+```
+
+**Loading Services:**
+
+```java
+public class MainApp {
+    public static void main(String[] args) {
+        ServiceLoader<MyService> services = ServiceLoader.load(MyService.class);
+
+        for (MyService service : services) {
+            service.perform();
+        }
+    }
+}
+```
+
+### 4. **Using a Custom BeanFactory**
+
+You can implement your own factory class that mimics some of the behavior of a DI container.
+
+**Example:**
+
+```java
+public class MyBeanFactory {
+    private static final Map<String, Object> beanMap = new HashMap<>();
+
+    public static void registerBean(String name, Object bean) {
+        beanMap.put(name, bean);
+    }
+
+    public static Object getBean(String name) {
+        return beanMap.get(name);
+    }
+}
+```
+
+**Registering and Accessing Beans:**
+
+```java
+public class MainApp {
+    public static void main(String[] args) {
+        // Register beans
+        MyBeanFactory.registerBean("bean1", new MyBean1());
+        MyBeanFactory.registerBean("bean2", new MyBean2());
+
+        // Access beans
+        MyBean1 bean1 = (MyBean1) MyBeanFactory.getBean("bean1");
+        MyBean2 bean2 = (MyBean2) MyBeanFactory.getBean("bean2");
+
+        // Use the beans
+        bean1.doSomething();
+        bean2.doSomethingElse();
+    }
+}
+```
+
+### Summary
+
+While these methods allow you to access beans globally without using dependency injection, they come with trade-offs:
+
+- **Singleton Container and Static Fields:** Simple but less flexible and harder to manage compared to DI.
+- **ServiceLoader:** Useful for loading service implementations dynamically but not suited for typical bean management.
+- **Custom BeanFactory:** Mimics some DI container features but requires manual management.
+
+For most cases, sticking with Spring’s DI and IoC (Inversion of Control) container is recommended due to its robustness and features for managing dependencies efficiently. However, if you need to access beans globally without using Spring’s DI, the above methods can serve as alternatives.
