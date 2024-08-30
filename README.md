@@ -15670,3 +15670,143 @@ In this example:
 - **Order of Execution**: Intermediate operations build a pipeline; terminal operations trigger processing, executing the pipeline.
 
 Java Streams simplify and enhance the readability of data processing tasks, making it easier to write concise and efficient code.
+
+### **Default and Static Methods in Functional Interfaces**
+
+Functional interfaces in Java are interfaces with a single abstract method, introduced with Java 8. However, they can also include default and static methods. These methods offer additional capabilities and are used in different contexts:
+
+#### **1. Default Methods**
+
+- **Purpose**: Default methods allow interfaces to provide concrete methods with default implementations. This helps in adding new methods to interfaces without breaking existing implementations. They enable interfaces to evolve while maintaining backward compatibility.
+
+- **Usage**: Default methods are used to define behavior that is common across multiple classes or to provide a default implementation that can be overridden by implementing classes.
+
+- **Syntax**:
+
+  ```java
+  interface MyInterface {
+      void abstractMethod();
+      
+      default void defaultMethod() {
+          System.out.println("Default method implementation");
+      }
+  }
+  ```
+
+- **Example**:
+
+  ```java
+  interface MyFunctionalInterface {
+      void doSomething();
+      
+      default void defaultMethod() {
+          System.out.println("This is a default method.");
+      }
+  }
+
+  public class MyClass implements MyFunctionalInterface {
+      @Override
+      public void doSomething() {
+          System.out.println("Doing something.");
+      }
+      
+      public static void main(String[] args) {
+          MyClass myClass = new MyClass();
+          myClass.doSomething(); // Output: Doing something.
+          myClass.defaultMethod(); // Output: This is a default method.
+      }
+  }
+  ```
+
+  In this example, `defaultMethod` provides a default behavior that can be used by `MyClass` without needing to implement it.
+
+#### **2. Static Methods**
+
+- **Purpose**: Static methods in interfaces are associated with the interface itself rather than instances of implementing classes. They are used for utility or helper methods that are relevant to the interface but not tied to any specific instance.
+
+- **Usage**: Static methods provide functionality that is independent of instance state. They cannot be overridden by implementing classes.
+
+- **Syntax**:
+
+  ```java
+  interface MyInterface {
+      static void staticMethod() {
+          System.out.println("Static method in interface");
+      }
+  }
+  ```
+
+- **Example**:
+
+  ```java
+  interface MyFunctionalInterface {
+      void doSomething();
+      
+      static void staticMethod() {
+          System.out.println("This is a static method.");
+      }
+  }
+
+  public class MyClass implements MyFunctionalInterface {
+      @Override
+      public void doSomething() {
+          System.out.println("Doing something.");
+      }
+      
+      public static void main(String[] args) {
+          MyFunctionalInterface.staticMethod(); // Output: This is a static method.
+      }
+  }
+  ```
+
+  In this example, `staticMethod` is called on the interface itself, not on an instance of `MyClass`.
+
+### **Impact on Multiple Inheritance in OOP**
+
+Java interfaces and their support for default and static methods relate to multiple inheritance, which is a key aspect of object-oriented programming (OOP). Here’s how:
+
+1. **Multiple Inheritance in Interfaces**: 
+   - Java does support multiple inheritance in interfaces. A class can implement multiple interfaces, each of which can have multiple methods, including default methods. This allows a class to inherit behavior from multiple sources.
+
+2. **Default Methods and Multiple Inheritance**:
+   - **Method Resolution**: If a class implements two interfaces with conflicting default methods, it must override the method to resolve the conflict. This is handled by the Java compiler and ensures that the class provides a concrete implementation.
+   - **Backward Compatibility**: Default methods help in evolving interfaces without breaking existing implementations, providing a form of multiple inheritance of behavior.
+
+  ```java
+  interface InterfaceA {
+      default void doSomething() {
+          System.out.println("InterfaceA implementation");
+      }
+  }
+
+  interface InterfaceB {
+      default void doSomething() {
+          System.out.println("InterfaceB implementation");
+      }
+  }
+
+  public class MyClass implements InterfaceA, InterfaceB {
+      @Override
+      public void doSomething() {
+          System.out.println("MyClass implementation");
+      }
+      
+      public static void main(String[] args) {
+          MyClass myClass = new MyClass();
+          myClass.doSomething(); // Output: MyClass implementation
+      }
+  }
+  ```
+
+  In this example, `MyClass` must provide its own implementation of `doSomething` to resolve the conflict between `InterfaceA` and `InterfaceB`.
+
+3. **Static Methods and Multiple Inheritance**:
+   - **No Conflict**: Static methods are not subject to inheritance or overriding by classes. They belong to the interface and are not affected by multiple inheritance issues.
+
+### **Summary**
+
+- **Default Methods**: Allow interfaces to provide concrete methods with default implementations, enabling interfaces to evolve while maintaining backward compatibility. They do not break the concept of multiple inheritance in OOP but provide a mechanism for resolving conflicts when multiple interfaces have default methods with the same signature.
+  
+- **Static Methods**: Provide utility or helper methods that belong to the interface itself. They do not participate in inheritance or overriding, thus avoiding conflicts.
+
+These features enhance the flexibility and power of interfaces in Java, enabling more expressive and maintainable code while adhering to OOP principles.
