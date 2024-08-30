@@ -14845,3 +14845,196 @@ In this example, connections are not being properly managed, which can lead to a
    - Use JVisualVM’s “Heap Dump” tab to analyze objects and identify potential leaks.
 
 By following these steps and examples, you can effectively handle memory leaks in both Java applications and Spring Boot microservices. Proper monitoring, profiling, and resource management are key to maintaining application performance and stability.
+
+Handling concurrent requests efficiently while avoiding issues related to multiple threads is crucial for the performance and stability of a Spring Boot microservice. Here’s how you can handle concurrent requests in a Spring Boot microservice without running into problems with multiple threads:
+
+### 1. **Designing for Concurrency**
+
+#### **1.1. Stateless Design**
+
+**Concept:**
+Design your services to be stateless. This means that each request should be independent and not rely on shared state. This helps in scaling and avoids issues with concurrent access.
+
+**Implementation:**
+Ensure that your service methods do not store data in static fields or shared resources. Use request parameters and local variables.
+
+```java
+@RestController
+public class MyController {
+
+    @GetMapping("/process")
+    public ResponseEntity<String> processRequest(@RequestParam String input) {
+        // Process the request based on input without relying on shared state
+        String result = process(input);
+        return ResponseEntity.ok(result);
+    }
+
+    private String process(String input) {
+        // Stateless processing logic
+        return "Processed: " + input;
+    }
+}
+```
+
+#### **1.2. Asynchronous Processing**
+
+**Concept:**
+Use asynchronous processing to handle long-running tasks or background processing. This allows your service to handle requests efficiently without blocking threads.
+
+**Implementation:**
+
+1. **Using `@Async` Annotation**
+
+   ```java
+   @Service
+   public class AsyncService {
+
+       @Async
+       public CompletableFuture<String> asyncMethod(String input) {
+           // Long-running process
+           return CompletableFuture.completedFuture("Processed: " + input);
+       }
+   }
+   ```
+
+   Enable asynchronous processing by adding `@EnableAsync` to your main application class:
+
+   ```java
+   @SpringBootApplication
+   @EnableAsync
+   public class MyApplication {
+       public static void main(String[] args) {
+           SpringApplication.run(MyApplication.class, args);
+       }
+   }
+   ```
+
+   Use the async service in your controller:
+
+   ```java
+   @RestController
+   public class MyController {
+
+       @Autowired
+       private AsyncService asyncService;
+
+       @GetMapping("/process")
+       public CompletableFuture<ResponseEntity<String>> processRequest(@RequestParam String input) {
+           return asyncService.asyncMethod(input)
+               .thenApply(result -> ResponseEntity.ok(result));
+       }
+   }
+   ```
+
+2. **Using `CompletableFuture` Directly**
+
+   ```java
+   @RestController
+   public class MyController {
+
+       @GetMapping("/process")
+       public CompletableFuture<ResponseEntity<String>> processRequest(@RequestParam String input) {
+           return CompletableFuture.supplyAsync(() -> process(input))
+                                  .thenApply(result -> ResponseEntity.ok(result));
+       }
+
+       private String process(String input) {
+           // Long-running process
+           return "Processed: " + input;
+       }
+   }
+   ```
+
+### 2. **Thread Pool Management**
+
+**Concept:**
+Manage thread usage efficiently by configuring thread pools. Spring Boot uses `TaskExecutor` for managing threads, which allows you to configure thread pools according to your needs.
+
+**Implementation:**
+
+1. **Configure `ThreadPoolTaskExecutor`**
+
+   ```java
+   @Configuration
+   public class AsyncConfig {
+
+       @Bean(name = "taskExecutor")
+       public Executor taskExecutor() {
+           ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+           executor.setCorePoolSize(5);
+           executor.setMaxPoolSize(10);
+           executor.setQueueCapacity(25);
+           executor.setThreadNamePrefix("Async-");
+           executor.initialize();
+           return executor;
+       }
+   }
+   ```
+
+   This configuration creates a thread pool with a core pool size of 5, a maximum pool size of 10, and a queue capacity of 25. You can adjust these values based on your application’s load.
+
+2. **Use the Configured Executor**
+
+   When using `@Async`, specify the executor:
+
+   ```java
+   @Service
+   public class AsyncService {
+
+       @Async("taskExecutor")
+       public CompletableFuture<String> asyncMethod(String input) {
+           // Long-running process
+           return CompletableFuture.completedFuture("Processed: " + input);
+       }
+   }
+   ```
+
+### 3. **Avoiding Blocking Calls**
+
+**Concept:**
+Avoid blocking calls in your application. Use non-blocking I/O and reactive programming to handle large numbers of concurrent requests efficiently.
+
+**Implementation:**
+
+1. **Use Reactive Programming with Spring WebFlux**
+
+   Spring WebFlux allows for non-blocking I/O operations using reactive programming principles.
+
+   **Add WebFlux Dependency:**
+
+   ```xml
+   <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-webflux</artifactId>
+   </dependency>
+   ```
+
+   **Reactive Controller Example:**
+
+   ```java
+   @RestController
+   public class ReactiveController {
+
+       @GetMapping("/process")
+       public Mono<ResponseEntity<String>> processRequest(@RequestParam String input) {
+           return Mono.fromCallable(() -> process(input))
+                      .map(result -> ResponseEntity.ok(result));
+       }
+
+       private String process(String input) {
+           // Simulate a non-blocking operation
+           return "Processed: " + input;
+       }
+   }
+   ```
+
+   Here, `Mono` represents a single asynchronous value, and `fromCallable` creates a `Mono` from a callable.
+
+### **Summary**
+
+- **Stateless Design:** Ensure your services are stateless to avoid concurrency issues.
+- **Asynchronous Processing:** Use `@Async` and `CompletableFuture` for background processing.
+- **Thread Pool Management:** Configure thread pools with `ThreadPoolTaskExecutor` for efficient thread management.
+- **Avoid Blocking Calls:** Use reactive programming with Spring WebFlux for non-blocking operations.
+
+By following these practices, you can handle concurrent requests efficiently in a Spring Boot microservice without running into problems associated with multiple threads.
