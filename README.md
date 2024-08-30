@@ -15115,3 +15115,558 @@ When visiting an HTTPS URL, you will see a padlock icon in the browser’s addre
 - **HTTPS**: Preferred for all web traffic, especially when handling sensitive information. It encrypts data, provides authentication, and ensures data integrity.
 
 **Recommendation:** Always use HTTPS for any website or web application, especially if you are handling user data, passwords, or financial transactions. HTTPS is a standard best practice for modern web security and user trust.
+
+Memory management and garbage collection are crucial aspects of Java programming, ensuring that memory is used efficiently and that unused objects are properly cleaned up. Here’s a detailed look at how memory management works in Java and how garbage collectors operate internally:
+
+### **Memory Management in Java**
+
+Java memory management involves the following key areas:
+
+1. **Heap Memory**: 
+   - The heap is where Java stores objects and arrays. It is divided into two main regions:
+     - **Young Generation**: Where new objects are allocated. It consists of:
+       - **Eden Space**: Where new objects are first allocated.
+       - **Survivor Spaces (S0 and S1)**: Where objects that survive minor garbage collections are moved.
+     - **Old Generation (Tenured Generation)**: Where long-lived objects are eventually moved after surviving multiple garbage collections in the young generation.
+
+2. **Stack Memory**:
+   - Each thread in a Java application has its own stack, which stores method call frames, local variables, and return addresses. Stack memory is used for managing method calls and execution flow.
+
+3. **Metaspace**:
+   - Metaspace (replacing PermGen in Java 8) stores class metadata and reflects on runtime class structures. It grows dynamically based on class loading.
+
+4. **Native Memory**:
+   - Used by the JVM for native operations and allocations, including direct buffers and internal data structures.
+
+### **Garbage Collection (GC) in Java**
+
+Garbage collection is the process of automatically identifying and reclaiming memory used by objects that are no longer reachable or needed. Here’s a high-level overview of how garbage collectors work in Java:
+
+1. **Mark and Sweep Algorithm**:
+   - **Mark Phase**: The garbage collector identifies which objects are still in use by starting from the root references (e.g., local variables, static references) and marking all reachable objects.
+   - **Sweep Phase**: The collector traverses the heap and reclaims memory used by objects that were not marked as reachable.
+
+2. **Generational Garbage Collection**:
+   - Modern Java GCs use a generational approach, which divides the heap into different generations (Young and Old). This approach optimizes garbage collection performance by handling young and old objects differently.
+
+   **Young Generation**:
+   - **Minor GC**: This is performed in the young generation. It usually involves collecting garbage from the Eden Space and survivor spaces. Minor GCs are frequent but fast, as most objects are short-lived.
+
+   **Old Generation**:
+   - **Major GC (or Full GC)**: This occurs in the old generation and is usually more expensive as it involves a full scan of the heap. It can be triggered by a minor GC or when the old generation becomes full.
+
+### **Different Garbage Collectors**
+
+Java offers several garbage collectors, each with different strategies for managing memory. Here’s an overview of some common ones:
+
+1. **Serial GC**:
+   - **Description**: Uses a single thread for both minor and major garbage collection. Suitable for applications with small heaps and single-threaded environments.
+   - **JVM Option**: `-XX:+UseSerialGC`
+
+2. **Parallel GC (Throughput Collector)**:
+   - **Description**: Uses multiple threads for garbage collection to maximize throughput. Suitable for applications where high throughput is desired.
+   - **JVM Option**: `-XX:+UseParallelGC`
+
+3. **Concurrent Mark-Sweep (CMS) GC**:
+   - **Description**: Aims to minimize pause times by performing most of the garbage collection work concurrently with the application threads. It has been deprecated in later Java versions but was used to reduce pause times.
+   - **JVM Option**: `-XX:+UseConcMarkSweepGC`
+
+4. **G1 Garbage Collector**:
+   - **Description**: Designed for applications with large heaps and aims to provide predictable pause times. It divides the heap into regions and performs incremental garbage collection.
+   - **JVM Option**: `-XX:+UseG1GC`
+
+5. **Z Garbage Collector (ZGC)**:
+   - **Description**: A low-latency garbage collector designed to handle large heaps with minimal pause times. It provides pause times of a few milliseconds regardless of heap size.
+   - **JVM Option**: `-XX:+UseZGC`
+
+6. **Shenandoah GC**:
+   - **Description**: Another low-latency garbage collector aimed at reducing pause times. It works similarly to ZGC and is available in recent Java versions.
+   - **JVM Option**: `-XX:+UseShenandoahGC`
+
+### **Internal Working of Common GC Algorithms**
+
+**1. G1 Garbage Collector:**
+
+   - **Region-Based**: Divides the heap into fixed-size regions, which can be either young or old. G1 focuses on collecting regions with the most garbage first.
+   - **Concurrent Phases**: Includes concurrent marking and cleanup phases to minimize pause times.
+   - **Mixed GCs**: Involves both young and old generation collections in mixed GCs to reduce fragmentation and reclaim space efficiently.
+
+**2. ZGC:**
+
+   - **Concurrent Marking**: Uses a combination of concurrent and incremental marking to track object references.
+   - **Relocation**: Utilizes load barriers and remapping techniques to relocate objects with minimal pause times.
+   - **Concurrent Remapping**: Uses a remapping approach to update references in a concurrent manner.
+
+**3. Shenandoah GC:**
+
+   - **Concurrent Compaction**: Compacts the heap concurrently with application threads to reduce pause times.
+   - **Load Barriers**: Implements load barriers to ensure that object references are updated without stopping the world.
+
+### **Summary**
+
+- **Memory Management** in Java involves managing heap, stack, metaspace, and native memory.
+- **Garbage Collection** automatically reclaims memory from unreachable objects, using algorithms like Mark and Sweep.
+- **Generational GC** separates the heap into young and old generations, optimizing performance.
+- **Different GC Algorithms** (Serial, Parallel, CMS, G1, ZGC, Shenandoah) provide various trade-offs between throughput, pause times, and heap management.
+
+Understanding and configuring the right garbage collector for your application can significantly impact performance and memory usage.
+
+### **Daemon Threads vs. Non-Daemon Threads**
+
+In Java, threads can be classified into daemon threads and non-daemon (user) threads based on their role and behavior in the application.
+
+#### **Daemon Threads**
+
+- **Definition**: Daemon threads are background threads that do not prevent the JVM from exiting when all non-daemon threads have finished executing. They are typically used for background tasks such as garbage collection, monitoring, or handling asynchronous tasks.
+
+- **Characteristics**:
+  - **Lifecycle**: The JVM can terminate daemon threads when all user threads have finished, without waiting for them to complete.
+  - **Use Cases**: Commonly used for tasks that run in the background and don’t need to block the termination of the application, such as logging or periodic cleanup.
+  - **Setting Daemon Threads**: You can set a thread as a daemon by calling `Thread.setDaemon(true)` before starting the thread.
+
+  ```java
+  Thread daemonThread = new Thread(() -> {
+      // Daemon thread code
+      while (true) {
+          // Background task
+      }
+  });
+  daemonThread.setDaemon(true);
+  daemonThread.start();
+  ```
+
+- **Default Behavior**: By default, threads are non-daemon. Only when explicitly set, a thread becomes a daemon thread.
+
+#### **Non-Daemon Threads (User Threads)**
+
+- **Definition**: Non-daemon threads, also known as user threads, are the threads that the JVM waits for before shutting down. The JVM will not exit until all non-daemon threads have completed execution.
+
+- **Characteristics**:
+  - **Lifecycle**: The JVM waits for non-daemon threads to finish execution before terminating.
+  - **Use Cases**: Typically used for main business logic, handling user interactions, and performing essential tasks that should complete before application shutdown.
+
+  ```java
+  Thread userThread = new Thread(() -> {
+      // User thread code
+      try {
+          // Task execution
+      } catch (InterruptedException e) {
+          // Handle interruption
+      }
+  });
+  userThread.start();
+  ```
+
+### **Heap Memory vs. Stack Memory**
+
+Java applications use different types of memory to manage data. Two key types of memory are heap memory and stack memory.
+
+#### **Heap Memory**
+
+- **Definition**: Heap memory is the area of memory used for dynamic memory allocation, where Java objects are allocated. It is managed by the garbage collector.
+
+- **Characteristics**:
+  - **Object Storage**: All objects and arrays are allocated in the heap.
+  - **Garbage Collection**: The heap is subject to garbage collection, which automatically reclaims memory from objects that are no longer reachable.
+  - **Generational Model**: The heap is divided into Young Generation (Eden and Survivor spaces) and Old Generation. The Young Generation is for short-lived objects, while the Old Generation is for long-lived objects.
+  - **Size**: The size of the heap can be configured with JVM options such as `-Xms` (initial heap size) and `-Xmx` (maximum heap size).
+
+  ```java
+  public class HeapExample {
+      public static void main(String[] args) {
+          String[] heapArray = new String[1000000]; // This will be allocated in the heap
+      }
+  }
+  ```
+
+#### **Stack Memory**
+
+- **Definition**: Stack memory is used for storing method frames, local variables, and call information during method execution. Each thread has its own stack.
+
+- **Characteristics**:
+  - **Method Frames**: Each method call creates a frame on the stack, which contains local variables, parameters, and the return address.
+  - **Memory Allocation**: Stack memory is managed in a LIFO (Last In, First Out) manner. When a method call completes, its frame is popped from the stack, and memory is automatically reclaimed.
+  - **Size Limitations**: The size of the stack is limited and configurable with JVM options such as `-Xss` (stack size per thread). Exceeding this limit causes a `StackOverflowError`.
+
+  ```java
+  public class StackExample {
+      public static void recursiveMethod(int count) {
+          if (count > 0) {
+              recursiveMethod(count - 1); // Each call creates a new stack frame
+          }
+      }
+
+      public static void main(String[] args) {
+          recursiveMethod(1000); // This will use stack memory for each recursive call
+      }
+  }
+  ```
+
+### **Summary**
+
+- **Daemon Threads**: Background threads that do not prevent JVM shutdown; typically used for non-essential tasks.
+- **Non-Daemon Threads**: Essential threads that the JVM waits for before exiting; used for main application logic.
+- **Heap Memory**: Used for dynamic object allocation and managed by the garbage collector. The heap is divided into young and old generations.
+- **Stack Memory**: Used for method frames and local variables. Each thread has its own stack, and memory is automatically managed in a LIFO order.
+
+Understanding the differences between these types of threads and memory helps in writing efficient and reliable Java applications.
+
+Functional interfaces in Java are interfaces that have exactly one abstract method. They can have multiple default or static methods, but only one abstract method. Functional interfaces are a key part of Java's support for functional programming, introduced in Java 8 with the introduction of lambda expressions and the Stream API.
+
+Here’s a comprehensive explanation of common functional interfaces provided by Java:
+
+### **1. `Runnable`**
+
+- **Purpose**: Represents a task that can be executed by a thread.
+- **Abstract Method**: `void run()`
+- **Usage**: Used to define a block of code to be executed by a thread or by an executor service.
+
+  ```java
+  Runnable task = () -> System.out.println("Running in a thread");
+  new Thread(task).start();
+  ```
+
+### **2. `Callable<T>`**
+
+- **Purpose**: Similar to `Runnable`, but it can return a result and throw a checked exception.
+- **Abstract Method**: `T call() throws Exception`
+- **Usage**: Used for tasks that return a result or throw an exception.
+
+  ```java
+  Callable<Integer> task = () -> {
+      return 123;
+  };
+  Future<Integer> future = Executors.newSingleThreadExecutor().submit(task);
+  System.out.println("Result: " + future.get());
+  ```
+
+### **3. `Consumer<T>`**
+
+- **Purpose**: Represents an operation that accepts a single input argument and returns no result.
+- **Abstract Method**: `void accept(T t)`
+- **Usage**: Useful for operations that perform actions with input values, such as printing or modifying values.
+
+  ```java
+  Consumer<String> printer = s -> System.out.println(s);
+  printer.accept("Hello, World!");
+  ```
+
+### **4. `Supplier<T>`**
+
+- **Purpose**: Represents a supplier of results. It provides a result but does not take any arguments.
+- **Abstract Method**: `T get()`
+- **Usage**: Useful for generating or supplying values, such as producing random numbers or default values.
+
+  ```java
+  Supplier<Double> randomValue = () -> Math.random();
+  System.out.println("Random Value: " + randomValue.get());
+  ```
+
+### **5. `Function<T, R>`**
+
+- **Purpose**: Represents a function that accepts one argument and produces a result.
+- **Abstract Method**: `R apply(T t)`
+- **Usage**: Useful for transforming or processing input values to produce output values.
+
+  ```java
+  Function<String, Integer> stringLength = s -> s.length();
+  System.out.println("Length of 'Hello': " + stringLength.apply("Hello"));
+  ```
+
+### **6. `Predicate<T>`**
+
+- **Purpose**: Represents a predicate (boolean-valued function) of one argument.
+- **Abstract Method**: `boolean test(T t)`
+- **Usage**: Used for conditions or filters, such as checking if a value meets certain criteria.
+
+  ```java
+  Predicate<String> isNotEmpty = s -> !s.isEmpty();
+  System.out.println("Is 'Hello' not empty? " + isNotEmpty.test("Hello"));
+  ```
+
+### **7. `UnaryOperator<T>`**
+
+- **Purpose**: Represents an operation on a single operand that produces a result of the same type as its operand.
+- **Abstract Method**: `T apply(T t)`
+- **Usage**: A special case of `Function` where the input and output types are the same. Useful for operations like incrementing values.
+
+  ```java
+  UnaryOperator<Integer> increment = x -> x + 1;
+  System.out.println("Incremented value: " + increment.apply(5));
+  ```
+
+### **8. `BinaryOperator<T>`**
+
+- **Purpose**: Represents an operation on two operands of the same type that produces a result of the same type.
+- **Abstract Method**: `T apply(T t1, T t2)`
+- **Usage**: A special case of `BiFunction` where the input and output types are the same. Useful for operations like addition or multiplication.
+
+  ```java
+  BinaryOperator<Integer> add = (a, b) -> a + b;
+  System.out.println("Sum: " + add.apply(3, 4));
+  ```
+
+### **9. `BiFunction<T, U, R>`**
+
+- **Purpose**: Represents a function that accepts two arguments and produces a result.
+- **Abstract Method**: `R apply(T t, U u)`
+- **Usage**: Useful for functions that combine two different types to produce a result.
+
+  ```java
+  BiFunction<Integer, Integer, String> addAndConvert = (a, b) -> Integer.toString(a + b);
+  System.out.println("Sum as string: " + addAndConvert.apply(3, 4));
+  ```
+
+### **10. `BiPredicate<T, U>`**
+
+- **Purpose**: Represents a predicate (boolean-valued function) of two arguments.
+- **Abstract Method**: `boolean test(T t, U u)`
+- **Usage**: Useful for conditions that depend on two inputs.
+
+  ```java
+  BiPredicate<String, String> startsWith = (s, prefix) -> s.startsWith(prefix);
+  System.out.println("Starts with 'Hello': " + startsWith.test("HelloWorld", "Hello"));
+  ```
+
+### **11. `Supplier<T>`**
+
+- **Purpose**: Represents a supplier of results. It provides a result but does not take any arguments.
+- **Abstract Method**: `T get()`
+- **Usage**: Useful for generating or supplying values, such as producing random numbers or default values.
+
+  ```java
+  Supplier<String> supplier = () -> "Hello, Supplier!";
+  System.out.println(supplier.get());
+  ```
+
+### **12. `Consumer<T>`**
+
+- **Purpose**: Represents an operation that accepts a single input argument and returns no result.
+- **Abstract Method**: `void accept(T t)`
+- **Usage**: Useful for operations that perform actions with input values, such as printing or modifying values.
+
+  ```java
+  Consumer<String> consumer = s -> System.out.println("Consumed: " + s);
+  consumer.accept("Sample Input");
+  ```
+
+### **Summary**
+
+- **`Runnable`**: Represents a task with no result.
+- **`Callable<T>`**: Represents a task with a result and can throw exceptions.
+- **`Consumer<T>`**: Accepts an input and performs an operation with no result.
+- **`Supplier<T>`**: Provides a result with no input.
+- **`Function<T, R>`**: Takes an input and produces a result.
+- **`Predicate<T>`**: Tests a condition on an input and returns a boolean.
+- **`UnaryOperator<T>`**: A `Function` where input and output types are the same.
+- **`BinaryOperator<T>`**: A `BiFunction` where input and output types are the same.
+- **`BiFunction<T, U, R>`**: Takes two inputs and produces a result.
+- **`BiPredicate<T, U>`**: Tests a condition with two inputs and returns a boolean.
+
+These functional interfaces provide a way to handle functions and operations as first-class objects, making it easier to work with lambda expressions and method references in Java.
+
+### **Java Streams: Overview and Features**
+
+Java Streams, introduced in Java 8, are a powerful abstraction for processing sequences of elements (such as collections) in a functional style. They allow for declarative programming using a pipeline of operations to handle data in a more concise and readable manner.
+
+Here’s a comprehensive overview of Java Streams, including their features, common methods, and the order of execution.
+
+### **1. Overview of Streams**
+
+- **Stream**: A sequence of elements supporting sequential and parallel aggregate operations. It represents a pipeline of transformations and computations.
+
+- **Not a Data Structure**: Streams do not store data; they operate on data sources like collections, arrays, or I/O channels.
+
+- **Operations**: Streams support a rich set of operations including filtering, mapping, and reducing, which can be combined in a pipeline.
+
+### **2. Key Features of Streams**
+
+- **Declarative Style**: Stream operations are expressed in a declarative way (what to do), not imperative (how to do it).
+
+- **Functional Programming**: Streams use lambda expressions and method references to process elements.
+
+- **Lazy Evaluation**: Intermediate operations are lazy; they are not executed until a terminal operation is invoked. This can improve performance by avoiding unnecessary computations.
+
+- **Parallel Processing**: Streams can be processed in parallel, leveraging multi-core processors to speed up computations.
+
+- **No Side Effects**: Stream operations should be side-effect-free, meaning they should not modify the underlying data source.
+
+### **3. Types of Stream Operations**
+
+Stream operations are classified into two categories: **intermediate operations** and **terminal operations**.
+
+#### **Intermediate Operations**
+
+Intermediate operations are used to transform a stream into another stream. They are lazy and do not trigger any processing until a terminal operation is invoked.
+
+- **`filter(Predicate<T> predicate)`**: Filters elements based on a condition.
+
+  ```java
+  Stream<String> filteredStream = stream.filter(s -> s.startsWith("A"));
+  ```
+
+- **`map(Function<T, R> mapper)`**: Transforms each element into another form.
+
+  ```java
+  Stream<Integer> lengths = stream.map(String::length);
+  ```
+
+- **`flatMap(Function<T, Stream<R>> mapper)`**: Flattens a stream of collections into a single stream.
+
+  ```java
+  Stream<String> flatMappedStream = stream.flatMap(s -> Arrays.stream(s.split(" ")));
+  ```
+
+- **`distinct()`**: Removes duplicate elements.
+
+  ```java
+  Stream<String> distinctStream = stream.distinct();
+  ```
+
+- **`sorted()`**: Sorts elements in natural order.
+
+  ```java
+  Stream<String> sortedStream = stream.sorted();
+  ```
+
+- **`sorted(Comparator<T> comparator)`**: Sorts elements according to a comparator.
+
+  ```java
+  Stream<String> sortedStream = stream.sorted(Comparator.reverseOrder());
+  ```
+
+- **`peek(Consumer<T> action)`**: Performs an action on each element, typically used for debugging.
+
+  ```java
+  Stream<String> debugStream = stream.peek(System.out::println);
+  ```
+
+- **`limit(long maxSize)`**: Limits the number of elements in the stream.
+
+  ```java
+  Stream<String> limitedStream = stream.limit(5);
+  ```
+
+- **`skip(long n)`**: Skips the first `n` elements.
+
+  ```java
+  Stream<String> skippedStream = stream.skip(3);
+  ```
+
+#### **Terminal Operations**
+
+Terminal operations produce a result or a side effect and close the stream.
+
+- **`collect(Collector<T, A, R> collector)`**: Converts the stream into a collection or other result.
+
+  ```java
+  List<String> list = stream.collect(Collectors.toList());
+  ```
+
+- **`forEach(Consumer<T> action)`**: Performs an action for each element.
+
+  ```java
+  stream.forEach(System.out::println);
+  ```
+
+- **`reduce(T identity, BinaryOperator<T> accumulator)`**: Reduces the stream to a single value using an identity value and an accumulator function.
+
+  ```java
+  int sum = stream.reduce(0, Integer::sum);
+  ```
+
+- **`reduce(BinaryOperator<T> accumulator)`**: Reduces the stream to a single value without an identity value.
+
+  ```java
+  Optional<String> concatenated = stream.reduce((s1, s2) -> s1 + s2);
+  ```
+
+- **`count()`**: Returns the number of elements in the stream.
+
+  ```java
+  long count = stream.count();
+  ```
+
+- **`anyMatch(Predicate<T> predicate)`**: Checks if any elements match the given predicate.
+
+  ```java
+  boolean hasA = stream.anyMatch(s -> s.startsWith("A"));
+  ```
+
+- **`allMatch(Predicate<T> predicate)`**: Checks if all elements match the given predicate.
+
+  ```java
+  boolean allStartsWithA = stream.allMatch(s -> s.startsWith("A"));
+  ```
+
+- **`noneMatch(Predicate<T> predicate)`**: Checks if no elements match the given predicate.
+
+  ```java
+  boolean noneStartsWithZ = stream.noneMatch(s -> s.startsWith("Z"));
+  ```
+
+- **`findFirst()`**: Returns the first element of the stream wrapped in an `Optional`.
+
+  ```java
+  Optional<String> first = stream.findFirst();
+  ```
+
+- **`findAny()`**: Returns any element of the stream wrapped in an `Optional`.
+
+  ```java
+  Optional<String> any = stream.findAny();
+  ```
+
+### **4. Order of Execution**
+
+1. **Stream Creation**: Streams are created from data sources like collections, arrays, or I/O channels.
+
+2. **Intermediate Operations**: Intermediate operations such as `filter`, `map`, and `sorted` are applied to the stream but do not trigger processing. They build a pipeline of operations.
+
+3. **Terminal Operation**: A terminal operation such as `collect`, `forEach`, or `reduce` triggers the processing of the stream pipeline. This is when the actual computations occur.
+
+4. **Lazy Evaluation**: Intermediate operations are lazily evaluated. They are processed as part of the terminal operation, which means only the necessary elements are processed.
+
+5. **Short-Circuiting**: Some operations, such as `findFirst`, `anyMatch`, and `limit`, may short-circuit the stream processing, potentially stopping further computation once a result is obtained.
+
+### **Example of Stream Pipeline**
+
+Here’s an example of how to use streams to process a list of strings:
+
+```java
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Alice", "Eve");
+        
+        // Stream pipeline: filter, map, distinct, sorted, and collect
+        List<String> result = names.stream()
+                                   .filter(name -> name.startsWith("A"))
+                                   .map(String::toUpperCase)
+                                   .distinct()
+                                   .sorted()
+                                   .collect(Collectors.toList());
+        
+        System.out.println(result); // Output: [ALICE]
+    }
+}
+```
+
+In this example:
+
+- **`filter(name -> name.startsWith("A"))`**: Filters names starting with "A".
+- **`map(String::toUpperCase)`**: Converts each name to uppercase.
+- **`distinct()`**: Removes duplicate names.
+- **`sorted()`**: Sorts the names.
+- **`collect(Collectors.toList())`**: Collects the results into a list.
+
+### **Summary**
+
+- **Streams**: Provide a functional and declarative way to process sequences of elements.
+- **Features**: Include lazy evaluation, functional programming style, and parallel processing.
+- **Operations**: Split into intermediate operations (lazy) and terminal operations (eager).
+- **Order of Execution**: Intermediate operations build a pipeline; terminal operations trigger processing, executing the pipeline.
+
+Java Streams simplify and enhance the readability of data processing tasks, making it easier to write concise and efficient code.
