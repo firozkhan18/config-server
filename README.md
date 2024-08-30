@@ -14517,3 +14517,178 @@ public class CharacterCount {
 - **Grouping Elements**: In the `Collectors.groupingBy` method, `Function.identity()` is used to group elements by their own values.
 
 Using `Function.identity()` simplifies code and enhances readability when performing operations like grouping elements by their own values.
+
+Choosing the right garbage collection (GC) algorithm for your Java application depends on various factors including performance goals, heap size, application behavior, and latency requirements. Here’s a brief overview of some common GC algorithms and guidance on when to use each:
+
+1. **G1 Garbage Collector (G1GC)**
+   - **Use Case**: Suitable for applications with large heaps (multi-gigabyte) and a need to minimize pause times. G1GC is designed to provide predictable pause times and is often a good choice for applications that require a balance between throughput and latency.
+   - **Features**: 
+     - Incrementally compacts the heap, reducing pause times compared to older collectors.
+     - Divides the heap into regions, allowing it to prioritize collecting regions with the most garbage.
+     - Offers pause-time goals that you can configure to target specific pause-time objectives.
+   - **Recommendation**: Use G1GC if you have a large heap and want to optimize for predictable pause times. It is generally a good choice for modern applications.
+
+2. **Concurrent Mark-Sweep (CMS) Garbage Collector**
+   - **Use Case**: Suitable for applications where low latency is crucial, and you need to minimize GC pause times. CMS is effective for applications with medium to large heaps.
+   - **Features**:
+     - Concurrently performs most of the garbage collection work with the application running.
+     - Focuses on reducing pause times by doing the majority of its work concurrently with the application.
+   - **Recommendation**: Use CMS if your application is sensitive to pause times and you’re working with a heap that is not excessively large. Note that CMS is deprecated in JDK 9 and later, so for new applications, consider G1GC or other alternatives.
+
+3. **Parallel Garbage Collector (ParallelGC)**
+   - **Use Case**: Ideal for applications where throughput is more critical than pause time. It’s often used in batch processing applications or environments where long GC pauses are acceptable in favor of higher overall throughput.
+   - **Features**:
+     - Uses multiple threads for garbage collection work, aiming to maximize throughput.
+     - Simple and effective for applications with smaller to medium heap sizes.
+   - **Recommendation**: Use ParallelGC if you prioritize throughput and can tolerate longer GC pauses. It’s a good choice for compute-intensive applications.
+
+4. **Z Garbage Collector (ZGC)**
+   - **Use Case**: Suitable for applications requiring very low latency and have very large heaps. ZGC aims to provide pause times that are both short and predictable, even for very large heaps.
+   - **Features**:
+     - Designed for low-latency applications with very large heaps.
+     - Performs garbage collection in a way that minimizes pause times, often to single-digit milliseconds.
+   - **Recommendation**: Use ZGC if you need ultra-low latency and are working with very large heaps. It is available from JDK 11 onwards.
+
+5. **Shenandoah Garbage Collector**
+   - **Use Case**: Similar to ZGC in terms of targeting low latency, Shenandoah is another low-latency garbage collector that is available from JDK 12 onwards.
+   - **Features**:
+     - Aims for short pause times and is well-suited for applications with large heaps and low-latency requirements.
+     - Compacts memory concurrently with the application’s execution.
+   - **Recommendation**: Use Shenandoah if you are running JDK 12 or later and need a low-latency solution with low pause times.
+
+**Summary**:
+- **G1GC**: General-purpose with a balance of pause times and throughput. Good for large heaps.
+- **CMS**: Good for applications where pause time is critical and with medium to large heaps. (Deprecated in JDK 9+)
+- **ParallelGC**: Focuses on throughput, good for applications with smaller heaps where longer pauses are acceptable.
+- **ZGC**: Best for applications with very large heaps and strict latency requirements.
+- **Shenandoah**: Another low-latency option, available in JDK 12+, targeting applications with large heaps and low pause times.
+
+Choose the GC algorithm based on your application’s specific needs regarding pause times, throughput, heap size, and available JDK versions.
+
+Certainly! To configure and monitor different garbage collectors in Java, you can use various JVM options and tools. Here’s a detailed guide on how to configure and monitor each GC algorithm using coding and steps. I’ll include code snippets and commands to illustrate the setup.
+
+### 1. **G1 Garbage Collector (G1GC)**
+
+**Configuration:**
+To use G1GC, you need to specify it in your JVM options. Here’s how to configure it:
+
+```bash
+java -XX:+UseG1GC -Xms2g -Xmx4g -XX:MaxGCPauseMillis=200 -jar yourapp.jar
+```
+
+- `-XX:+UseG1GC` enables the G1 garbage collector.
+- `-Xms2g` sets the initial heap size to 2 GB.
+- `-Xmx4g` sets the maximum heap size to 4 GB.
+- `-XX:MaxGCPauseMillis=200` sets the target maximum pause time to 200 milliseconds.
+
+**Monitoring:**
+You can use tools like JVisualVM, JConsole, or GC logs to monitor G1GC. To enable GC logging:
+
+```bash
+java -XX:+UseG1GC -Xms2g -Xmx4g -Xlog:gc* -jar yourapp.jar
+```
+
+This will output detailed GC logs, which you can analyze using tools like GCViewer or JClarity Censum.
+
+### 2. **Concurrent Mark-Sweep (CMS) Garbage Collector**
+
+**Configuration:**
+To use CMS, you can configure it with the following options:
+
+```bash
+java -XX:+UseConcMarkSweepGC -Xms2g -Xmx4g -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSClassUnloadingEnabled -jar yourapp.jar
+```
+
+- `-XX:+UseConcMarkSweepGC` enables the CMS garbage collector.
+- `-XX:CMSInitiatingOccupancyFraction=70` sets the occupancy threshold to 70% to trigger a CMS collection.
+- `-XX:+CMSClassUnloadingEnabled` allows class unloading during CMS.
+
+**Monitoring:**
+Enable GC logging to monitor CMS:
+
+```bash
+java -XX:+UseConcMarkSweepGC -Xms2g -Xmx4g -Xlog:gc* -jar yourapp.jar
+```
+
+Analyze the logs using tools like GCViewer or JConsole.
+
+### 3. **Parallel Garbage Collector (ParallelGC)**
+
+**Configuration:**
+To use ParallelGC, use the following JVM options:
+
+```bash
+java -XX:+UseParallelGC -Xms2g -Xmx4g -XX:+UseParallelOldGC -jar yourapp.jar
+```
+
+- `-XX:+UseParallelGC` enables the Parallel garbage collector for the young generation.
+- `-XX:+UseParallelOldGC` enables the Parallel garbage collector for the old generation.
+
+**Monitoring:**
+Enable GC logging to monitor ParallelGC:
+
+```bash
+java -XX:+UseParallelGC -Xms2g -Xmx4g -Xlog:gc* -jar yourapp.jar
+```
+
+### 4. **Z Garbage Collector (ZGC)**
+
+**Configuration:**
+To use ZGC, you need to use JDK 11 or later. Here’s how to configure it:
+
+```bash
+java -XX:+UseZGC -Xms2g -Xmx4g -jar yourapp.jar
+```
+
+- `-XX:+UseZGC` enables the Z garbage collector.
+
+**Monitoring:**
+Enable GC logging for ZGC:
+
+```bash
+java -XX:+UseZGC -Xms2g -Xmx4g -Xlog:gc* -jar yourapp.jar
+```
+
+### 5. **Shenandoah Garbage Collector**
+
+**Configuration:**
+To use Shenandoah, you need JDK 12 or later. Configure it as follows:
+
+```bash
+java -XX:+UseShenandoahGC -Xms2g -Xmx4g -jar yourapp.jar
+```
+
+- `-XX:+UseShenandoahGC` enables the Shenandoah garbage collector.
+
+**Monitoring:**
+Enable GC logging for Shenandoah:
+
+```bash
+java -XX:+UseShenandoahGC -Xms2g -Xmx4g -Xlog:gc* -jar yourapp.jar
+```
+
+### **Analyzing GC Logs**
+
+**GC Log Analysis:**
+
+1. **Using GCViewer**:
+   - Download and install GCViewer from [GCViewer GitHub](https://github.com/chewiebug/GCViewer).
+   - Open GC logs with GCViewer to visualize garbage collection behavior and performance metrics.
+
+2. **Using JConsole or JVisualVM**:
+   - Start JConsole or JVisualVM.
+   - Connect to your running JVM instance.
+   - Navigate to the "Memory" tab to observe GC activity in real-time.
+
+3. **Using `jstat`**:
+   - `jstat` is a command-line tool that provides real-time information on the JVM’s garbage collection activity.
+
+   Example usage:
+
+   ```bash
+   jstat -gc <pid>
+   ```
+
+   Replace `<pid>` with the process ID of your Java application.
+
+These steps and configurations will help you set up and monitor the different garbage collectors available in the JVM. Adjust the JVM options according to your application's needs and heap size to optimize performance.
