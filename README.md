@@ -1,5 +1,5 @@
 <details>
-<summary>Thread synchronization</summary>
+<summary><p>Thread synchronization</p></summary>
     
 In Java, you can achieve this using two threads where one thread prints even numbers and the other thread prints odd numbers. You can use synchronization to ensure that the numbers are printed in order.
 
@@ -297,7 +297,7 @@ public class ConditionExample {
 In a multithreaded environment, `Condition` objects help manage complex thread interactions and ensure that threads proceed based on specific conditions, providing a more flexible alternative to traditional `synchronized` blocks and methods.
 </details>
 <details>
-<summary>REST (Representational State Transfer)</summary>
+<summary><p>REST (Representational State Transfer)</p></summary>
     
 Sure! When interviewing for positions involving REST (Representational State Transfer) and APIs, you might encounter a variety of questions that assess your understanding of REST principles, practical experience, and problem-solving skills. Below are some common REST-related interview questions along with brief explanations:
 
@@ -510,7 +510,7 @@ These practices form the foundation of a secure RESTful API and help ensure that
 
 </details>
 <details>
-<summary>How you can track performance metrics</summary>
+<summary><p>How you can track performance metrics</p></summary>
 
 Sure, let's break down how you can track performance metrics, set up alerts, and use monitoring tools like Prometheus and Grafana with coding examples and explanations.
 
@@ -697,7 +697,7 @@ This setup provides a robust way to track, visualize, and respond to the perform
 
 </details>
 <details>
-<summary>Rate limiting</summary>
+<summary><p>Rate limiting</p></summary>
     
 Rate limiting is an essential technique to protect your API from abuse and mitigate the risk of Distributed Denial of Service (DDoS) attacks by controlling the number of requests a client can make in a given time period. Below, I'll provide examples and configurations for implementing rate limiting in various environments.
 
@@ -862,7 +862,7 @@ Implementing rate limiting is crucial for protecting your API from abuse and ens
 
 </details>
 <details>
-<summary>Microservice architecture</summary>
+<summary><p>Microservice architecture</p></summary>
     
 Microservice architecture is a design pattern where an application is composed of small, independent services that communicate with each other. Each service is focused on a specific business capability and is loosely coupled with other services. This approach offers flexibility, scalability, and resilience but introduces challenges in inter-service communication and consistency. Here's an overview of common design patterns and strategies for microservice communication:
 
@@ -930,7 +930,7 @@ Microservices offer significant benefits in terms of flexibility and scalability
 
 </details>
 <details>
-<summary>Performance Tuning</summary>
+<summary><p>Performance Tuning</p></summary>
 
 Performance tuning, load balancing, handling memory leaks, and managing large amounts of data are critical aspects of building and maintaining scalable and efficient systems. Here's how you can address each of these concerns:
 
@@ -1064,7 +1064,7 @@ Effective performance tuning, load balancing, managing memory leaks, and handlin
 
 </details>
 <details>
-<summary>In microservices architectures, managing communication between services asynchronously and synchronously</summary>
+<summary><p>In microservices architectures, managing communication between services asynchronously and synchronously</p></summary>
     
 In microservices architectures, managing communication between services asynchronously and synchronously is crucial for achieving scalability, responsiveness, and fault tolerance. Here’s a detailed guide on how to perform both asynchronous and synchronous communication in microservices:
 
@@ -1210,7 +1210,7 @@ In a microservices architecture, synchronous and asynchronous communication patt
 
 </details>
 <details>
-<summary>Java - singleton class</summary>
+<summary><p>Java - singleton class</p></summary>
     
 In Java, a singleton class is designed to ensure that only one instance of the class is created and provides a global point of access to that instance. Writing a singleton class correctly is crucial to ensure that it adheres to the singleton pattern principles.
 
@@ -1357,7 +1357,7 @@ In Java, singleton classes can be implemented using various methods such as eage
 
 </details>
 <details>
-<summary>Handling memory leaks in JavaScript, Java, TypeScript , and React</summary>
+<summary><p>Handling memory leaks in JavaScript, Java, TypeScript , and React</p></summary>
     
 Handling memory leaks in JavaScript, Java, TypeScript, and React involves different strategies and tools tailored to the specifics of each environment. Here's a comprehensive guide on how to address memory leaks in these contexts:
 
@@ -1490,7 +1490,7 @@ Handling memory leaks involves understanding common causes, using appropriate to
 
 </details>
 <details>
-<summary>Application that runs in the foreground while also having a background thread performing tasks</summary>
+<summary><p>Application that runs in the foreground while also having a background thread performing tasks</p></summary>
     
 To write code for an application that runs in the foreground while also having a background thread performing tasks, you need to handle concurrent execution. Below are examples in Java, JavaScript (Node.js), TypeScript (Node.js), and React (JavaScript) demonstrating how to achieve this.
 
@@ -1673,7 +1673,7 @@ These examples show how to run background tasks while keeping the main applicati
 
 </details>
 <details>
-<summary>Creating custom implementations for data structures like linked lists, maps, and sets</summary>
+<summary><p>Creating custom implementations for data structures like linked lists, maps, and sets</p></summary>
     
 Creating custom implementations for data structures like linked lists, maps, and sets from scratch can help you understand how these structures work under the hood. Additionally, I'll include an example of a class that demonstrates a memory leak to show how issues can arise and be mitigated.
 
@@ -1873,7 +1873,7 @@ When implementing data structures and managing memory, it's crucial to understan
 
 </details>
 <details>
-<summary>Setting up a Kafka consumer configuration in a Spring Boot application</summary>
+<summary><p>Setting up a Kafka consumer configuration in a Spring Boot application</p></summary>
     
 It looks like you’re setting up a Kafka consumer configuration in a Spring Boot application. Your configuration file, `KafkaConsumerConfig.java`, sets up the `ConsumerFactory` and is in the process of setting up a `ConcurrentKafkaListenerContainerFactory`. Here’s how you can complete the `ConcurrentKafkaListenerContainerFactory` setup and add a Kafka listener configuration.
 
@@ -1989,7 +1989,7 @@ This setup configures Kafka consumers in a Spring Boot application, enabling the
 
 </details>
 <details>
-<summary>React</summary>
+<summary><p>React</p></summary>
     
 Certainly! React is a popular JavaScript library for building user interfaces, especially single-page applications where you need a dynamic and interactive UI. It allows developers to create reusable UI components and manage the state of these components efficiently.
 
@@ -2471,7 +2471,7 @@ These concepts and examples should help you prepare for interviews and work effe
 
 </details>
 <details>
-<summary>React interview questions</summary>
+<summary><p>React interview questions</p></summary>
     
 Certainly! Here’s a comprehensive list of React interview questions covering various aspects of React, including components, state management, hooks, performance optimization, and more.
 
@@ -2818,7 +2818,7 @@ In both Angular and React, data binding plays a crucial role in keeping the user
 
 </details>
 <details>
-<summary>Identifying service failures, handling data persistence, managing transactions, and handling errors</summary>
+<summary><p>Identifying service failures, handling data persistence, managing transactions, and handling errors</p></summary>
     
 Identifying service failures, handling data persistence, managing transactions, and handling errors are critical aspects of building reliable microservices and applications. Here’s a detailed guide on these topics:
 
@@ -2950,7 +2950,7 @@ These practices help ensure the reliability, performance, and maintainability of
 
 </details>
 <details>
-<summary>To identify service failures and handle them appropriately across Kubernetes, AWS, and Docker</summary>
+<summary><p>To identify service failures and handle them appropriately across Kubernetes, AWS, and Docker</p></summary>
     
 To identify service failures and handle them appropriately across Kubernetes, AWS, and Docker, you’ll need to use specific commands and tools. Additionally, setting up automatic failover or fallback mechanisms involves design patterns and configurations to ensure resilience.
 
@@ -3176,7 +3176,7 @@ By following these practices and utilizing the appropriate commands, you can eff
 
 </details>
 <details>
-<summary>Load balancing is crucial for distributing incoming traffic across multiple instances of a service</summary>
+<summary><p>Load balancing is crucial for distributing incoming traffic across multiple instances of a service</p></summary>
     
 Load balancing is crucial for distributing incoming traffic across multiple instances of a service to ensure high availability, reliability, and optimal performance. Both Kubernetes and AWS provide robust solutions for load balancing in their respective environments.
 
@@ -3391,7 +3391,7 @@ By leveraging these tools and patterns, you can ensure that your services are re
 
 </details>
 <details>
-<summary>The Saga pattern</summary>
+<summary><p>The Saga pattern</p></summary>
     
 The Saga pattern is used for managing long-running transactions and distributed transactions in a microservices architecture. Unlike traditional monolithic transactions, where you have ACID properties (Atomicity, Consistency, Isolation, Durability), the Saga pattern ensures that each microservice involved in the transaction completes its part, and if something fails, compensating actions are taken to maintain consistency.
 
@@ -3557,7 +3557,7 @@ This example demonstrates a basic implementation of the Saga pattern with Circui
 
 </details>
 <details>
-<summary>Spring Boot microservice architecture</summary>
+<summary><p>Spring Boot microservice architecture</p></summary>
     
 In a Spring Boot microservice architecture, managing transactions and ensuring consistency across distributed services can be complex due to the inherent nature of microservices. Unlike traditional monolithic applications where ACID (Atomicity, Consistency, Isolation, Durability) properties of a transaction are maintained easily, microservices require different strategies. The Saga pattern is a prominent approach to handle distributed transactions and maintain consistency in a microservices environment.
 
@@ -3746,7 +3746,7 @@ By using the Saga pattern, you can ensure that each microservice performs its pa
 
 </details>
 <details>
-<summary>Spring Boot microservice architecture- 2</summary>
+<summary><p>Spring Boot microservice architecture- 2</p></summary>
     
 In a Spring Boot microservice architecture, managing transactions and ensuring consistency can be challenging due to the distributed nature of microservices. Unlike traditional monolithic applications where ACID (Atomicity, Consistency, Isolation, Durability) properties are easily maintained, microservices require different strategies to handle distributed transactions. The Saga pattern is a prominent approach to achieve this by breaking down a large transaction into smaller, isolated steps, each handled by a different microservice.
 
@@ -4102,7 +4102,7 @@ By using these strategies and tools, you can manage transactions and ensure cons
 
 </details>
 <details>
-<summary>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</summary>
+<summary><p>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</p></summary>
     
 Certainly! Here is a comprehensive guide on AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases. We will cover commands for setting up and managing AWS services like EC2, RDS, EKS, and S3.
 
@@ -4319,7 +4319,7 @@ By using these AWS commands and configuring your services as described, you can 
 
 </details>
 <details>
-<summary>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</summary>
+<summary><p>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</p></summary>
     
 Certainly! Below is a comprehensive guide to Kubernetes and Docker commands, with explanations and examples for deploying and managing Spring Boot microservices along with MongoDB and PostgreSQL databases.
 
@@ -4656,7 +4656,7 @@ By using these Docker and Kubernetes commands, you can effectively manage the de
 
 </details>
 <details>
-<summary>Handling transactions in a Spring Boot microservices architecture</summary>
+<summary><p>Handling transactions in a Spring Boot microservices architecture</p></summary>
     
 Handling transactions in a Spring Boot microservices architecture, along with managing transaction exceptions and working with stored procedures in JPA, involves a few important concepts and practices. Here’s a detailed guide on how to handle these aspects effectively:
 
@@ -4858,7 +4858,7 @@ These practices and configurations will help you effectively manage transactions
 
 </details>
 <details>
-<summary>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</summary>
+<summary><p>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</p></summary>
     
 ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing. ACID stands for Atomicity, Consistency, Isolation, and Durability. Here's a detailed explanation of each property, with Java examples to illustrate how they work in practice.
 
@@ -5071,7 +5071,7 @@ These properties are critical for reliable data management and are enforced by b
 
 </details>
 <details>
-<summary>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</summary>
+<summary><p>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</p></summary>
     
 In Java, you can have multiple interfaces, each with default methods, and you can implement both interfaces in a single class. When a class implements multiple interfaces that have default methods with the same signature, you might run into conflicts. Here's a guide on how to handle such situations:
 
@@ -5404,7 +5404,7 @@ By using this approach, you ensure that even and odd numbers are printed by thei
 
 </details>
 <details>
-<summary>The `Runnable` interface to create and manage threads</summary>
+<summary><p>The `Runnable` interface to create and manage threads</p></summary>
     
 Certainly! If you want to use the `Runnable` interface to create and manage threads, you can do so by implementing `Runnable` and passing an instance of it to a `Thread` object. Here's how you can rewrite your example using `Runnable` for both even and odd number printing:
 
@@ -5547,7 +5547,7 @@ By naming your threads, you can easily identify them in log messages, stack trac
 
 </details>
 <details>
-<summary>ACID properties are a set of principles that ensure reliable processing of database transactions</summary>
+<summary><p>ACID properties are a set of principles that ensure reliable processing of database transactions</p></summary>
 
 ACID properties are a set of principles that ensure reliable processing of database transactions. These principles are critical for maintaining data integrity and consistency in relational databases. Here's a breakdown of each property:
 
@@ -5701,7 +5701,7 @@ By combining these strategies, you can ensure that your REST services in a micro
 
 </details>
 <details>
-<summary>Caching is a critical technique for enhancing performance in microservice architectures</summary>
+<summary><p>Caching is a critical technique for enhancing performance in microservice architectures</p></summary>
     
 Caching is a critical technique for enhancing performance in microservice architectures. In a Spring Boot application, there are several caching techniques and strategies you can use. Redis is a popular choice for caching, and integrating it into your Spring Boot application is straightforward.
 
@@ -5882,7 +5882,7 @@ By implementing these techniques, you can effectively manage caching in your Spr
 
 </details>
 <details>
-<summary>In JPA (Java Persistence API), managing entities involves operations such as saving, updating, and flushing changes to the database</summary>
+<summary><p>In JPA (Java Persistence API), managing entities involves operations such as saving, updating, and flushing changes to the database</p></summary>
     
 In JPA (Java Persistence API), managing entities involves operations such as saving, updating, and flushing changes to the database. The methods `save()`, `saveOrUpdate()`, and `saveOrFlush()` as well as the `EntityManager` play critical roles in these operations. Here’s an explanation of each:
 
@@ -6014,7 +6014,7 @@ Understanding these methods and the role of `EntityManager` helps in effectively
 
 </details>
 <details>
-<summary>Handling memory leaks and server failures during startup</summary>
+<summary><p>Handling memory leaks and server failures during startup</p></summary>
 
 Handling memory leaks and server failures during startup is crucial for maintaining the stability and reliability of your applications. Here’s a comprehensive approach to address these issues:
 
@@ -7887,7 +7887,7 @@ These configurations cover a wide range of use cases for Docker Compose, from si
 
 </details>
 <details>
-<summary>To deploy Docker containers and Kubernetes services on AWS</summary>
+<summary><p>To deploy Docker containers and Kubernetes services on AWS</p></summary>
 
 To deploy Docker containers and Kubernetes services on AWS, you typically follow these steps:
 
@@ -9668,7 +9668,7 @@ Effective tagging practices enhance version control, deployment consistency, and
 
 </details>
 <details>
-<summary>Dealing with multiple microservices in a distributed system</summary>
+<summary><p>Dealing with multiple microservices in a distributed system</p></summary>
     
 When dealing with multiple microservices in a distributed system, handling service failures and ensuring system reliability is critical. Here’s a comprehensive guide on managing microservice failures and maintaining service availability across Docker, Kubernetes, and AWS environments, including alternative approaches.
 
@@ -11735,7 +11735,7 @@ This example demonstrates how Java handles Unicode codepoints and how you can re
 
 </details>
 <details>
-<summary>Serialization in Java</summary>
+<summary><p>Serialization in Java</p></summary>
     
 Serialization in Java is the process of converting an object's state into a byte stream so that it can be easily saved to a file or transmitted over a network. This process is fundamental for various tasks, such as saving the state of an object for later use or sending objects between different parts of a distributed application.
 
@@ -11942,7 +11942,7 @@ By understanding these concepts and examining the provided example, you can get 
 
 </details>
 <details>
-<summary>In Java 7 and Java 8</summary>
+<summary><p>In Java 7 and Java 8</p></summary>
     
 In Java 7 and Java 8, there are several ways to read files. Both versions provide various classes and methods for file I/O, and each has its own use cases and benefits. Below is an overview of file reading techniques available in Java 7 and Java 8.
 
@@ -12525,7 +12525,7 @@ Choose the method that best fits your application's needs. For modern applicatio
 
 </details>
 <details>
-<summary>Feign</summary>
+<summary><p>Feign</p></summary>
     
 Feign is a declarative HTTP client developed by Netflix that simplifies the process of making HTTP requests. It integrates seamlessly with Spring Boot, making it easier to consume RESTful services with minimal boilerplate code. Feign clients are particularly useful in microservices architectures where services need to communicate with each other over HTTP.
 
@@ -14007,7 +14007,7 @@ Understanding these differences is crucial for correctly managing thread behavio
 
 </details>
 <details>
-<summary>Memory management in Java and Spring Boot microservices applications</summary>
+<summary><p>Memory management in Java and Spring Boot microservices applications</p></summary>
 
 Memory management in Java and Spring Boot microservices applications is crucial for ensuring efficient resource usage, stability, and performance. Here's a detailed overview of how memory management works in these contexts and strategies to manage it effectively.
 
@@ -14147,7 +14147,7 @@ Effective memory management in Java and Spring Boot microservices involves under
 
 </details>
 <details>
-<summary>In Spring, dependency injection (DI) is the primary method for managing beans and their dependencies</summary>
+<summary><p>In Spring, dependency injection (DI) is the primary method for managing beans and their dependencies</p></summary>
     
 In Spring, dependency injection (DI) is the primary method for managing beans and their dependencies. However, if you want to access beans globally without using traditional DI techniques, there are a few alternative approaches you can use. Here’s how you can register and access multiple beans globally without relying on DI:
 
@@ -14591,7 +14591,7 @@ By following these rules, you can create robust, immutable classes and use the `
 
 </details>
 <details>
-<summary>In Java Streams</summary>
+<summary><p>In Java Streams</p></summary>
     
 In Java Streams, `Function.identity()` is used as a convenient way to reference a function that returns its input argument unchanged. It is particularly useful in situations where you need to pass a function that returns the input element itself, such as when grouping elements by their own values or performing other transformations where the identity function is appropriate.
 
@@ -14711,7 +14711,7 @@ Choose the GC algorithm based on your application’s specific needs regarding p
 
 </details>
 <details>
-<summary>To configure and monitor different garbage collectors in Java</summary>
+<summary><p>To configure and monitor different garbage collectors in Java</p></summary>
     
 Certainly! To configure and monitor different garbage collectors in Java, you can use various JVM options and tools. Here’s a detailed guide on how to configure and monitor each GC algorithm using coding and steps. I’ll include code snippets and commands to illustrate the setup.
 
@@ -14843,7 +14843,7 @@ These steps and configurations will help you set up and monitor the different ga
 
 </details>
 <details>
-<summary>Handling memory leaks in Java applications</summary>
+<summary><p>Handling memory leaks in Java applications</p></summary>
     
 Handling memory leaks in Java applications, including Spring Boot microservices, involves identifying the root cause of the leak, addressing it, and implementing best practices to avoid future leaks. Here’s a comprehensive guide on how to handle memory leaks in these environments, with examples and steps:
 
@@ -15193,7 +15193,7 @@ By following these practices, you can handle concurrent requests efficiently in 
 
 </details>
 <details>
-<summary>HTTP v HTTPS</summary>
+<summary><p>HTTP v HTTPS</p></summary>
     
 HTTP (Hypertext Transfer Protocol) and HTTPS (Hypertext Transfer Protocol Secure) are both protocols used for transmitting data over the web. Here’s a detailed comparison to help you understand their differences and why HTTPS is often preferred:
 
@@ -15469,7 +15469,7 @@ Understanding the differences between these types of threads and memory helps in
 
 </details>
 <details>
-<summary>Functional interfaces in Java</summary>
+<summary><p>Functional interfaces in Java</p></summary>
     
 Functional interfaces in Java are interfaces that have exactly one abstract method. They can have multiple default or static methods, but only one abstract method. Functional interfaces are a key part of Java's support for functional programming, introduced in Java 8 with the introduction of lambda expressions and the Stream API.
 
@@ -15973,7 +15973,7 @@ These features enhance the flexibility and power of interfaces in Java, enabling
 
 </details>
 <details>
-<summary>Handling exceptions in a Spring Boot microservices architecture</summary>
+<summary><p>Handling exceptions in a Spring Boot microservices architecture</p></summary>
     
 Handling exceptions in a Spring Boot microservices architecture is crucial for providing a robust and user-friendly experience. Spring Boot provides several mechanisms for handling exceptions, allowing you to manage errors consistently across your services. Here’s a detailed guide on how to handle exceptions in Spring Boot microservices:
 
@@ -16206,7 +16206,7 @@ By utilizing these strategies, you can manage exceptions in a clean and effectiv
 
 </details>
 <details>
-<summary>filters, listeners, servlets</summary>
+<summary><p>filters, listeners, servlets</p></summary>
     
 Certainly! In Java web applications and Spring Framework, filters, listeners, servlets, and advisors each play distinct roles. Here's a detailed overview of how to use and configure them:
 
@@ -16462,7 +16462,7 @@ By understanding and implementing filters, listeners, servlets, and advisors cor
 
 </details>
 <details>
-<summary>Managing memory leaks, concurrent threads, and `CompletableFuture`</summary>
+<summary><p>Managing memory leaks, concurrent threads, and `CompletableFuture`</p></summary>
     
 Managing memory leaks, concurrent threads, and `CompletableFuture` effectively is crucial for developing robust and high-performance applications. Here's a detailed guide to help you manage each of these concerns in Java.
 
