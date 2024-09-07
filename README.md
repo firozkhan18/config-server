@@ -4102,7 +4102,7 @@ By using these strategies and tools, you can manage transactions and ensure cons
 
 </details>
 <details>
-<summary>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases<summary>
+<summary>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</summary>
     
 Certainly! Here is a comprehensive guide on AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases. We will cover commands for setting up and managing AWS services like EC2, RDS, EKS, and S3.
 
@@ -4319,7 +4319,7 @@ By using these AWS commands and configuring your services as described, you can 
 
 </details>
 <details>
-<summary>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases<summary>
+<summary>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</summary>
     
 Certainly! Below is a comprehensive guide to Kubernetes and Docker commands, with explanations and examples for deploying and managing Spring Boot microservices along with MongoDB and PostgreSQL databases.
 
@@ -4656,7 +4656,7 @@ By using these Docker and Kubernetes commands, you can effectively manage the de
 
 </details>
 <details>
-<summary>Handling transactions in a Spring Boot microservices architecture<summary>
+<summary>Handling transactions in a Spring Boot microservices architecture</summary>
     
 Handling transactions in a Spring Boot microservices architecture, along with managing transaction exceptions and working with stored procedures in JPA, involves a few important concepts and practices. Here’s a detailed guide on how to handle these aspects effectively:
 
@@ -4858,7 +4858,7 @@ These practices and configurations will help you effectively manage transactions
 
 </details>
 <details>
-<summary>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing<summary>
+<summary>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</summary>
     
 ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing. ACID stands for Atomicity, Consistency, Isolation, and Durability. Here's a detailed explanation of each property, with Java examples to illustrate how they work in practice.
 
@@ -5071,7 +5071,7 @@ These properties are critical for reliable data management and are enforced by b
 
 </details>
 <details>
-<summary>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing<summary>
+<summary>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</summary>
     
 In Java, you can have multiple interfaces, each with default methods, and you can implement both interfaces in a single class. When a class implements multiple interfaces that have default methods with the same signature, you might run into conflicts. Here's a guide on how to handle such situations:
 
@@ -5404,7 +5404,7 @@ By using this approach, you ensure that even and odd numbers are printed by thei
 
 </details>
 <details>
-<summary>The `Runnable` interface to create and manage threads<summary>
+<summary>The `Runnable` interface to create and manage threads</summary>
     
 Certainly! If you want to use the `Runnable` interface to create and manage threads, you can do so by implementing `Runnable` and passing an instance of it to a `Thread` object. Here's how you can rewrite your example using `Runnable` for both even and odd number printing:
 
@@ -5547,7 +5547,7 @@ By naming your threads, you can easily identify them in log messages, stack trac
 
 </details>
 <details>
-<summary></summary>ACID properties are a set of principles that ensure reliable processing of database transactions<summary>
+<summary>ACID properties are a set of principles that ensure reliable processing of database transactions</summary>
 
 ACID properties are a set of principles that ensure reliable processing of database transactions. These principles are critical for maintaining data integrity and consistency in relational databases. Here's a breakdown of each property:
 
