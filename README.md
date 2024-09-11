@@ -1,6 +1,4 @@
-## FAQ
-
-# Angular Interview Questions & Answers
+# Interview Questions & Answers
 
 ### Table of Contents
 
