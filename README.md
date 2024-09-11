@@ -13,13 +13,13 @@ Hide/Show table of contents
 |2 | [**Cheat-Sheet-Kafka**](Cheat-Sheet-Kafka.md)|
 |3 | [**Cheat-Sheet-Kubernetes**](Cheat-Sheet-Kubernetes.md)|
 |4 | [**Cheat-Sheet-Linux**](Cheat-Sheet-Linux.md)|
-|5 | [**FAQ-Angular**](FAQ-Angular.md)|
-|6 | [**FAQ-Angular-87**](FAQ-Angular-87.md)|
-|7 | [**FAQ-Design-Patterns**](FAQ-Design-Patterns.md)|
-|8 | [**FAQ-JavaScript**](FAQ-JavaScript.md)|
-|9 | [**FAQ-React**](FAQ-React.md)|
-|10 | [**FAQ-React-Advanced**](FAQ-React-Advanced.md)|
-|11 | [**FAQ-React-300**](FAQ-React-300.md)|
+|5 | [**Q&A-Angular**](FAQ-Angular.md)|
+|6 | [**Q&A-Angular-87**](FAQ-Angular-87.md)|
+|7 | [**Q&A-Design-Patterns**](FAQ-Design-Patterns.md)|
+|8 | [**Q&A-JavaScript**](FAQ-JavaScript.md)|
+|9 | [**Q&A-React**](FAQ-React.md)|
+|10 | [**Q&A-React-Advanced**](FAQ-React-Advanced.md)|
+|11 | [**Q&A-React-300**](FAQ-React-300.md)|
 
 </details>
 
