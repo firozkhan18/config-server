@@ -17217,4 +17217,74 @@ By following these steps, you can successfully set up SSL certificates for your 
 
 Good luck with your Angular interview! If you need more details on any of these topics, just let me know.
 </details>
+
+<details><summary><b>In Java 8, the `HashMap` implementation</b></summary>
+In Java 8, the `HashMap` implementation underwent some notable changes, particularly in its internal representation and behavior, which improved performance and efficiency. Here's a summary of the key changes and the updated internal representation:
+
+### Key Changes in Java 8
+
+1. **Tree-based Buckets**:
+   - **Before Java 8**: `HashMap` used an array of linked lists to handle hash collisions. When multiple keys hashed to the same bucket, they were stored in a linked list.
+   - **Java 8**: If the number of entries in a bucket exceeds a certain threshold (TREEIFY_THRESHOLD, which is 8 by default), the linked list is converted into a balanced binary tree (TreeMap). This change helps in improving the performance of operations like `get` and `put` from O(n) in the worst case to O(log n) for those buckets where treeification occurs.
+
+2. **Improved Hash Function**:
+   - The hash function used for bucket index calculation was improved to better distribute entries and reduce collisions. Java 8's implementation involves additional steps to spread bits more uniformly, which helps in reducing the likelihood of long chains and improves overall performance.
+
+3. **Capacity and Load Factor**:
+   - The default initial capacity of `HashMap` is 16, and the default load factor is 0.75. When the number of entries exceeds the product of the capacity and the load factor, the map is resized (typically doubled) to maintain performance.
+
+4. **Rehashing**:
+   - During rehashing, entries are redistributed into new buckets. The new implementation in Java 8 involves more efficient copying of entries, especially with the use of the `TreeMap` for high-collision buckets.
+
+5. **Concurrency Considerations**:
+   - `HashMap` is not thread-safe, but it is worth noting that its implementation in Java 8 improves performance in single-threaded scenarios and provides better performance characteristics for concurrent applications when combined with other synchronization mechanisms or concurrent maps.
+
+### Internal Representation
+
+#### Internal Data Structure
+- **Array of Buckets**: `HashMap` internally maintains an array of `Node` objects, where each `Node` is a key-value pair.
+- **Linked List or Tree**: Each bucket in the array holds a linked list or, if the bucket is treeified, a `TreeMap`.
+
+#### `Node` Class
+In Java 8, the internal `Node` class is used to represent an entry in the map:
+
+```java
+static class Node<K,V> implements Map.Entry<K,V> {
+    final int hash;
+    final K key;
+    V value;
+    Node<K,V> next;
+
+    Node(int hash, K key, V value, Node<K,V> next) {
+        this.hash = hash;
+        this.key = key;
+        this.value = value;
+        this.next = next;
+    }
+
+    // Getters and Setters for key, value, and next
+}
+```
+
+#### Tree Structure
+- **TreeNode Class**: When a bucket is treeified, it uses a `TreeNode` class, which extends `Node` and adds tree-related fields and methods:
+
+```java
+static class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
+    TreeNode<K,V> parent; // Parent of this node
+    TreeNode<K,V> left;   // Left child
+    TreeNode<K,V> right;  // Right child
+    TreeNode<K,V> prev;   // Previous node in the list
+
+    // Constructor and other tree-related methods
+}
+```
+
+### Performance Improvements
+
+- **Lookup Time**: The introduction of tree-based buckets improves the average-case performance of lookups, insertions, and deletions when there are many hash collisions.
+- **Hash Distribution**: Enhanced hash function helps in distributing entries more uniformly across buckets, reducing the likelihood of long chains and improving access times.
+
+Overall, the changes in Java 8 aim to balance the trade-offs between memory consumption and performance, particularly for scenarios where hash collisions are frequent.
+</details>
 </details>
