@@ -3,8 +3,6 @@ Quick reference guide for Docker commands
 
 ## Downloading PDF/Epub formats
 
-You can download the PDF and Epub version of this repository from the latest run on the [actions tab](https://github.com/firozkhan18/docker-cheat-sheet/actions).
-
 ### Table of Contents
 
 | No. | Questions |
