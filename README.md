@@ -5105,7 +5105,7 @@ These properties are critical for reliable data management and are enforced by b
 
 </details>
 <details>
-<summary><b>ACID properties are fundamental to database transactions and ensure reliability and consistency in data processing</b></summary>
+<summary><b>Functional Interface</b></summary>
     
 In Java, you can have multiple interfaces, each with default methods, and you can implement both interfaces in a single class. When a class implements multiple interfaces that have default methods with the same signature, you might run into conflicts. Here's a guide on how to handle such situations:
 
