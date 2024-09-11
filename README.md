@@ -4,10 +4,6 @@
 
 ### Table of Contents
 
-</details>
-
-### Table of Contents
-
 <details open>
 <summary>
 Hide/Show table of contents
