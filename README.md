@@ -1,3 +1,15 @@
+## FAQ
+
+* [Cheat-Sheet-Docker](Cheat-Sheet-Docker.md)
+* [Cheat-Sheet-Kafka](Cheat-Sheet-Kafka.md)
+* [Cheat-Sheet-Kubernetes](Cheat-Sheet-Kubernetes.md)
+* [Cheat-Sheet-Linux](Cheat-Sheet-Linux.md)
+* [FAQ-Angular](FAQ-Angular.md)
+* [FAQ-Design-Patterns](FAQ-Design-Patterns.md)
+* [FAQ-JavaScript](FAQ-JavaScript.md)
+* [FAQ-React](FAQ-React.md)
+* [FAQ-React-Advanced](FAQ-React-Advanced.md)
+  
 <details>
 <summary><b>Thread synchronization</b></summary>
     
