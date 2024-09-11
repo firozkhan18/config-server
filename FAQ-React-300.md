@@ -1,21 +1,119 @@
-300+ React Interview Questions
-#
-react
-#
-webdev
-#
-javascript
-#
-beginners
-Today I prepared a huge list of React Interview Questions from this awesome repo
+# 300 React Interview Questions
 
-For more info, I have developed a project with more than 500 questions for Frontend Devs
+This document contains a comprehensive list of React interview questions categorized into various sections. It is designed to help you prepare for React interviews by covering a wide range of topics from basic to advanced concepts.
 
-Here you are: https://iq.js.org/
+## Table of Contents
 
-If you like the article, add to bookmark for future and follow me there:
+1. [Basic Concepts](#basic-concepts)
+2. [Components](#components)
+3. [Props and State](#props-and-state)
+4. [Lifecycle Methods](#lifecycle-methods)
+5. [Hooks](#hooks)
+6. [Context API](#context-api)
+7. [Performance Optimization](#performance-optimization)
+8. [Routing](#routing)
+9. [Testing](#testing)
+10. [Advanced Topics](#advanced-topics)
+11. [Miscellaneous](#miscellaneous)
 
-Twitter	Github	Linkedin
+---
+
+## Basic Concepts
+
+1. **What is React?**
+2. **Why use React?**
+3. **What are the features of React?**
+4. **What is JSX?**
+5. **What are the advantages of using JSX?**
+6. **What is the Virtual DOM?**
+7. **How does React work?**
+8. **What are components in React?**
+
+## Components
+
+1. **What are React components?**
+2. **How do you create a component in React?**
+3. **What is the difference between functional and class components?**
+4. **How do you manage state in a React component?**
+5. **What is component lifecycle in React?**
+
+## Props and State
+
+1. **What are props in React?**
+2. **How do you pass data between components?**
+3. **What is state in React?**
+4. **How does state differ from props?**
+5. **How do you update state in a React component?**
+
+## Lifecycle Methods
+
+1. **What are lifecycle methods in React?**
+2. **What is `componentDidMount`?**
+3. **What is `componentDidUpdate`?**
+4. **What is `componentWillUnmount`?**
+5. **How do you handle side effects in React?**
+
+## Hooks
+
+1. **What are React hooks?**
+2. **What is the use of `useState`?**
+3. **What is the use of `useEffect`?**
+4. **What are custom hooks?**
+5. **How do hooks improve the development experience?**
+
+## Context API
+
+1. **What is the Context API in React?**
+2. **How do you create a context in React?**
+3. **How do you consume context in a component?**
+4. **What are the advantages of using Context API?**
+5. **How does Context API compare with Redux?**
+
+## Performance Optimization
+
+1. **What are some techniques to optimize React performance?**
+2. **How does React's reconciliation algorithm work?**
+3. **What is memoization?**
+4. **What is React's `PureComponent`?**
+5. **How do you handle large lists in React?**
+
+## Routing
+
+1. **What is React Router?**
+2. **How do you set up routing in a React application?**
+3. **What is the `Route` component?**
+4. **What is the `Link` component?**
+5. **How do you handle nested routes?**
+
+## Testing
+
+1. **How do you test React components?**
+2. **What is Jest?**
+3. **What is Enzyme?**
+4. **How do you mock API calls in tests?**
+5. **What is snapshot testing?**
+
+## Advanced Topics
+
+1. **What is server-side rendering in React?**
+2. **What is React Native?**
+3. **How do you handle authentication in a React app?**
+4. **What is code splitting?**
+5. **What are higher-order components (HOCs)?**
+
+## Miscellaneous
+
+1. **How do you handle forms in React?**
+2. **What is the role of `key` in lists?**
+3. **How do you handle errors in React?**
+4. **What are some common React patterns?**
+5. **What is the role of `ref` in React?**
+
+---
+
+Feel free to expand on each question and add more details or answers as you prepare for your interviews. This README is meant to provide a structured guide to the types of questions you might encounter in a React interview.
+
+
 Table of Contents
 No.	Questions
 Core React
