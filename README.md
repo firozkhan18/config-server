@@ -4353,7 +4353,7 @@ By using these AWS commands and configuring your services as described, you can 
 
 </details>
 <details>
-<summary><b>AWS commands and their usage for deploying and managing Spring Boot microservices with MongoDB and PostgreSQL databases</b></summary>
+<summary><b>Kubernetes and Docker commands, with explanations and examples for deploying and managing Spring Boot microservices along with MongoDB and PostgreSQL databases</b></summary>
     
 Certainly! Below is a comprehensive guide to Kubernetes and Docker commands, with explanations and examples for deploying and managing Spring Boot microservices along with MongoDB and PostgreSQL databases.
 
