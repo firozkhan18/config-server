@@ -6,17 +6,17 @@
 
 | No. | Questions |
 |---- | ---------|
-|1 | * [Cheat-Sheet-Docker](Cheat-Sheet-Docker.md)|
-|2 | * [Cheat-Sheet-Kafka](Cheat-Sheet-Kafka.md)|
-|3 | * [Cheat-Sheet-Kubernetes](Cheat-Sheet-Kubernetes.md)|
-|4 | * [Cheat-Sheet-Linux](Cheat-Sheet-Linux.md)|
-|5 | * [FAQ-Angular](FAQ-Angular.md)|
-|6 | * [FAQ-Angular](FAQ-Angular-87.md)|
-|7 | * [FAQ-Design-Patterns](FAQ-Design-Patterns.md)|
-|8 | * [FAQ-JavaScript](FAQ-JavaScript.md)|
-|9 | * [FAQ-React](FAQ-React.md)|
-|10 | * [FAQ-React-Advanced](FAQ-React-Advanced.md)|
-|11 | * [FAQ-React-Advanced](FAQ-React-300.md)|
+|1 | [**Cheat-Sheet-Docker**](Cheat-Sheet-Docker.md)|
+|2 | [**Cheat-Sheet-Kafka**](Cheat-Sheet-Kafka.md)|
+|3 | [**Cheat-Sheet-Kubernetes**](Cheat-Sheet-Kubernetes.md)|
+|4 | [**Cheat-Sheet-Linux**](Cheat-Sheet-Linux.md)|
+|5 | [**FAQ-Angular**](FAQ-Angular.md)|
+|6 | [**FAQ-Angular-87**](FAQ-Angular-87.md)|
+|7 | [**FAQ-Design-Patterns**](FAQ-Design-Patterns.md)|
+|8 | [**FAQ-JavaScript**](FAQ-JavaScript.md)|
+|9 | [**FAQ-React**](FAQ-React.md)|
+|10 | [**FAQ-React-Advanced**](FAQ-React-Advanced.md)|
+|11 | [**FAQ-React-300**](FAQ-React-300.md)|
 
 <details>
 <summary><b>Thread synchronization</b></summary>
