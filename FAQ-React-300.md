@@ -453,7 +453,7 @@ Miscellaneous
 
 Here's a markdown representation of the table of contents with questions converted into tabular form:
 
-```markdown
+
 # 300 React Interview Questions
 
 ## Table of Contents
@@ -798,6 +798,7 @@ Here's a markdown representation of the table of contents with questions convert
 | 325 | How do you make sure that user remains authenticated on page refresh while using Context API State Management? |
 | 326 | What are the benefits of new JSX transform? |
 | 327 | How does new JSX transform different from old transform? |
+
 Core React
 What is React?
 React is an open-source frontend JavaScript library which is used for building user interfaces especially for single page applications. It is used for handling view layer for web and mobile apps. React was created by Jordan Walke, a software engineer working for Facebook. React was first deployed on Facebook's News Feed in 2011 and on Instagram in 2012.
