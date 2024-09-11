@@ -1340,3 +1340,1120 @@ class SidecarService {
 ```
 
 These examples should give you a solid understanding of various design patterns and backend communication techniques, including their implementation in Java.
+
+
+Sure! Here’s an in-depth explanation of the design patterns, their concepts, examples, and real-time use cases.
+
+---
+
+## Creational Design Patterns
+
+**1. Singleton**
+
+**Concept:** Ensures that a class has only one instance and provides a global point of access to it.
+
+**Example:**
+
+```java
+public class Singleton {
+    private static Singleton instance;
+    
+    private Singleton() {
+        // private constructor to prevent instantiation
+    }
+    
+    public static synchronized Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+```
+
+**Real-Time Use Case:** Database connection pool management where a single instance controls access to the database to avoid multiple connections and ensure consistency.
+
+---
+
+**2. Factory Method/Factory**
+
+**Concept:** Defines an interface for creating an object but lets subclasses alter the type of objects that will be created.
+
+**Example:**
+
+```java
+// Product Interface
+interface Product {
+    void create();
+}
+
+// Concrete Product
+class ConcreteProductA implements Product {
+    public void create() {
+        System.out.println("Product A created");
+    }
+}
+
+// Creator
+abstract class Creator {
+    public abstract Product factoryMethod();
+    
+    public void anOperation() {
+        Product product = factoryMethod();
+        product.create();
+    }
+}
+
+// Concrete Creator
+class ConcreteCreatorA extends Creator {
+    public Product factoryMethod() {
+        return new ConcreteProductA();
+    }
+}
+```
+
+**Real-Time Use Case:** GUI libraries where different operating systems require different implementations of UI components.
+
+---
+
+**3. Abstract Factory**
+
+**Concept:** Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+**Example:**
+
+```java
+// Abstract Factory
+interface AbstractFactory {
+    ProductA createProductA();
+    ProductB createProductB();
+}
+
+// Concrete Factory
+class ConcreteFactory1 implements AbstractFactory {
+    public ProductA createProductA() {
+        return new ConcreteProductA1();
+    }
+    
+    public ProductB createProductB() {
+        return new ConcreteProductB1();
+    }
+}
+
+// Abstract Products
+interface ProductA {}
+interface ProductB {}
+
+// Concrete Products
+class ConcreteProductA1 implements ProductA {}
+class ConcreteProductB1 implements ProductB {}
+```
+
+**Real-Time Use Case:** Cross-platform software where different factories are used to create different UI elements suitable for each platform.
+
+---
+
+**4. Builder**
+
+**Concept:** Separates the construction of a complex object from its representation, allowing the same construction process to create different representations.
+
+**Example:**
+
+```java
+// Product
+class Product {
+    private String partA;
+    private String partB;
+    
+    public void setPartA(String partA) {
+        this.partA = partA;
+    }
+    
+    public void setPartB(String partB) {
+        this.partB = partB;
+    }
+}
+
+// Builder
+abstract class Builder {
+    public abstract void buildPartA();
+    public abstract void buildPartB();
+    public abstract Product getResult();
+}
+
+// Concrete Builder
+class ConcreteBuilder extends Builder {
+    private Product product = new Product();
+    
+    public void buildPartA() {
+        product.setPartA("PartA");
+    }
+    
+    public void buildPartB() {
+        product.setPartB("PartB");
+    }
+    
+    public Product getResult() {
+        return product;
+    }
+}
+
+// Director
+class Director {
+    private Builder builder;
+    
+    public Director(Builder builder) {
+        this.builder = builder;
+    }
+    
+    public void construct() {
+        builder.buildPartA();
+        builder.buildPartB();
+    }
+}
+```
+
+**Real-Time Use Case:** Constructing complex documents like XML or JSON configurations where different components and settings need to be assembled.
+
+---
+
+**5. Prototype**
+
+**Concept:** Creates new objects by copying an existing object, known as the prototype.
+
+**Example:**
+
+```java
+// Prototype
+abstract class Prototype implements Cloneable {
+    public abstract Prototype clone();
+}
+
+// Concrete Prototype
+class ConcretePrototype extends Prototype {
+    private String field;
+    
+    public ConcretePrototype(String field) {
+        this.field = field;
+    }
+    
+    public Prototype clone() {
+        return new ConcretePrototype(this.field);
+    }
+}
+```
+
+**Real-Time Use Case:** When creating multiple instances of a class with similar configurations, like GUI elements in an application where each can be cloned from a prototype.
+
+---
+
+## Structural Design Patterns
+
+**1. Adapter**
+
+**Concept:** Converts the interface of a class into another interface clients expect.
+
+**Example:**
+
+```java
+// Target Interface
+interface Target {
+    void request();
+}
+
+// Adaptee
+class Adaptee {
+    public void specificRequest() {
+        System.out.println("Specific request");
+    }
+}
+
+// Adapter
+class Adapter implements Target {
+    private Adaptee adaptee;
+    
+    public Adapter(Adaptee adaptee) {
+        this.adaptee = adaptee;
+    }
+    
+    public void request() {
+        adaptee.specificRequest();
+    }
+}
+```
+
+**Real-Time Use Case:** Integrating a new system with an existing legacy system where the interfaces are incompatible.
+
+---
+
+**2. Bridge**
+
+**Concept:** Decouples an abstraction from its implementation so that the two can vary independently.
+
+**Example:**
+
+```java
+// Abstraction
+abstract class Abstraction {
+    protected Implementor implementor;
+    
+    public Abstraction(Implementor implementor) {
+        this.implementor = implementor;
+    }
+    
+    public abstract void operation();
+}
+
+// Implementor
+interface Implementor {
+    void operationImpl();
+}
+
+// Concrete Implementor
+class ConcreteImplementor implements Implementor {
+    public void operationImpl() {
+        System.out.println("Operation Implemented");
+    }
+}
+
+// Refined Abstraction
+class RefinedAbstraction extends Abstraction {
+    public RefinedAbstraction(Implementor implementor) {
+        super(implementor);
+    }
+    
+    public void operation() {
+        implementor.operationImpl();
+    }
+}
+```
+
+**Real-Time Use Case:** Designing a graphical user interface where the abstraction (e.g., a window) can be implemented in different ways (e.g., using different platforms).
+
+---
+
+**3. Composite**
+
+**Concept:** Allows individual objects and compositions of objects to be treated uniformly.
+
+**Example:**
+
+```java
+// Component
+abstract class Component {
+    public abstract void operation();
+}
+
+// Leaf
+class Leaf extends Component {
+    public void operation() {
+        System.out.println("Leaf operation");
+    }
+}
+
+// Composite
+class Composite extends Component {
+    private List<Component> children = new ArrayList<>();
+    
+    public void add(Component component) {
+        children.add(component);
+    }
+    
+    public void operation() {
+        for (Component child : children) {
+            child.operation();
+        }
+    }
+}
+```
+
+**Real-Time Use Case:** Representing hierarchical structures like files and directories where operations can be performed on both individual files and directories.
+
+---
+
+**4. Decorator**
+
+**Concept:** Adds additional responsibilities to an object dynamically.
+
+**Example:**
+
+```java
+// Component
+interface Component {
+    void operation();
+}
+
+// Concrete Component
+class ConcreteComponent implements Component {
+    public void operation() {
+        System.out.println("Concrete Component");
+    }
+}
+
+// Decorator
+abstract class Decorator implements Component {
+    protected Component component;
+    
+    public Decorator(Component component) {
+        this.component = component;
+    }
+    
+    public void operation() {
+        component.operation();
+    }
+}
+
+// Concrete Decorator
+class ConcreteDecorator extends Decorator {
+    public ConcreteDecorator(Component component) {
+        super(component);
+    }
+    
+    public void operation() {
+        super.operation();
+        System.out.println("Concrete Decorator");
+    }
+}
+```
+
+**Real-Time Use Case:** Adding features to a user interface component dynamically, such as adding borders, scrollbars, or shadows to a window.
+
+---
+
+**5. Flyweight**
+
+**Concept:** Reduces the cost of creating and manipulating a large number of similar objects by sharing common parts of the state.
+
+**Example:**
+
+```java
+// Flyweight
+interface Flyweight {
+    void operation(String extrinsicState);
+}
+
+// Concrete Flyweight
+class ConcreteFlyweight implements Flyweight {
+    private String intrinsicState;
+    
+    public ConcreteFlyweight(String intrinsicState) {
+        this.intrinsicState = intrinsicState;
+    }
+    
+    public void operation(String extrinsicState) {
+        System.out.println("Intrinsic State: " + intrinsicState + ", Extrinsic State: " + extrinsicState);
+    }
+}
+
+// Flyweight Factory
+class FlyweightFactory {
+    private Map<String, Flyweight> flyweights = new HashMap<>();
+    
+    public Flyweight getFlyweight(String key) {
+        Flyweight flyweight = flyweights.get(key);
+        if (flyweight == null) {
+            flyweight = new ConcreteFlyweight(key);
+            flyweights.put(key, flyweight);
+        }
+        return flyweight;
+    }
+}
+```
+
+**Real-Time Use Case:** Rendering text in a graphical application where the same font style and size are used across multiple pieces of text.
+
+---
+
+**6. Proxy**
+
+**Concept:** Provides a surrogate or placeholder for another object to control access to it.
+
+**Example:**
+
+```java
+// Subject
+interface Subject {
+    void request();
+}
+
+// RealSubject
+class RealSubject implements Subject {
+    public void request() {
+        System.out.println("RealSubject request");
+    }
+}
+
+// Proxy
+class Proxy implements Subject {
+    private RealSubject realSubject;
+    
+    public void request() {
+        if (realSubject == null) {
+            realSubject = new RealSubject();
+        }
+        realSubject.request();
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing access control for a resource-intensive object like a network connection or file system.
+
+---
+
+**7. Facade**
+
+**Concept:** Provides a unified interface to a set of interfaces in a subsystem, making it easier to use.
+
+**Example:**
+
+```java
+// Subsystem Classes
+class SubsystemA {
+    public void operationA() {
+        System.out.println("Subsystem A operation");
+   
+
+ }
+}
+
+class SubsystemB {
+    public void operationB() {
+        System.out.println("Subsystem B operation");
+    }
+}
+
+// Facade
+class Facade {
+    private SubsystemA subsystemA = new SubsystemA();
+    private SubsystemB subsystemB = new SubsystemB();
+    
+    public void performOperations() {
+        subsystemA.operationA();
+        subsystemB.operationB();
+    }
+}
+```
+
+**Real-Time Use Case:** Simplifying interactions with a complex library or system by providing a simpler API.
+
+---
+
+## Behavioral Design Patterns
+
+**1. Chain of Responsibility**
+
+**Concept:** Passes a request along a chain of handlers, where each handler can either handle the request or pass it to the next handler.
+
+**Example:**
+
+```java
+// Handler
+abstract class Handler {
+    private Handler next;
+    
+    public void setNext(Handler next) {
+        this.next = next;
+    }
+    
+    public abstract void handleRequest(int request);
+    
+    protected void passToNext(int request) {
+        if (next != null) {
+            next.handleRequest(request);
+        }
+    }
+}
+
+// Concrete Handlers
+class ConcreteHandlerA extends Handler {
+    public void handleRequest(int request) {
+        if (request < 10) {
+            System.out.println("Handler A handled request " + request);
+        } else {
+            passToNext(request);
+        }
+    }
+}
+
+class ConcreteHandlerB extends Handler {
+    public void handleRequest(int request) {
+        if (request < 20) {
+            System.out.println("Handler B handled request " + request);
+        } else {
+            passToNext(request);
+        }
+    }
+}
+```
+
+**Real-Time Use Case:** Handling HTTP requests in a web server where each handler processes the request or passes it to the next handler in the chain.
+
+---
+
+**2. Command**
+
+**Concept:** Encapsulates a request as an object, thereby allowing for parameterization of clients with different requests, queuing of requests, and logging of the requests.
+
+**Example:**
+
+```java
+// Command Interface
+interface Command {
+    void execute();
+}
+
+// Concrete Commands
+class ConcreteCommandA implements Command {
+    public void execute() {
+        System.out.println("Executing Command A");
+    }
+}
+
+class ConcreteCommandB implements Command {
+    public void execute() {
+        System.out.println("Executing Command B");
+    }
+}
+
+// Invoker
+class Invoker {
+    private Command command;
+    
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+    
+    public void invoke() {
+        command.execute();
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing undo/redo functionality in applications where commands are stored and can be executed or reverted.
+
+---
+
+**3. Interpreter**
+
+**Concept:** Defines a grammatical representation for a language and provides an interpreter to interpret the sentences of the language.
+
+**Example:**
+
+```java
+// Abstract Expression
+interface Expression {
+    boolean interpret(String context);
+}
+
+// Terminal Expression
+class TerminalExpression implements Expression {
+    private String data;
+    
+    public TerminalExpression(String data) {
+        this.data = data;
+    }
+    
+    public boolean interpret(String context) {
+        return context.contains(data);
+    }
+}
+
+// Context
+class Context {
+    private Expression expression;
+    
+    public Context(Expression expression) {
+        this.expression = expression;
+    }
+    
+    public boolean execute(String context) {
+        return expression.interpret(context);
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing a simple language interpreter for query processing where different expressions are evaluated based on context.
+
+---
+
+**4. Iterator**
+
+**Concept:** Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+
+**Example:**
+
+```java
+// Iterator Interface
+interface Iterator<T> {
+    boolean hasNext();
+    T next();
+}
+
+// Aggregate Interface
+interface IterableCollection<T> {
+    Iterator<T> createIterator();
+}
+
+// Concrete Collection
+class ConcreteCollection implements IterableCollection<String> {
+    private List<String> items = new ArrayList<>();
+    
+    public void add(String item) {
+        items.add(item);
+    }
+    
+    public Iterator<String> createIterator() {
+        return new ConcreteIterator(items);
+    }
+}
+
+// Concrete Iterator
+class ConcreteIterator implements Iterator<String> {
+    private List<String> items;
+    private int position;
+    
+    public ConcreteIterator(List<String> items) {
+        this.items = items;
+    }
+    
+    public boolean hasNext() {
+        return position < items.size();
+    }
+    
+    public String next() {
+        return items.get(position++);
+    }
+}
+```
+
+**Real-Time Use Case:** Iterating over collections in data structures like lists or arrays where the internal structure is hidden.
+
+---
+
+**5. Mediator**
+
+**Concept:** Defines an object that encapsulates how a set of objects interact, promoting loose coupling by keeping objects from referring to each other explicitly.
+
+**Example:**
+
+```java
+// Mediator Interface
+interface Mediator {
+    void notify(Object sender, String event);
+}
+
+// Concrete Mediator
+class ConcreteMediator implements Mediator {
+    private ColleagueA colleagueA;
+    private ColleagueB colleagueB;
+    
+    public void setColleagueA(ColleagueA colleagueA) {
+        this.colleagueA = colleagueA;
+    }
+    
+    public void setColleagueB(ColleagueB colleagueB) {
+        this.colleagueB = colleagueB;
+    }
+    
+    public void notify(Object sender, String event) {
+        if (sender == colleagueA) {
+            colleagueB.doAction();
+        } else if (sender == colleagueB) {
+            colleagueA.doAction();
+        }
+    }
+}
+
+// Colleague Classes
+class ColleagueA {
+    private Mediator mediator;
+    
+    public ColleagueA(Mediator mediator) {
+        this.mediator = mediator;
+    }
+    
+    public void doAction() {
+        System.out.println("ColleagueA does action");
+        mediator.notify(this, "action");
+    }
+}
+
+class ColleagueB {
+    private Mediator mediator;
+    
+    public ColleagueB(Mediator mediator) {
+        this.mediator = mediator;
+    }
+    
+    public void doAction() {
+        System.out.println("ColleagueB does action");
+        mediator.notify(this, "action");
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing a chat application where the mediator handles message exchanges between different users.
+
+---
+
+**6. Memento**
+
+**Concept:** Captures and externalizes an object’s internal state without violating encapsulation so that the object can be restored to that state later.
+
+**Example:**
+
+```java
+// Memento
+class Memento {
+    private String state;
+    
+    public Memento(String state) {
+        this.state = state;
+    }
+    
+    public String getState() {
+        return state;
+    }
+}
+
+// Originator
+class Originator {
+    private String state;
+    
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    public Memento saveStateToMemento() {
+        return new Memento(state);
+    }
+    
+    public void getStateFromMemento(Memento memento) {
+        state = memento.getState();
+    }
+}
+
+// Caretaker
+class Caretaker {
+    private Memento memento;
+    
+    public void saveState(Originator originator) {
+        memento = originator.saveStateToMemento();
+    }
+    
+    public void restoreState(Originator originator) {
+        originator.getStateFromMemento(memento);
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing undo functionality in applications where the state of an object can be restored to a previous version.
+
+---
+
+**7. Observer**
+
+**Concept:** Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+
+**Example:**
+
+```java
+// Subject
+interface Subject {
+    void addObserver(Observer observer);
+    void removeObserver(Observer observer);
+    void notifyObservers();
+}
+
+// Concrete Subject
+class ConcreteSubject implements Subject {
+    private List<Observer> observers = new ArrayList<>();
+    
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+    
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+    
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+}
+
+// Observer Interface
+interface Observer {
+    void update();
+}
+
+// Concrete Observer
+class ConcreteObserver implements Observer {
+    public void update() {
+        System.out.println("Observer updated");
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing a stock market system where subscribers receive updates whenever stock prices change.
+
+---
+
+**8. State**
+
+**Concept:** Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
+
+**Example:**
+
+```java
+// State Interface
+interface State {
+    void handle();
+}
+
+// Concrete States
+class ConcreteStateA implements State {
+    public void handle() {
+        System.out.println("Handling state A");
+    }
+}
+
+class ConcreteStateB implements State {
+    public void handle() {
+        System.out.println("Handling state B");
+    }
+}
+
+// Context
+class Context {
+    private State state;
+    
+    public void setState(State state) {
+        this.state = state;
+    }
+    
+    public void request() {
+        state.handle();
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing a traffic light system where the behavior changes based on the light’s current state (e.g., red, green, yellow).
+
+---
+
+**9. Strategy**
+
+**Concept:** Defines a family of algorithms, encapsulates each one, and makes them interchangeable. The strategy lets the algorithm vary independently from clients that use it.
+
+**Example:**
+
+```java
+// Strategy Interface
+interface Strategy {
+    void execute();
+}
+
+// Concrete Strategies
+class ConcreteStrategyA implements Strategy {
+    public void execute() {
+        System.out.println("Strategy A executed");
+    }
+}
+
+class ConcreteStrategyB implements Strategy {
+    public void execute() {
+        System.out
+
+.println("Strategy B executed");
+    }
+}
+
+// Context
+class Context {
+    private Strategy strategy;
+    
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+    
+    public void performAction() {
+        strategy.execute();
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing different payment methods in an e-commerce application where users can choose between credit card, PayPal, or cryptocurrency.
+
+---
+
+**10. Template Method**
+
+**Concept:** Defines the skeleton of an algorithm in a base class but lets subclasses override specific steps of the algorithm without changing its structure.
+
+**Example:**
+
+```java
+// Abstract Class
+abstract class AbstractClass {
+    public void templateMethod() {
+        step1();
+        step2();
+        step3();
+    }
+    
+    protected abstract void step1();
+    protected abstract void step2();
+    
+    private void step3() {
+        System.out.println("Step 3");
+    }
+}
+
+// Concrete Class
+class ConcreteClass extends AbstractClass {
+    protected void step1() {
+        System.out.println("Step 1");
+    }
+    
+    protected void step2() {
+        System.out.println("Step 2");
+    }
+}
+```
+
+**Real-Time Use Case:** Implementing a framework for file processing where common steps (e.g., opening and closing files) are defined in the template method, and specific processing is handled by subclasses.
+
+---
+
+**11. Visitor**
+
+**Concept:** Defines a new operation to a group of objects without changing the objects themselves. The visitor pattern separates algorithms from the objects on which they operate.
+
+**Example:**
+
+```java
+// Visitor Interface
+interface Visitor {
+    void visit(Element element);
+}
+
+// Concrete Visitor
+class ConcreteVisitor implements Visitor {
+    public void visit(Element element) {
+        System.out.println("Visiting " + element);
+    }
+}
+
+// Element Interface
+interface Element {
+    void accept(Visitor visitor);
+}
+
+// Concrete Element
+class ConcreteElement implements Element {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+}
+```
+
+**Real-Time Use Case:** Adding new operations to a data structure (like a document with various elements) without modifying the structure or its elements.
+
+---
+
+## Backend Communication Design Patterns
+
+**1. Request Response**
+
+**Concept:** A client sends a request to a server, and the server responds with a result. This is the most common pattern in client-server communication.
+
+**Example:** HTTP requests and responses where a client requests data from a server, and the server responds with the requested data.
+
+**Real-Time Use Case:** Web browsing where the browser requests web pages and the server responds with HTML content.
+
+---
+
+**2. Push**
+
+**Concept:** The server sends data to the client without the client explicitly requesting it.
+
+**Example:** WebSocket connections where the server can push updates to the client in real-time.
+
+**Real-Time Use Case:** Real-time chat applications where new messages are pushed to clients as they arrive.
+
+---
+
+**3. Short Polling**
+
+**Concept:** The client periodically sends requests to the server to check for updates.
+
+**Example:** A client sends a request every few seconds to check if new data is available.
+
+**Real-Time Use Case:** Live sports score updates where the client polls the server periodically to fetch the latest scores.
+
+---
+
+**4. Long Polling**
+
+**Concept:** The client sends a request to the server, and the server holds the request open until new data is available or a timeout occurs.
+
+**Example:** The server holds the request until it has new data, then sends the data and closes the connection.
+
+**Real-Time Use Case:** Notification systems where the client waits for server updates and receives notifications as they become available.
+
+---
+
+**5. Server-Sent Events (SSE)**
+
+**Concept:** The server sends updates to the client over a single, long-lived HTTP connection.
+
+**Example:** A continuous stream of updates sent from the server to the client using `EventSource` API in JavaScript.
+
+**Real-Time Use Case:** Real-time dashboards that receive live updates from the server, such as financial data feeds or live traffic reports.
+
+---
+
+**6. Publish-Subscribe (Pub/Sub)**
+
+**Concept:** A messaging pattern where publishers send messages to a topic and subscribers receive messages from that topic.
+
+**Example:** Message brokers like Apache Kafka or RabbitMQ where messages are published to topics and consumers subscribe to those topics.
+
+**Real-Time Use Case:** Event-driven systems where different components subscribe to events and react to them as they occur.
+
+---
+
+**7. Multiplexing and Demultiplexing**
+
+**Concept:** Multiplexing involves combining multiple data streams into one, while demultiplexing involves separating them back out.
+
+**Example:** HTTP/2 multiplexing where multiple HTTP requests and responses are sent over a single connection.
+
+**Real-Time Use Case:** Streaming video services where multiple video streams are sent over a single connection to optimize bandwidth usage.
+
+---
+
+**8. Stateful and Stateless**
+
+**Concept:** Stateful systems maintain client state across requests, while stateless systems do not.
+
+**Example:** Stateful: A session-based web application where user data is stored between requests. Stateless: REST APIs where each request is independent and carries all necessary information.
+
+**Real-Time Use Case:** E-commerce applications (stateful) where user sessions and shopping carts are maintained, versus RESTful services (stateless) where each request is independent.
+
+---
+
+**9. Sidecar Pattern**
+
+**Concept:** Deploys a secondary component (sidecar) alongside a primary application to provide additional capabilities.
+
+**Example:** A sidecar container in Kubernetes that provides monitoring or logging capabilities for the main application container.
+
+**Real-Time Use Case:** Observability tools where a sidecar container collects metrics or logs from an application container.
+
+---
+
+Each design pattern serves different needs and scenarios, enhancing the flexibility, scalability, and maintainability of software systems. By choosing and implementing the appropriate patterns, developers can solve common problems in software design and architecture effectively.
