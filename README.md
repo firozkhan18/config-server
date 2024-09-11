@@ -23,9 +23,11 @@ Hide/Show table of contents
 
 </details>
 
+# Interview Questions & Answers
+
 ### Table of Contents
 
-<details open>
+<details>
 <summary>
 Hide/Show table of contents
 </summary>
