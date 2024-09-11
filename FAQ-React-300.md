@@ -341,8 +341,9 @@
 
 
 
-|No.|Questions|
-||Core React|
+| No. | Questions |
+| --- | --------- |
+|  | **Core React** |
 |1|(#what-is-react)[What is React?]|
 |2|(#what-are-the-major-features-of-react)[What are the major features of React?]|
 |3|(#what-is-jsx)[What is JSX?]|
@@ -470,7 +471,7 @@
 |126|(#what-are-the-popular-react-specific-linters)[What are the popular React-specific linters?]|
 |127|(#how-to-make-ajax-call-and-in-which-component-lifecycle-methods-should-i-make-an-ajax-call)[How to make AJAX call and In which component lifecycle methods should I make an AJAX call?]|
 |128|(#what-are-render-props)[What are render props?]|
-||React Router|
+||**React Router**|
 |129|(#what-is-react-router)[What is React Router?]|
 |130|(#how-react-router-is-different-from-history-library)[How React Router is different from history library?]|
 |131|(#what-are-the-router-components-of-react-router-v4)[What are the &lt;Router&gt; components of React Router v4?]|
@@ -482,21 +483,21 @@
 |137|(#how-to-implement-default-or-notfound-page)[How to implement default or NotFound page?]|
 |138|(#how-to-get-history-on-react-router-v4)[How to get history on React Router v4?]|
 |139|(#how-to-perform-automatic-redirect-after-login)[How to perform automatic redirect after login?]|
-||React Internationalization|
+||**React Internationalization**|
 |140|(#what-is-react-intl)[What is React-Intl?]|
 |141|(#what-are-the-main-features-of-react-intl)[What are the main features of React Intl?]|
 |142|(#what-are-the-two-ways-of-formatting-in-react-intl)[What are the two ways of formatting in React Intl?]|
 |143|(#how-to-use-formattedmessage-as-placeholder-using-react-intl)[How to use FormattedMessage as placeholder using React Intl?]|
 |144|(#how-to-access-current-locale-with-react-intl)[How to access current locale with React Intl]|
 |145|(#how-to-format-date-using-react-intl)[How to format date using React Intl?]|
-||React Testing|
+||**React Testing**|
 |146|(#what-is-shallow-renderer-in-react-testing)[What is Shallow Renderer in React testing?]|
 |147|(#what-is-testrenderer-package-in-react)[What is TestRenderer package in React?]|
 |148|(#what-is-the-purpose-of-reacttestutils-package)[What is the purpose of ReactTestUtils package?]|
 |149|(#what-is-jest)[What is Jest?]|
 |150|(#what-are-the-advantages-of-jest-over-jasmine)[What are the advantages of Jest over Jasmine?]|
 |151|(#give-a-simple-example-of-jest-test-case)[Give a simple example of Jest test case]|
-||React Redux|
+||**React Redux**|
 |152|(#what-is-flux)[What is Flux?]|
 |153|(#what-is-redux)[What is Redux?]|
 |154|(#what-are-the-core-principles-of-redux)[What are the core principles of Redux?]|
@@ -534,7 +535,7 @@
 |186|(#how-to-set-initial-state-in-redux)[How to set initial state in Redux?]|
 |187|(#how-relay-is-different-from-redux)[How Relay is different from Redux?]|
 |188|(#what-is-an-action-in-redux)[What is an action in Redux?]|
-||React Native|
+||**React Native**|
 |188|(#what-is-the-difference-between-react-native-and-react)[What is the difference between React Native and React?]|
 |189|(#how-to-test-react-native-apps)[How to test React Native apps?]|
 |190|(#how-to-do-logging-in-react-native)[How to do logging in React Native?]|
@@ -554,7 +555,7 @@
 |203|(#give-an-example-of-styled-components)[Give an example of Styled Components?]|
 |204|(#what-is-relay)[What is Relay?]|
 |205|(#how-to-use-typescript-in-create-react-app-application)[How to use TypeScript in create-react-app application?]|
-||Miscellaneous|
+||**Miscellaneous**|
 |206|(#what-are-the-main-features-of-reselect-library)[What are the main features of reselect library?]|
 |207|(#give-an-example-of-reselect-usage)[Give an example of reselect usage?]|
 |209|(#does-the-statics-object-work-with-es6-classes-in-react)[Does the statics object work with ES6 classes in React?]|
