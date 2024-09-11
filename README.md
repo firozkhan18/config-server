@@ -4,6 +4,15 @@
 
 ### Table of Contents
 
+</details>
+
+### Table of Contents
+
+<details open>
+<summary>
+Hide/Show table of contents
+</summary>
+    
 | No. | Questions |
 |---- | ---------|
 |1 | [**Cheat-Sheet-Docker**](Cheat-Sheet-Docker.md)|
@@ -18,6 +27,15 @@
 |10 | [**FAQ-React-Advanced**](FAQ-React-Advanced.md)|
 |11 | [**FAQ-React-300**](FAQ-React-300.md)|
 
+</details>
+
+### Table of Contents
+
+<details open>
+<summary>
+Hide/Show table of contents
+</summary>
+    
 <details>
 <summary><b>Thread synchronization</b></summary>
     
@@ -17202,4 +17220,5 @@ By following these steps, you can successfully set up SSL certificates for your 
 - **Review Angular Documentation:** The official Angular documentation is a great resource for understanding best practices and advanced features.
 
 Good luck with your Angular interview! If you need more details on any of these topics, just let me know.
+</details>
 </details>
