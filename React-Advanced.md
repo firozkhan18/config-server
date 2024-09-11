@@ -652,7 +652,7 @@ Certainly! Let’s dive into each chapter and its concepts in depth.
   - **Example**:
    
 
- ```jsx
+```jsx
     import { createStore } from 'redux';
 
     function reducer(state = {}, action) {
@@ -665,7 +665,7 @@ Certainly! Let’s dive into each chapter and its concepts in depth.
     }
 
     const store = createStore(reducer);
-    ```
+ ```
 
 ### **Core Principles of Redux, Components and APIs**
 - **Single Source of Truth**: The state of the application is stored in a single store.
