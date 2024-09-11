@@ -16636,7 +16636,7 @@ By applying these practices and tools, you can effectively manage memory leaks, 
 
 </details>
 
-<details><summary><p>Hitachi Payment Services</p></summary>
+<details><summary><b>Hitachi Payment Services</b></summary>
     
 Hitachi Payment Services leverages various technologies to support mobile payments, digital wallets, ATMs, point-of-sale (POS) systems, and payment processing solutions. Here’s an overview of the technologies involved in each of these areas:
 
@@ -16820,7 +16820,7 @@ These examples demonstrate how to integrate technologies related to mobile payme
 
 </details>
 
-<details><summary><p>To ensure security and manage multiple client requests effectively in a Spring Boot application</p></summary>
+<details><summary><b>To ensure security and manage multiple client requests effectively in a Spring Boot application</b></summary>
     
 To ensure security and manage multiple client requests effectively in a Spring Boot application, especially for handling payments, you need to focus on several key areas: secure communication, handling concurrent requests, and managing transaction failures. Here's a detailed approach:
 
@@ -17104,7 +17104,7 @@ Check the Spring Boot application logs for any SSL-related errors. Logs can prov
 
 By following these steps, you can successfully set up SSL certificates for your Spring Boot application, ensuring secure communication over HTTPS. Whether you use a self-signed certificate for development or obtain one from a CA for production, configuring SSL is a crucial step in securing your application.
 </details>
-<details><summary><p>Angular interview questions</p></summary>
+<details><summary><b>Angular interview questions</b></summary>
 
 ### Basic Questions
 
