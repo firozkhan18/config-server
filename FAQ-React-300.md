@@ -118,7 +118,7 @@ This document contains a comprehensive list of React interview questions categor
 
 | No. | Questions |
 | --- | --------- |
-| **Core React** | |
+|  | **Core React** |
 | 1 | What is React? |
 | 2 | What are the major features of React? |
 | 3 | What is JSX? |
@@ -246,7 +246,7 @@ This document contains a comprehensive list of React interview questions categor
 | 126 | What are the popular React-specific linters? |
 | 127 | How to make AJAX call and In which component lifecycle methods should I make an AJAX call? |
 | 128 | What are render props? |
-| **React Router** | |
+|  | **React Router** |
 | 129 | What is React Router? |
 | 130 | How React Router is different from history library? |
 | 131 | What are the <Router> components of React Router v4? |
@@ -258,21 +258,21 @@ This document contains a comprehensive list of React interview questions categor
 | 137 | How to implement default or NotFound page? |
 | 138 | How to get history on React Router v4? |
 | 139 | How to perform automatic redirect after login? |
-| **React Internationalization** | |
+|  | **React Internationalization** |
 | 140 | What is React-Intl? |
 | 141 | What are the main features of React Intl? |
 | 142 | What are the two ways of formatting in React Intl? |
 | 143 | How to use FormattedMessage as placeholder using React Intl? |
 | 144 | How to access current locale with React Intl? |
 | 145 | How to format date using React Intl? |
-| **React Testing** | |
+|  | **React Testing** |
 | 146 | What is Shallow Renderer in React testing? |
 | 147 | What is TestRenderer package in React? |
 | 148 | What is the purpose of ReactTestUtils package? |
 | 149 | What is Jest? |
 | 150 | What are the advantages of Jest over Jasmine? |
 | 151 | Give a simple example of Jest test case. |
-| **React Redux** | |
+|  | **React Redux** |
 | 152 | What is Flux? |
 | 153 | What is Redux? |
 | 154 | What are the core principles of Redux? |
@@ -310,12 +310,12 @@ This document contains a comprehensive list of React interview questions categor
 | 186 | How to set initial state in Redux? |
 | 187 | How Relay is different from Redux? |
 | 188 | What is an action in Redux? |
-| **React Native** | |
+| | **React Native** |
 | 188 | What is the difference between React Native and React? |
 | 189 | How to test React Native apps? |
 | 190 | How to do logging in React Native? |
 | 191 | How to debug your React Native? |
-| **React Supported Libraries and Integration** | |
+|  | **React Supported Libraries and Integration** |
 | 192 | What is reselect and how it works? |
 | 193 | What is Flow? |
 | 194 | What is the difference between Flow and PropTypes? |
@@ -330,7 +330,7 @@ This document contains a comprehensive list of React interview questions categor
 | 203 | Give an example of Styled Components? |
 | 204 | What is Relay? |
 | 205 | How to use TypeScript in create-react-app application? |
-| **Miscellaneous** | |
+| | **Miscellaneous** |
 | 206 | What are the main features of reselect library? |
 | 207 | Give an example of reselect usage? |
 | 209 | Does the statics object work with ES6 classes in React? |
