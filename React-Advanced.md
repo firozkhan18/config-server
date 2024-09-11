@@ -334,9 +334,7 @@ Certainly! Let’s dive into each chapter and its concepts in depth.
       const [data, setData] = useState(null);
 
       useEffect(() => {
-        fetch('https://api.example
-
-.com/data')
+        fetch('https://api.example.com/data')
           .then(response => response.json())
           .then(data => setData(data));
       }, []);
