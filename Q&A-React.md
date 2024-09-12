@@ -313,30 +313,30 @@
 | 301 | [Is it recommended to use CSS In JS technique in React?](#301-is-it-recommended-to-use-css-in-js-technique-in-react) |
 | 302 | [Do I need to rewrite all my class components with hooks?](#302-do-i-need-to-rewrite-all-my-class-components-with-hooks) |
 | 303 | [How to fetch data with React Hooks?](#303-how-to-fetch-data-with-react-hooks) |
-| 304 | [Do Hooks cover all use cases for classes?](#304-do-hooks-cover-all-use-cases-for-classes) |
+| 304 | [Is Hooks cover all use cases for classes?](#304-is-hooks-cover-all-use-cases-for-classes) |
 | 305 | [What is the stable release for hooks support?](#305-what-is-the-stable-release-for-hooks-support) |
 | 306 | [Why do we use array destructuring (square brackets notation) in useState?](#306-why-do-we-use-array-destructuring-square-brackets-notation-in-usestate) |
 | 307 | [What are the sources used for introducing hooks?](#307-what-are-the-sources-used-for-introducing-hooks) |
 | 308 | [How do you access imperative API of web components?](#308-how-do-you-access-imperative-api-of-web-components) |
-| 309 | [What is Formik?](#309-what-is-formik) |
+| 309 | [What is formik?](#309-what-is-formik) |
 | 310 | [What are typical middleware choices for handling asynchronous calls in Redux?](#310-what-are-typical-middleware-choices-for-handling-asynchronous-calls-in-redux) |
 | 311 | [Do browsers understand JSX code?](#311-do-browsers-understand-jsx-code) |
-| 312 | [Describe the data flow in React?](#312-describe-the-data-flow-in-react) |
-| 313 | [What is React Scripts?](#313-what-is-react-scripts) |
-| 314 | [What are the features of Create React App?](#314-what-are-the-features-of-create-react-app) |
+| 312 | [Describe about data flow in react?](#312-describe-about-data-flow-in-react) |
+| 313 | [What is react scripts?](#313-what-is-react-scripts) |
+| 314 | [What are the features of create react app?](#314-what-are-the-features-of-create-react-app) |
 | 315 | [What is the purpose of renderToNodeStream method?](#315-what-is-the-purpose-of-rendertonodestream-method) |
 | 316 | [What is MobX?](#316-what-is-mobx) |
 | 317 | [What are the differences between Redux and MobX?](#317-what-are-the-differences-between-redux-and-mobx) |
 | 318 | [Should I learn ES6 before learning ReactJS?](#318-should-i-learn-es6-before-learning-reactjs) |
 | 319 | [What is Concurrent Rendering?](#319-what-is-concurrent-rendering) |
 | 320 | [What is the difference between async mode and concurrent mode?](#320-what-is-the-difference-between-async-mode-and-concurrent-mode) |
-| 321 | [Can I use JavaScript URLs in React 16.9?](#321-can-i-use-javascript-urls-in-react-169) |
+| 321 | [Can I use javascript urls in react16.9?](#321-can-i-use-javascript-urls-in-react169) |
 | 322 | [What is the purpose of eslint plugin for hooks?](#322-what-is-the-purpose-of-eslint-plugin-for-hooks) |
 | 323 | [What is the difference between Imperative and Declarative in React?](#323-what-is-the-difference-between-imperative-and-declarative-in-react) |
-| 324 | [What are the benefits of using TypeScript with ReactJS?](#324-what-are-the-benefits-of-using-typescript-with-reactjs) |
+| 324 | [What are the benefits of using typescript with reactjs?](#324-what-are-the-benefits-of-using-typescript-with-reactjs) |
 | 325 | [How do you make sure that user remains authenticated on page refresh while using Context API State Management?](#325-how-do-you-make-sure-that-user-remains-authenticated-on-page-refresh-while-using-context-api-state-management) |
-| 326 | [What are the benefits of the new JSX transform?](#326-what-are-the-benefits-of-the-new-jsx-transform) |
-| 327 | [How does the new JSX transform differ from the old transform?](#327-how-does-the-new-jsx-transform-differ-from-the-old-transform) |
+| 326 | [What are the benefits of new JSX transform?](#326-what-are-the-benefits-of-new-jsx-transform) |
+| 327 | [How does new JSX transform different from old transform?](#327-how-does-new-jsx-transform-different-from-old-transform) |
 
 
 ### 1. What is React?
