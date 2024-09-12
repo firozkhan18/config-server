@@ -1159,9 +1159,7 @@ useEffect(() => {
 ### 130. How React Router is different from the history library?
 - **Difference:** React Router uses `history` to handle URL changes but adds higher-level routing components and features.
 
-### 131. What are the `<
-
-Router>` components of React Router v4?
+### 131. What are the `<Router>` components of React Router v4?
 - **Components:**
   - `BrowserRouter`
   - `HashRouter`
