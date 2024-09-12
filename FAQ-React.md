@@ -8022,3 +8022,332 @@ The questions provided in this repository are the summary of frequently asked qu
 Good luck with your interview 😊
 
 ---
+
+Certainly! Here's a table summarizing common React hooks and their uses, including examples for each:
+
+| **Hook**            | **Description**                                      | **Example Usage**                                                                                              |
+|---------------------|------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| **`useState`**      | Manages state in functional components.              | ```jsx<br>import React, { useState } from 'react';<br>const Counter = () => {<br>  const [count, setCount] = useState(0);<br>  return (<br>    <div><br>      <p>Count: {count}</p><br>      <button onClick={() => setCount(count + 1)}>Increment</button><br>    </div><br>  );<br>};<br>export default Counter;<br>``` |
+| **`useEffect`**     | Handles side effects in functional components.       | ```jsx<br>import React, { useEffect, useState } from 'react';<br>const Example = () => {<br>  const [data, setData] = useState(null);<br>  useEffect(() => {<br>    fetch('https://api.example.com/data')<br>      .then(response => response.json())<br>      .then(data => setData(data));<br>  }, []);<br>  return (<br>    <div>{data ? <p>{data.someProperty}</p> : <p>Loading...</p>}</div><br>  );<br>};<br>export default Example;<br>``` |
+| **`useContext`**    | Accesses context values provided by a Context Provider. | ```jsx<br>import React, { createContext, useContext } from 'react';<br>const MyContext = createContext();<br>const Component = () => {<br>  const value = useContext(MyContext);<br>  return <p>{value}</p>;<br>};<br>const App = () => {<br>  return (<br>    <MyContext.Provider value="Hello, world!"><br>      <Component /><br>    </MyContext.Provider><br>  );<br>};<br>export default App;<br>``` |
+| **`useReducer`**    | Manages state with a reducer function, useful for complex state logic. | ```jsx<br>import React, { useReducer } from 'react';<br>const reducer = (state, action) => {<br>  switch (action.type) {<br>    case 'increment':<br>      return { count: state.count + 1 };<br>    case 'decrement':<br>      return { count: state.count - 1 };<br>    default:<br>      throw new Error();<br>  }<br>};<br>const Counter = () => {<br>  const [state, dispatch] = useReducer(reducer, { count: 0 });<br>  return (<br>    <div><br>      <p>Count: {state.count}</p><br>      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button><br>      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button><br>    </div><br>  );<br>};<br>export default Counter;<br>``` |
+| **`useMemo`**       | Memoizes expensive calculations to optimize performance. | ```jsx<br>import React, { useMemo, useState } from 'react';<br>const ExpensiveComponent = ({ number }) => {<br>  const calculateFactorial = (num) => {<br>    if (num <= 0) return 1;<br>    return num * calculateFactorial(num - 1);<br>  };<br>  const factorial = useMemo(() => calculateFactorial(number), [number]);<br>  return <p>Factorial: {factorial}</p>;<br>};<br>const App = () => {<br>  const [number, setNumber] = useState(1);<br>  return (<br>    <div><br>      <input type="number" value={number} onChange={(e) => setNumber(Number(e.target.value))} /><br>      <ExpensiveComponent number={number} /><br>    </div><br>  );<br>};<br>export default App;<br>``` |
+| **`useCallback`**   | Memoizes callback functions to prevent unnecessary re-renders. | ```jsx<br>import React, { useCallback, useState } from 'react';<br>const Button = ({ onClick }) => (<br>  <button onClick={onClick}>Click me</button><br>);<br>const App = () => {<br>  const [count, setCount] = useState(0);<br>  const handleClick = useCallback(() => {<br>    setCount(count + 1);<br>  }, [count]);<br>  return (<br>    <div><br>      <p>Count: {count}</p><br>      <Button onClick={handleClick} /><br>    </div><br>  );<br>};<br>export default App;<br>``` |
+| **`useRef`**        | Provides a way to persist values across renders without causing a re-render. | ```jsx<br>import React, { useRef } from 'react';<br>const FocusInput = () => {<br>  const inputRef = useRef(null);<br>  const focusInput = () => {<br>    inputRef.current.focus();<br>  };<br>  return (<br>    <div><br>      <input ref={inputRef} type="text" /><br>      <button onClick={focusInput}>Focus Input</button><br>    </div><br>  );<br>};<br>export default FocusInput;<br>``` |
+| **`useLayoutEffect`** | Similar to `useEffect`, but fires synchronously after all DOM mutations. | ```jsx<br>import React, { useLayoutEffect, useRef, useState } from 'react';<br>const LayoutEffectExample = () => {<br>  const [size, setSize] = useState(0);<br>  const divRef = useRef(null);<br>  useLayoutEffect(() => {<br>    setSize(divRef.current.getBoundingClientRect().width);<br>  });<br>  return (<br>    <div ref={divRef} style={{ width: '100px', height: '100px', backgroundColor: 'lightblue' }}><br>      <p>Width: {size}px</p><br>    </div><br>  );<br>};<br>export default LayoutEffectExample;<br>``` |
+| **`useImperativeHandle`** | Customizes the instance value exposed when using `ref` with `forwardRef`. | ```jsx<br>import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';<br>const FancyInput = forwardRef((props, ref) => {<br>  const inputRef = useRef();<br>  useImperativeHandle(ref, () => ({<br>    focus: () => {<br>      inputRef.current.focus();<br>    },<br>  }));<br>  return <input ref={inputRef} {...props} />;<br>});<br>const App = () => {<br>  const inputRef = useRef();<br>  return (<br>    <div><br>      <FancyInput ref={inputRef} /><br>      <button onClick={() => inputRef.current.focus()}>Focus Input</button><br>    </div><br>  );<br>};<br>export default App;<br>``` |
+
+This table covers some of the most commonly used React hooks, their primary purposes, and examples of how they might be used in a React application.
+
+React lifecycle management refers to the series of methods and hooks that manage a component's lifecycle, from creation through updates to unmounting. React components go through several phases, and different lifecycle methods or hooks are available depending on whether you're using class components or functional components.
+
+### Class Component Lifecycle
+
+Class components use a series of lifecycle methods that you can override to run code at specific points in the component's lifecycle. Here's an overview of these methods:
+
+| **Lifecycle Phase** | **Method**               | **Description**                                                                                      | **Example Usage**                                                                                                                                                                 |
+|---------------------|--------------------------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Mounting**        | `constructor`            | Initializes state and binds methods.                                                                 | ```jsx<br>class MyComponent extends React.Component {<br>  constructor(props) {<br>    super(props);<br>    this.state = { count: 0 };<br>  }<br>}```                        |
+|                     | `static getDerivedStateFromProps` | Updates state based on props before render.                                                        | ```jsx<br>class MyComponent extends React.Component {<br>  static getDerivedStateFromProps(nextProps, prevState) {<br>    // Update state based on props<br>    return null;<br>  }<br>}```                |
+|                     | `render`                 | Returns the JSX to render the component.                                                             | ```jsx<br>render() {<br>  return <div>{this.state.count}</div>;<br>}```                                                                                             |
+|                     | `componentDidMount`      | Runs after the component has been mounted in the DOM. Used for side effects like data fetching.       | ```jsx<br>componentDidMount() {<br>  fetch('/api/data').then(response => response.json()).then(data => this.setState({ data }));<br>}``` |
+| **Updating**        | `static getDerivedStateFromProps` | Same as during mounting.                                                                 | ```jsx<br>static getDerivedStateFromProps(nextProps, prevState) {<br>  // Update state based on props<br>  return null;<br>}```              |
+|                     | `shouldComponentUpdate`  | Determines whether the component should re-render.                                                    | ```jsx<br>shouldComponentUpdate(nextProps, nextState) {<br>  return nextProps.someValue !== this.props.someValue;<br>}```      |
+|                     | `render`                 | Same as during mounting.                                                                 | ```jsx<br>render() {<br>  return <div>{this.state.count}</div>;<br>}```                                                                                             |
+|                     | `getSnapshotBeforeUpdate` | Captures information (like scroll position) before changes are applied to the DOM.                   | ```jsx<br>getSnapshotBeforeUpdate(prevProps, prevState) {<br>  return this.divRef.scrollHeight;<br>}```                 |
+|                     | `componentDidUpdate`     | Runs after the component has been updated. Useful for reacting to prop or state changes.             | ```jsx<br>componentDidUpdate(prevProps, prevState) {<br>  if (this.props.value !== prevProps.value) {<br>    // React to prop change<br>  }<br>}```   |
+| **Unmounting**      | `componentWillUnmount`   | Runs before the component is removed from the DOM. Used for cleanup like cancelling network requests. | ```jsx<br>componentWillUnmount() {<br>  clearInterval(this.intervalId);<br>}```                                                                                   |
+
+### Functional Component Lifecycle with Hooks
+
+Functional components manage lifecycle events using React Hooks. Here’s how you can achieve similar lifecycle management with hooks:
+
+| **Lifecycle Phase** | **Hook**                 | **Description**                                                                                      | **Example Usage**                                                                                                                                            |
+|---------------------|--------------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Mounting**        | `useEffect` (empty deps) | Runs after the component mounts. Equivalent to `componentDidMount`.                                | ```jsx<br>useEffect(() => {<br>  fetch('/api/data').then(response => response.json()).then(data => setData(data));<br>}, []);<br>```  |
+| **Updating**        | `useEffect` (with deps)  | Runs when specified dependencies change. Equivalent to `componentDidUpdate`.                         | ```jsx<br>useEffect(() => {<br>  console.log('Value changed:', value);<br>}, [value]);<br>```                                                               |
+| **Unmounting**      | `useEffect` (cleanup)    | Returns a cleanup function to run before the component unmounts. Equivalent to `componentWillUnmount`. | ```jsx<br>useEffect(() => {<br>  const intervalId = setInterval(() => {<br>    console.log('Tick');<br>  }, 1000);<br>  return () => clearInterval(intervalId);<br>}, []);<br>``` |
+
+### Key Points
+
+- **Class Components**: Use lifecycle methods for managing component behavior across its lifecycle phases.
+- **Functional Components**: Use hooks like `useEffect` to manage side effects and lifecycle behavior.
+
+By leveraging these methods and hooks, you can efficiently manage the lifecycle of your React components, ensuring they behave correctly at every stage of their existence.
+
+In React, lifecycle hooks (also known as lifecycle methods) are used to run code at specific points in a component’s lifecycle. These hooks are used to perform actions such as fetching data, updating the UI, and cleaning up resources. Lifecycle hooks differ between class components and functional components. Here’s a detailed overview of lifecycle hooks for both types of components.
+
+### Class Component Lifecycle Methods
+
+Class components have a series of lifecycle methods that are invoked at different stages of a component’s lifecycle:
+
+| **Lifecycle Phase** | **Method**                | **Description**                                                                                      | **Example Usage**                                                                                                                                                                 |
+|---------------------|---------------------------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Mounting**        | `constructor`             | Initializes state and binds methods.                                                                 | ```jsx<br>class MyComponent extends React.Component {<br>  constructor(props) {<br>    super(props);<br>    this.state = { count: 0 };<br>  }<br>}```                        |
+|                     | `static getDerivedStateFromProps` | Updates state based on props before render.                                                        | ```jsx<br>class MyComponent extends React.Component {<br>  static getDerivedStateFromProps(nextProps, prevState) {<br>    // Update state based on props<br>    return null;<br>  }<br>}```                |
+|                     | `render`                  | Returns the JSX to render the component.                                                             | ```jsx<br>render() {<br>  return <div>{this.state.count}</div>;<br>}```                                                                                             |
+|                     | `componentDidMount`       | Runs after the component has been mounted in the DOM. Used for side effects like data fetching.       | ```jsx<br>componentDidMount() {<br>  fetch('/api/data').then(response => response.json()).then(data => this.setState({ data }));<br>}``` |
+| **Updating**        | `static getDerivedStateFromProps` | Same as during mounting.                                                                 | ```jsx<br>static getDerivedStateFromProps(nextProps, prevState) {<br>  // Update state based on props<br>  return null;<br>}```              |
+|                     | `shouldComponentUpdate`   | Determines whether the component should re-render.                                                    | ```jsx<br>shouldComponentUpdate(nextProps, nextState) {<br>  return nextProps.someValue !== this.props.someValue;<br>}```      |
+|                     | `render`                  | Same as during mounting.                                                                 | ```jsx<br>render() {<br>  return <div>{this.state.count}</div>;<br>}```                                                                                             |
+|                     | `getSnapshotBeforeUpdate` | Captures information (like scroll position) before changes are applied to the DOM.                   | ```jsx<br>getSnapshotBeforeUpdate(prevProps, prevState) {<br>  return this.divRef.scrollHeight;<br>}```                 |
+|                     | `componentDidUpdate`      | Runs after the component has been updated. Useful for reacting to prop or state changes.             | ```jsx<br>componentDidUpdate(prevProps, prevState) {<br>  if (this.props.value !== prevProps.value) {<br>    // React to prop change<br>  }<br>}```   |
+| **Unmounting**      | `componentWillUnmount`    | Runs before the component is removed from the DOM. Used for cleanup like cancelling network requests. | ```jsx<br>componentWillUnmount() {<br>  clearInterval(this.intervalId);<br>}```                                                                                   |
+
+### Functional Component Lifecycle Hooks
+
+Functional components use hooks to manage side effects and mimic lifecycle behavior. The primary hook for managing lifecycle events is `useEffect`.
+
+| **Hook**            | **Description**                                                                                      | **Example Usage**                                                                                                                                            |
+|---------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`useEffect`**     | Handles side effects in functional components. You can specify dependencies to control when the effect runs. | ```jsx<br>import React, { useEffect, useState } from 'react';<br>const Example = () => {<br>  const [data, setData] = useState(null);<br>  useEffect(() => {<br>    fetch('/api/data')<br>      .then(response => response.json())<br>      .then(data => setData(data));<br>  }, []);<br>  return (<br>    <div>{data ? <p>{data.someProperty}</p> : <p>Loading...</p>}</div><br>  );<br>};<br>export default Example;<br>``` |
+| **`useLayoutEffect`** | Similar to `useEffect`, but runs synchronously after all DOM mutations. Useful for measurements. | ```jsx<br>import React, { useLayoutEffect, useRef, useState } from 'react';<br>const LayoutEffectExample = () => {<br>  const [size, setSize] = useState(0);<br>  const divRef = useRef(null);<br>  useLayoutEffect(() => {<br>    setSize(divRef.current.getBoundingClientRect().width);<br>  });<br>  return (<br>    <div ref={divRef} style={{ width: '100px', height: '100px', backgroundColor: 'lightblue' }}><br>      <p>Width: {size}px</p><br>    </div><br>  );<br>};<br>export default LayoutEffectExample;<br>``` |
+| **`useImperativeHandle`** | Customizes the instance value exposed when using `ref` with `forwardRef`. | ```jsx<br>import React, { forwardRef, useImperativeHandle, useRef } from 'react';<br>const FancyInput = forwardRef((props, ref) => {<br>  const inputRef = useRef();<br>  useImperativeHandle(ref, () => ({<br>    focus: () => {<br>      inputRef.current.focus();<br>    },<br>  }));<br>  return <input ref={inputRef} {...props} />;<br>});<br>const App = () => {<br>  const inputRef = useRef();<br>  return (<br>    <div><br>      <FancyInput ref={inputRef} /><br>      <button onClick={() => inputRef.current.focus()}>Focus Input</button><br>    </div><br>  );<br>};<br>export default App;<br>``` |
+
+### Summary
+
+- **Class Components**: Use specific lifecycle methods to handle different stages in the component lifecycle.
+- **Functional Components**: Use hooks like `useEffect`, `useLayoutEffect`, and `useImperativeHandle` to handle side effects and lifecycle-like behavior.
+
+By using these lifecycle methods and hooks, you can effectively manage the state, side effects, and interactions of your React components throughout their lifecycle.
+
+When interviewing for an experienced React position, you're likely to encounter questions that test your deep understanding of React's core concepts, practical experience, and problem-solving skills. Below are some common questions and comprehensive answers to help you prepare for an experienced-level React interview.
+
+### 1. **What are the key differences between `useEffect` and `useLayoutEffect`?**
+
+**Answer:**
+`useEffect` and `useLayoutEffect` are both hooks used for handling side effects in functional components, but they differ in timing and use cases:
+
+- **`useEffect`**:
+  - Runs asynchronously after the DOM has been painted.
+  - Suitable for operations that don’t require DOM measurements or updates, such as data fetching, subscriptions, or manually changing the DOM after rendering.
+  - Example:
+    ```jsx
+    useEffect(() => {
+      fetchData();
+    }, []);
+    ```
+
+- **`useLayoutEffect`**:
+  - Runs synchronously immediately after the DOM mutations but before the browser has painted the updates.
+  - Suitable for measuring layout or synchronously updating the DOM (e.g., scrolling to a position or calculating element dimensions).
+  - Example:
+    ```jsx
+    useLayoutEffect(() => {
+      const height = ref.current.getBoundingClientRect().height;
+      console.log(height);
+    }, []);
+    ```
+
+### 2. **Explain how React’s reconciliation algorithm works.**
+
+**Answer:**
+React’s reconciliation algorithm is responsible for efficiently updating the DOM. The key aspects of this algorithm are:
+
+- **Virtual DOM**: React creates a virtual DOM (a lightweight copy of the real DOM) to optimize updates. When the state of a component changes, React first updates the virtual DOM.
+
+- **Diffing Algorithm**: React uses a diffing algorithm to compare the virtual DOM with the previous version to identify changes. It performs a shallow comparison of component trees and updates only the parts that have changed.
+
+- **Key Prop**: To efficiently manage lists, React uses keys to identify which items have changed, been added, or been removed. This helps in reordering and updating list items without affecting other parts of the DOM.
+
+### 3. **What is the purpose of `React.memo` and how does it work?**
+
+**Answer:**
+`React.memo` is a higher-order component used to memoize functional components, preventing unnecessary re-renders if the props have not changed.
+
+- **Purpose**: Optimize performance by avoiding re-renders for components with unchanged props.
+
+- **How it Works**: React.memo performs a shallow comparison of the previous and current props. If the props are equal, the component is not re-rendered.
+
+- **Example**:
+  ```jsx
+  const MyComponent = React.memo(({ value }) => {
+    return <div>{value}</div>;
+  });
+  ```
+
+### 4. **How does `useReducer` compare to `useState`, and when would you use it?**
+
+**Answer:**
+`useReducer` and `useState` are both hooks for managing state in functional components, but they are used in different scenarios:
+
+- **`useState`**:
+  - Best for managing simple state or local state in components.
+  - Provides a state variable and a function to update it.
+  - Example:
+    ```jsx
+    const [count, setCount] = useState(0);
+    ```
+
+- **`useReducer`**:
+  - Best for managing complex state logic, especially when state updates depend on previous state values or involve multiple sub-values.
+  - Uses a reducer function (similar to Redux) to manage state transitions.
+  - Example:
+    ```jsx
+    const initialState = { count: 0 };
+    function reducer(state, action) {
+      switch (action.type) {
+        case 'increment':
+          return { count: state.count + 1 };
+        case 'decrement':
+          return { count: state.count - 1 };
+        default:
+          throw new Error();
+      }
+    }
+    const [state, dispatch] = useReducer(reducer, initialState);
+    ```
+
+### 5. **What is the purpose of `React.forwardRef` and how is it used?**
+
+**Answer:**
+`React.forwardRef` is used to forward refs from parent components to child components. It allows you to pass a ref through a component to access a DOM element or another component instance.
+
+- **Purpose**: Useful for accessing or interacting with a child’s DOM element or instance from a parent component.
+
+- **Usage**:
+  ```jsx
+  const FancyButton = React.forwardRef((props, ref) => (
+    <button ref={ref} className="fancy-button">
+      {props.children}
+    </button>
+  ));
+  
+  // Parent component
+  const App = () => {
+    const buttonRef = useRef(null);
+    return (
+      <div>
+        <FancyButton ref={buttonRef}>Click me</FancyButton>
+      </div>
+    );
+  };
+  ```
+
+### 6. **How do you handle errors in React?**
+
+**Answer:**
+Handling errors in React can be done using Error Boundaries and the `useErrorBoundary` hook from libraries like `react-error-boundary`.
+
+- **Error Boundaries**: Components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of crashing the whole app.
+
+- **Usage**:
+  ```jsx
+  class ErrorBoundary extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError() {
+      return { hasError: true };
+    }
+
+    componentDidCatch(error, info) {
+      console.error("Error caught in boundary:", error, info);
+    }
+
+    render() {
+      if (this.state.hasError) {
+        return <h1>Something went wrong.</h1>;
+      }
+
+      return this.props.children; 
+    }
+  }
+  ```
+
+### 7. **Explain how React’s Context API works and provide an example.**
+
+**Answer:**
+React’s Context API is used for passing data through the component tree without having to pass props down manually at every level. It’s ideal for global data like themes, user information, or settings.
+
+- **Context Creation**:
+  ```jsx
+  const MyContext = React.createContext(defaultValue);
+  ```
+
+- **Provider Component**: Wraps the part of the app that needs access to the context.
+  ```jsx
+  const MyProvider = ({ children }) => {
+    const [state, setState] = useState(initialState);
+    return (
+      <MyContext.Provider value={{ state, setState }}>
+        {children}
+      </MyContext.Provider>
+    );
+  };
+  ```
+
+- **Consumer Component**: Accesses context values.
+  ```jsx
+  const MyComponent = () => {
+    const { state, setState } = useContext(MyContext);
+    return <div>{state.someValue}</div>;
+  };
+  ```
+
+### 8. **What are React Suspense and Concurrent Mode, and how do they improve performance?**
+
+**Answer:**
+- **React Suspense**: Allows components to "suspend" rendering while waiting for asynchronous data (e.g., lazy-loaded components) to be available. It provides a way to handle loading states declaratively.
+
+  - **Example**:
+    ```jsx
+    const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+    function App() {
+      return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <LazyComponent />
+        </React.Suspense>
+      );
+    }
+    ```
+
+- **Concurrent Mode**: Enables React to interrupt and pause work on rendering to keep the UI responsive. It introduces features like concurrent rendering and automatic batching.
+
+  - **Benefits**:
+    - **Improved User Experience**: Ensures that the application remains responsive by prioritizing urgent updates.
+    - **Efficient Rendering**: Allows React to render updates in the background and switch to higher-priority tasks.
+
+### 9. **How would you optimize a React application for performance?**
+
+**Answer:**
+To optimize a React application, consider the following strategies:
+
+- **Code Splitting**: Use dynamic `import()` to load components only when needed. Libraries like `React.lazy` and `React.Suspense` help with this.
+- **Memoization**: Use `React.memo` to prevent unnecessary re-renders of functional components. Use `useCallback` and `useMemo` to memoize functions and values.
+- **Virtualization**: Use libraries like `react-window` or `react-virtualized` to render only the visible portion of a large list or table.
+- **Avoid Inline Functions**: Define functions outside the render method or use `useCallback` to avoid creating new function instances on each render.
+- **Optimize Context Usage**: Be cautious with context as frequent updates can trigger re-renders in all consuming components. Consider splitting context if necessary.
+- **Efficient Reconciliation**: Use keys properly in lists and avoid changing object/array references if they are used as dependencies in hooks.
+
+### 10. **Explain the concept of Higher-Order Components (HOCs) and provide an example.**
+
+**Answer:**
+Higher-Order Components (HOCs) are functions that take a component and return a new component with enhanced functionality. HOCs are used for reusing component logic.
+
+- **Purpose**: To abstract and reuse logic that can be shared across multiple components.
+
+- **Example**:
+  ```jsx
+  const withLogging = (WrappedComponent) => {
+    return class extends React.Component {
+      componentDidMount() {
+        console.log('Component mounted:', WrappedComponent.name);
+      }
+
+      render() {
+        return <WrappedComponent {...this.props} />;
+      }
+    };
+  };
+
+  const MyComponent = (props
+
+) => <div>{props.message}</div>;
+  const MyComponentWithLogging = withLogging(MyComponent);
+  ```
+
+These questions and answers cover a range of advanced React topics that are relevant for experienced developers. Preparing with these examples will help you demonstrate a deep understanding of React’s capabilities and best practices in your interview.
