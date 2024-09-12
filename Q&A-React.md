@@ -90,7 +90,7 @@
 | 84  | [What are React Mixins?](#84-what-are-react-mixins) |
 | 85  | [Why is isMounted() an anti-pattern and what is the proper solution?](#85-why-is-ismounted-an-anti-pattern-and-what-is-the-proper-solution) |
 | 86  | [What are the Pointer Events supported in React?](#86-what-are-the-pointer-events-supported-in-react) |
-| 87  | [Why should component names start with a capital letter?](#87-why-should-component-names-start-with-capital-letter) |
+| 87  | [Why should component names start with a capital letter?](#87-why-should-component-names-start-with-a-capital-letter) |
 | 88  | [Are custom DOM attributes supported in React v16?](#88-are-custom-dom-attributes-supported-in-react-v16) |
 | 89  | [What is the difference between constructor and getInitialState?](#89-what-is-the-difference-between-constructor-and-getinitialstate) |
 | 90  | [Can you force a component to re-render without calling setState?](#90-can-you-force-a-component-to-re-render-without-calling-setstate) |
