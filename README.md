@@ -20,6 +20,7 @@ Hide/Show table of contents
 |9 | [**Q&A-React**](FAQ-React.md)|
 |10 | [**Q&A-React-Advanced**](FAQ-React-Advanced.md)|
 |11 | [**Q&A-React-300**](FAQ-React-300.md)|
+|12| [**Q&A-React**](Q&A-React.md)|
 
 </details>
 
