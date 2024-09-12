@@ -313,30 +313,43 @@
 | 301 | [Is it recommended to use CSS In JS technique in React?](#301-is-it-recommended-to-use-css-in-js-technique-in-react) |
 | 302 | [Do I need to rewrite all my class components with hooks?](#302-do-i-need-to-rewrite-all-my-class-components-with-hooks) |
 | 303 | [How to fetch data with React Hooks?](#303-how-to-fetch-data-with-react-hooks) |
-| 304 | [Is Hooks cover all use cases for classes?](#304-is-hooks-cover-all-use-cases-for-classes) |
-| 305 | [What is the stable release for hooks support?](#305-what-is-the-stable-release-for-hooks-support) |
-| 306 | [Why do we use array destructuring (square brackets notation) in useState?](#306-why-do-we-use-array-destructuring-square-brackets-notation-in-usestate) |
-| 307 | [What are the sources used for introducing hooks?](#307-what-are-the-sources-used-for-introducing-hooks) |
-| 308 | [How do you access imperative API of web components?](#308-how-do-you-access-imperative-api-of-web-components) |
-| 309 | [What is formik?](#309-what-is-formik) |
-| 310 | [What are typical middleware choices for handling asynchronous calls in Redux?](#310-what-are-typical-middleware-choices-for-handling-asynchronous-calls-in-redux) |
-| 311 | [Do browsers understand JSX code?](#311-do-browsers-understand-jsx-code) |
-| 312 | [Describe about data flow in react?](#312-describe-about-data-flow-in-react) |
-| 313 | [What is react scripts?](#313-what-is-react-scripts) |
-| 314 | [What are the features of create react app?](#314-what-are-the-features-of-create-react-app) |
-| 315 | [What is the purpose of renderToNodeStream method?](#315-what-is-the-purpose-of-rendertonodestream-method) |
-| 316 | [What is MobX?](#316-what-is-mobx) |
-| 317 | [What are the differences between Redux and MobX?](#317-what-are-the-differences-between-redux-and-mobx) |
-| 318 | [Should I learn ES6 before learning ReactJS?](#318-should-i-learn-es6-before-learning-reactjs) |
-| 319 | [What is Concurrent Rendering?](#319-what-is-concurrent-rendering) |
-| 320 | [What is the difference between async mode and concurrent mode?](#320-what-is-the-difference-between-async-mode-and-concurrent-mode) |
-| 321 | [Can I use javascript urls in react16.9?](#321-can-i-use-javascript-urls-in-react169) |
-| 322 | [What is the purpose of eslint plugin for hooks?](#322-what-is-the-purpose-of-eslint-plugin-for-hooks) |
-| 323 | [What is the difference between Imperative and Declarative in React?](#323-what-is-the-difference-between-imperative-and-declarative-in-react) |
-| 324 | [What are the benefits of using typescript with reactjs?](#324-what-are-the-benefits-of-using-typescript-with-reactjs) |
-| 325 | [How do you make sure that user remains authenticated on page refresh while using Context API State Management?](#325-how-do-you-make-sure-that-user-remains-authenticated-on-page-refresh-while-using-context-api-state-management) |
-| 326 | [What are the benefits of new JSX transform?](#326-what-are-the-benefits-of-new-jsx-transform) |
-| 327 | [How does new JSX transform different from old transform?](#327-how-does-new-jsx-transform-different-from-old-transform) |
+| 304 | [How to debug React components?](#304-how-to-debug-react-components)                                  |
+| 305 | [What is the advantage of using React.memo?](#305-what-is-the-advantage-of-using-reactmemo)           |
+| 306 | [What are the common patterns for managing state in React?](#306-what-are-the-common-patterns-for-managing-state-in-react) |
+| 308 | [How do you handle side effects in React functional components?](#308-how-do-you-handle-side-effects-in-react-functional-components) |
+| 309 | [How to manage complex forms in React?](#309-how-to-manage-complex-forms-in-react)                    |
+| 310 | [What is the purpose of useLayoutEffect hook?](#310-what-is-the-purpose-of-uselayouteffect-hook)       |
+| 311 | [How do you handle errors in React components?](#311-how-do-you-handle-errors-in-react-components)    |
+| 312 | [How to optimize React application performance?](#312-how-to-optimize-react-application-performance)  |
+| 313 | [What are controlled components in React?](#313-what-are-controlled-components-in-react)             |
+| 314 | [What are uncontrolled components in React?](#314-what-are-uncontrolled-components-in-react)         |
+| 315 | [How to avoid prop drilling in React?](#315-how-to-avoid-prop-drilling-in-react)                       |
+| 316 | [What is the purpose of useCallback hook?](#316-what-is-the-purpose-of-usecallback-hook)               |
+| 317 | [What is the useRef hook used for?](#317-what-is-the-useref-hook-used-for)                            |
+| 318 | [How do you handle async operations in functional components?](#318-how-do-you-handle-async-operations-in-functional-components) |
+| 319 | [What is the purpose of useReducer hook?](#319-what-is-the-purpose-of-usereducer-hook)                 |
+| 320 | [How do you handle CSS-in-JS in a React application?](#320-how-do-you-handle-css-in-js-in-a-react-application) |
+| 321 | [What is the purpose of useImperativeHandle hook?](#321-what-is-the-purpose-of-useimperativehandle-hook) |
+| 322 | [How do you create and use a custom hook?](#322-how-do-you-create-and-use-a-custom-hook)               |
+| 323 | [What is the useContext hook used for?](#323-what-is-the-usecontext-hook-used-for)                    |
+| 324 | [How do you optimize rendering performance in React?](#324-how-do-you-optimize-rendering-performance-in-react) |
+| 325 | [What is the difference between useEffect and useLayoutEffect?](#325-what-is-the-difference-between-useeffect-and-uselayouteffect) |
+| 326 | [How to use React.Suspense with lazy-loaded components?](#326-how-to-use-reactsuspense-with-lazy-loaded-components) |
+| 327 | [How to handle user authentication in React?](#327-how-to-handle-user-authentication-in-react)         |
+| 328 | [How to integrate a third-party library with React?](#328-how-to-integrate-a-third-party-library-with-react) |
+| 329 | [What is React’s Concurrent Mode?](#329-what-is-reacts-concurrent-mode)                               |
+| 330 | [How to manage side effects in a React application?](#330-how-to-manage-side-effects-in-a-react-application) |
+| 331 | [How do you use useMemo hook?](#331-how-do-you-use-usememo-hook)                                       |
+| 332 | [How to handle form validation in React?](#332-how-to-handle-form-validation-in-react)                |
+| 333 | [What is the purpose of the useState hook?](#333-what-is-the-purpose-of-the-usestate-hook)             |
+| 334 | [How to implement pagination in React?](#334-how-to-implement-pagination-in-react)                    |
+| 335 | [How do you handle route changes in a React application?](#335-how-do-you-handle-route-changes-in-a-react-application) |
+| 336 | [What is the purpose of React.StrictMode?](#336-what-is-the-purpose-of-reactstrictmode)               |
+| 337 | [How to implement dynamic imports in React?](#337-how-to-implement-dynamic-imports-in-react)          |
+| 338 | [What is the purpose of useEffect hook dependency array?](#338-what-is-the-purpose-of-useeffect-hook-dependency-array) |
+| 339 | [How to handle file uploads in a React application?](#339-how-to-handle-file-uploads-in-a-react-application) |
+| 340 | [How do you implement conditional rendering in React?](#340-how-do-you-implement-conditional-rendering-in-react) |
+
 
 
 ### 1. What is React?
