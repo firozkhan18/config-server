@@ -209,172 +209,135 @@
 | 197 | [Why is DevTools not loading in Chrome for local files?](#197-why-is-devtools-not-loading-in-chrome-for-local-files) |
 | 198 | [How to use Polymer in React?](#198-how-to-use-polymer-in-react) |
 | 199 | [What are the advantages of React over Vue.js?](#199-what-are-the-advantages-of-react-over-vuejs) |
-| 200 | [What is the difference between React and Angular?](#200-what-is-the-difference-between-react-and-angular)
+| 200 | [What is the difference between React and Angular?](#200-what-is-the-difference-between-react-and-angular)|
+| #   | **Miscellaneous** |
+| 201 | [Why React tab is not showing up in DevTools?](#201-why-react-tab-is-not-showing-up-in-devtools) |
+| 202 | [What are styled components?](#202-what-are-styled-components) |
+| 203 | [Give an example of Styled Components?](#203-give-an-example-of-styled-components) |
+| 204 | [What is Relay?](#204-what-is-relay) |
+| 205 | [How to use TypeScript in create-react-app application?](#205-how-to-use-typescript-in-create-react-app-application) |
+| 206 | [What are the main features of reselect library?](#206-what-are-the-main-features-of-reselect-library) |
+| 207 | [Give an example of reselect usage?](#207-give-an-example-of-reselect-usage) |
+| 209 | [Does the statics object work with ES6 classes in React?](#209-does-the-statics-object-work-with-es6-classes-in-react) |
+| 210 | [Can Redux only be used with React?](#210-can-redux-only-be-used-with-react) |
+| 211 | [Do you need to have a particular build tool to use Redux?](#211-do-you-need-to-have-a-particular-build-tool-to-use-redux) |
+| 212 | [How Redux Form initialValues get updated from state?](#212-how-redux-form-initialvalues-get-updated-from-state) |
+| 213 | [How React PropTypes allow different type for one prop?](#213-how-react-proptypes-allow-different-type-for-one-prop) |
+| 214 | [Can I import an SVG file as react component?](#214-can-i-import-an-svg-file-as-react-component) |
+| 215 | [Why are inline ref callbacks or functions not recommended?](#215-why-are-inline-ref-callbacks-or-functions-not-recommended) |
+| 216 | [What is render hijacking in React?](#216-what-is-render-hijacking-in-react) |
+| 217 | [What are HOC factory implementations?](#217-what-are-hoc-factory-implementations) |
+| 218 | [How to pass numbers to React component?](#218-how-to-pass-numbers-to-react-component) |
+| 219 | [Do I need to keep all my state into Redux? Should I ever use react internal state?](#219-do-i-need-to-keep-all-my-state-into-redux-should-i-ever-use-react-internal-state) |
+| 220 | [What is the purpose of registerServiceWorker in React?](#220-what-is-the-purpose-of-registerserviceworker-in-react) |
+| 221 | [What is React memo function?](#221-what-is-react-memo-function) |
+| 222 | [What is React lazy function?](#222-what-is-react-lazy-function) |
+| 223 | [How to prevent unnecessary updates using setState?](#223-how-to-prevent-unnecessary-updates-using-setstate) |
+| 224 | [How do you render Array, Strings and Numbers in React 16 Version?](#224-how-do-you-render-array-strings-and-numbers-in-react-16-version) |
+| 225 | [How to use class field declarations syntax in React classes?](#225-how-to-use-class-field-declarations-syntax-in-react-classes) |
+| 226 | [What are hooks?](#226-what-are-hooks) |
+| 227 | [What are the rules needs to follow for hooks?](#227-what-are-the-rules-needs-to-follow-for-hooks) |
+| 228 | [How to ensure hooks followed the rules in your project?](#228-how-to-ensure-hooks-followed-the-rules-in-your-project) |
+| 229 | [What are the differences between Flux and Redux?](#229-what-are-the-differences-between-flux-and-redux) |
+| 230 | [What are the benefits of React Router V4?](#230-what-are-the-benefits-of-react-router-v4) |
+| 231 | [Can you describe about componentDidCatch lifecycle method signature?](#231-can-you-describe-about-componentdidcatch-lifecycle-method-signature) |
+| 232 | [In which scenarios error boundaries do not catch errors?](#232-in-which-scenarios-error-boundaries-do-not-catch-errors) |
+| 233 | [Why do not you need error boundaries for event handlers?](#233-why-do-not-you-need-error-boundaries-for-event-handlers) |
+| 234 | [What is the difference between try catch block and error boundaries?](#234-what-is-the-difference-between-try-catch-block-and-error-boundaries) |
+| 235 | [What is the behavior of uncaught errors in react 16?](#235-what-is-the-behavior-of-uncaught-errors-in-react-16) |
+| 236 | [What is the proper placement for error boundaries?](#236-what-is-the-proper-placement-for-error-boundaries) |
+| 237 | [What is the benefit of component stack trace from error boundary?](#237-what-is-the-benefit-of-component-stack-trace-from-error-boundary) |
+| 238 | [What is the required method to be defined for a class component?](#238-what-is-the-required-method-to-be-defined-for-a-class-component) |
+| 239 | [What are the possible return types of render method?](#239-what-are-the-possible-return-types-of-render-method) |
+| 240 | [What is the main purpose of constructor?](#240-what-is-the-main-purpose-of-constructor) |
+| 241 | [Is it mandatory to define constructor for React component?](#241-is-it-mandatory-to-define-constructor-for-react-component) |
+| 242 | [What are default props?](#242-what-are-default-props) |
+| 243 | [Why should not call setState in componentWillUnmount?](#243-why-should-not-call-setstate-in-componentwillunmount) |
+| 244 | [What is the purpose of getDerivedStateFromError?](#244-what-is-the-purpose-of-getderivedstatefromerror) |
+| 245 | [What is the methods order when component re-rendered?](#245-what-is-the-methods-order-when-component-re-rendered) |
+| 246 | [What are the methods invoked during error handling?](#246-what-are-the-methods-invoked-during-error-handling) |
+| 247 | [What is the purpose of displayName class property?](#247-what-is-the-purpose-of-displayname-class-property) |
+| 248 | [What is the browser support for react applications?](#248-what-is-the-browser-support-for-react-applications) |
+| 249 | [What is the purpose of unmountComponentAtNode method?](#249-what-is-the-purpose-of-unmountcomponentatnode-method) |
+| 250 | [What is code-splitting?](#250-what-is-code-splitting) |
+| 251 | [What is the benefit of strict mode?](#251-what-is-the-benefit-of-strict-mode) |
+| 252 | [What are Keyed Fragments?](#252-what-are-keyed-fragments) |
+| 253 | [Does React support all HTML attributes?](#253-does-react-support-all-html-attributes) |
+| 254 | [What are the limitations with HOCs?](#254-what-are-the-limitations-with-hocs) |
+| 255 | [How to debug forwardRefs in DevTools?](#255-how-to-debug-forwardrefs-in-devtools) |
+| 256 | [When component props defaults to true?](#256-when-component-props-defaults-to-true) |
+| 257 | [What is NextJS and major features of it?](#257-what-is-nextjs-and-major-features-of-it) |
+| 258 | [How do you pass an event handler to a component?](#258-how-do-you-pass-an-event-handler-to-a-component) |
+| 259 | [Is it good to use arrow functions in render methods?](#259-is-it-good-to-use-arrow-functions-in-render-methods) |
+| 260 | [How to prevent a function from being called multiple times?](#260-how-to-prevent-a-function-from-being-called-multiple-times) |
+| 261 | [How JSX prevents Injection Attacks?](#261-how-jsx-prevents-injection-attacks) |
+| 262 | [How do you update rendered elements?](#262-how-do-you-update-rendered-elements) |
+| 263 | [How do you say that props are read only?](#263-how-do-you-say-that-props-are-read-only) |
+| 264 | [How do you say that state updates are merged?](#264-how-do-you-say-that-state-updates-are-merged) |
+| 265 | [How do you pass arguments to an event handler?](#265-how-do-you-pass-arguments-to-an-event-handler) |
+| 266 | [How to prevent component from rendering?](#266-how-to-prevent-component-from-rendering) |
+| 267 | [What are the conditions to safely use the index as a key?](#267-what-are-the-conditions-to-safely-use-the-index-as-a-key) |
+| 268 | [Is it keys should be globally unique?](#268-is-it-keys-should-be-globally-unique) |
+| 269 | [What is the popular choice for form handling?](#269-what-is-the-popular-choice-for-form-handling) |
+| 270 | [What are the advantages of formik over redux form library?](#270-what-are-the-advantages-of-formik-over-redux-form-library) |
+| 271 | [Why do you not required to use inheritance?](#271-why-do-you-not-required-to-use-inheritance) |
+| 272 | [Can I use web components in react application?](#272-can-i-use-web-components-in-react-application) |
+| 273 | [What is dynamic import?](#273-what-is-dynamic-import) |
+| 274 | [What are loadable components?](#274-what-are-loadable-components) |
+| 275 | [What is suspense component?](#275-what-is-suspense-component) |
+| 276 | [What is route based code splitting?](#276-what-is-route-based-code-splitting) |
+| 277 | [Give an example on How to use context?](#277-give-an-example-on-how-to-use-context) |
+| 278 | [What is the purpose of default value in context?](#278-what-is-the-purpose-of-default-value-in-context) |
+| 279 | [How do you use contextType?](#279-how-do-you-use-contexttype) |
+| 280 | [What is a consumer?](#280-what-is-a-consumer) |
+| 281 | [How do you solve performance corner cases while using context?](#281-how-do-you-solve-performance-corner-cases-while-using-context) |
+| 282 | [What is the purpose of forward ref in HOCs?](#282-what-is-the-purpose-of-forward-ref-in-hocs) |
+| 283 | [Is it ref argument available for all functions or class components?](#283-is-it-ref-argument-available-for-all-functions-or-class-components) |
+| 284 | [Why do you need additional care for component libraries while using forward refs?](#284-why-do-you-need-additional-care-for-component-libraries-while-using-forward-refs) |
+| 285 | [How to create react class components without ES6?](#285-how-to-create-react-class-components-without-es6) |
+| 286 | [Is it possible to use react without JSX?](#286-is-it-possible-to-use-react-without-jsx) |
+| 287 | [What is diffing algorithm?](#287-what-is-diffing-algorithm) |
+| 288 | [What are the rules covered by diffing algorithm?](#288-what-are-the-rules-covered-by-diffing-algorithm) |
+| 289 | [When do you need to use refs?](#289-when-do-you-need-to-use-refs) |
+| 290 | [Is it prop must be named as render for render props?](#290-is-it-prop-must-be-named-as-render-for-render-props) |
+| 291 | [What are the problems of using render props with pure components?](#291-what-are-the-problems-of-using-render-props-with-pure-components) |
+| 292 | [How do you create HOC using render props?](#292-how-do-you-create-hoc-using-render-props) |
+| 293 | [What is windowing technique?](#293-what-is-windowing-technique) |
+| 294 | [How do you print falsy values in JSX?](#294-how-do-you-print-falsy-values-in-jsx) |
+| 295 | [What is the typical use case of portals?](#295-what-is-the-typical-use-case-of-portals) |
+| 296 | [How do you set default value for uncontrolled component?](#296-how-do-you-set-default-value-for-uncontrolled-component) |
+| 297 | [What is your favorite React stack?](#297-what-is-your-favorite-react-stack) |
+| 298 | [What is the difference between Real DOM and Virtual DOM?](#298-what-is-the-difference-between-real-dom-and-virtual-dom) |
+| 299 | [How to add Bootstrap to a react application?](#299-how-to-add-bootstrap-to-a-react-application) |
+| 300 | [Can you list the default events provided by React?](#300-can-you-list-the-default-events-provided-by-react) |
+| 301 | [Is it recommended to use CSS In JS technique in React?](#301-is-it-recommended-to-use-css-in-js-technique-in-react) |
+| 302 | [Do I need to rewrite all my class components with hooks?](#302-do-i-need-to-rewrite-all-my-class-components-with-hooks) |
+| 303 | [How to fetch data with React Hooks?](#303-how-to-fetch-data-with-react-hooks) |
+| 304 | [Do Hooks cover all use cases for classes?](#304-do-hooks-cover-all-use-cases-for-classes) |
+| 305 | [What is the stable release for hooks support?](#305-what-is-the-stable-release-for-hooks-support) |
+| 306 | [Why do we use array destructuring (square brackets notation) in useState?](#306-why-do-we-use-array-destructuring-square-brackets-notation-in-usestate) |
+| 307 | [What are the sources used for introducing hooks?](#307-what-are-the-sources-used-for-introducing-hooks) |
+| 308 | [How do you access imperative API of web components?](#308-how-do-you-access-imperative-api-of-web-components) |
+| 309 | [What is Formik?](#309-what-is-formik) |
+| 310 | [What are typical middleware choices for handling asynchronous calls in Redux?](#310-what-are-typical-middleware-choices-for-handling-asynchronous-calls-in-redux) |
+| 311 | [Do browsers understand JSX code?](#311-do-browsers-understand-jsx-code) |
+| 312 | [Describe the data flow in React?](#312-describe-the-data-flow-in-react) |
+| 313 | [What is React Scripts?](#313-what-is-react-scripts) |
+| 314 | [What are the features of Create React App?](#314-what-are-the-features-of-create-react-app) |
+| 315 | [What is the purpose of renderToNodeStream method?](#315-what-is-the-purpose-of-rendertonodestream-method) |
+| 316 | [What is MobX?](#316-what-is-mobx) |
+| 317 | [What are the differences between Redux and MobX?](#317-what-are-the-differences-between-redux-and-mobx) |
+| 318 | [Should I learn ES6 before learning ReactJS?](#318-should-i-learn-es6-before-learning-reactjs) |
+| 319 | [What is Concurrent Rendering?](#319-what-is-concurrent-rendering) |
+| 320 | [What is the difference between async mode and concurrent mode?](#320-what-is-the-difference-between-async-mode-and-concurrent-mode) |
+| 321 | [Can I use JavaScript URLs in React 16.9?](#321-can-i-use-javascript-urls-in-react-169) |
+| 322 | [What is the purpose of eslint plugin for hooks?](#322-what-is-the-purpose-of-eslint-plugin-for-hooks) |
+| 323 | [What is the difference between Imperative and Declarative in React?](#323-what-is-the-difference-between-imperative-and-declarative-in-react) |
+| 324 | [What are the benefits of using TypeScript with ReactJS?](#324-what-are-the-benefits-of-using-typescript-with-reactjs) |
+| 325 | [How do you make sure that user remains authenticated on page refresh while using Context API State Management?](#325-how-do-you-make-sure-that-user-remains-authenticated-on-page-refresh-while-using-context-api-state-management) |
+| 326 | [What are the benefits of the new JSX transform?](#326-what-are-the-benefits-of-the-new-jsx-transform) |
+| 327 | [How does the new JSX transform differ from the old transform?](#327-how-does-the-new-jsx-transform-differ-from-the-old-transform) |
 
-|| **Additional Questions** |
-| 101 | [What is the difference between setState and replaceState methods?](#101-what-is-the-difference-between-setstate-and-replacestate-methods) |
-| 102 | [How to listen to state changes?](#102-how-to-listen-to-state-changes) |
-| 103 | [What is the recommended approach of removing an array element in react state?](#103-what-is-the-recommended-approach-of-removing-an-array-element-in-react-state) |
-| 104 | [Is it possible to use React without rendering HTML?](#104-is-it-possible-to-use-react-without-rendering-html) |
-| 105 | [How to pretty print JSON with React?](#105-how-to-pretty-print-json-with-react) |
-| 106 | [Why you can't update props in React?](#106-why-you-cant-update-props-in-react) |
-| 107 | [How to focus an input element on page load?](#107-how-to-focus-an-input-element-on-page-load) |
-| 108 | [What are the possible ways of updating objects in state?](#108-what-are-the-possible-ways-of-updating-objects-in-state) |
-| 110 | [How can we find the version of React at runtime in the browser?](#110-how-can-we-find-the-version-of-react-at-runtime-in-the-browser) |
-| 111 | [What are the approaches to include polyfills in your create-react-app?](#111-what-are-the-approaches-to-include-polyfills-in-your-create-react-app) |
-| 112 | [How to use https instead of http in create-react-app?](#112-how-to-use-https-instead-of-http-in-create-react-app) |
-| 113 | [How to avoid using relative path imports in create-react-app?](#113-how-to-avoid-using-relative-path-imports-in-create-react-app) |
-| 114 | [How to add Google Analytics for react-router?](#114-how-to-add-google-analytics-for-react-router) |
-| 115 | [How to update a component every second?](#115-how-to-update-a-component-every-second) |
-| 116 | [How do you apply vendor prefixes to inline styles in React?](#116-how-do-you-apply-vendor-prefixes-to-inline-styles-in-react) |
-| 117 | [How to import and export components using react and ES6?](#117-how-to-import-and-export-components-using-react-and-es6) |
-| 118 | [What are the exceptions on React component naming?](#118-what-are-the-exceptions-on-react-component-naming) |
-| 119 | [Why is a component constructor called only once?](#119-why-is-a-component-constructor-called-only-once) |
-| 120 | [How to define constants in React?](#120-how-to-define-constants-in-react) |
-| 121 | [How to programmatically trigger click event in React?](#121-how-to-programmatically-trigger-click-event-in-react) |
-| 122 | [Is it possible to use async/await in plain React?](#122-is-it-possible-to-use-asyncawait-in-plain-react) |
-| 123 | [What are the common folder structures for React?](#123-what-are-the-common-folder-structures-for-react) |
-| 124 | [What are the popular packages for animation?](#124-what-are-the-popular-packages-for-animation) |
-| 125 | [What is the benefit of styles modules?](#125-what-is-the-benefit-of-styles-modules) |
-| 126 | [What are the popular React-specific linters?](#126-what-are-the-popular-react-specific-linters) |
-| 127 | [How to make AJAX call and In which component lifecycle methods should I make an AJAX call?](#127-how-to-make-ajax-call-and-in-which-component-lifecycle-methods-should-i-make-an-ajax-call) |
-| 128 | [What are render props?](#128-what-are-render-props) |
-| | **React Router** |
-| 129 | [What is React Router?](#129-what-is-react-router) |
-| 130 | [How React Router is different from history library?](#130-how-react-router-is-different-from-history-library) |
-| 131 | [What are the `<Router>` components of React Router v4?](#131-what-are-the-router-components-of-react-router-v4) |
-| 132 | [What is the purpose of push and replace methods of history?](#132-what-is-the-purpose-of-push-and-replace-methods-of-history) |
-| 133 | [How do you programmatically navigate using React router v4?](#133-how-do-you-programmatically-navigate-using-react-router-v4) |
-| 134 | [What are Route and Link components?](#134-what-are-route-and-link-components) |
-| 135 | [How to create nested routes in React Router v4?](#135-how-to-create-nested-routes-in-react-router-v4) |
-| 136 | [What are dynamic routes?](#136-what-are-dynamic-routes) |
-| 137 | [How to use `match` object from React Router?](#137-how-to-use-match-object-from-react-router) |
-| 138 | [How to handle route parameters?](#138-how-to-handle-route-parameters) |
-| 139 | [What is a Switch component and its use case?](#139-what-is-a-switch-component-and-its-use-case) |
-| 140 | [How to handle 404 pages in React Router?](#140-how-to-handle-404-pages-in-react-router) |
-| 141 | [How to pass state through `Link` component?](#141-how-to-pass-state-through-link-component) |
-| | **Advanced React** |
-| 142 | [What is the context API?](#142-what-is-the-context-api) |
-| 143 | [What are Context Providers and Consumers?](#143-what-are-context-providers-and-consumers) |
-| 144 | [How to use the `useContext` hook?](#144-how-to-use-the-usecontext-hook) |
-| 145 | [What is the purpose of `useReducer` hook?](#145-what-is-the-purpose-of-usereducer-hook) |
-| 146 | [How to implement dynamic imports with React?](#146-how-to-implement-dynamic-imports-with-react) |
-| 147 | [What are React Suspense and lazy loading?](#147-what-are-react-suspense-and-lazy-loading) |
-| 148 | [How to use `React.lazy` and `Suspense`?](#148-how-to-use-reactlazy-and-suspense) |
-| 149 | [What is the purpose of `React.memo`?](#149-what-is-the-purpose-of-reactmemo) |
-| 150 | [How to use `useEffect` hook for side effects?](#150-how-to-use-effect-hook-for-side-effects) |
-| 151 | [What are custom hooks and how to create them?](#151-what-are-custom-hooks-and-how-to-create-them) |
-| 152 | [What is the purpose of `useCallback` and `useMemo` hooks?](#152-what-is-the-purpose-of-usecallback-and-usememo-hooks) |
-| 153 | [What are render props and how to use them?](#153-what-are-render-props-and-how-to-use-them) |
-| 154 | [How to manage state with `useReducer`?](#154-how-to-manage-state-with-usereducer) |
-| 155 | [How to use React Profiler API?](#155-how-to-use-react-profiler-api) |
-| 156 | [What are controlled and uncontrolled components in React?](#156-what-are-controlled-and-uncontrolled-components-in-react) |
-| 157 | [How to use `useImperativeHandle`?](#157-how-to-use-useimperativehandle) |
-| 158 | [What are React Fragments and why are they used?](#158-what-are-react-fragments-and-why-are-they-used) |
-| 159 | [What is the purpose of `useLayoutEffect` hook?](#159-what-is-the-purpose-of-uselayouteffect-hook) |
-| 160 | [How to perform data fetching in `useEffect` hook?](#160-how-to-perform-data-fetching-in-useeffect-hook) |
-|| **React Hooks** |
-| 161 | [What are React Hooks?](#161-what-are-react-hooks) |
-| 162 | [What are the rules for using React Hooks?](#162-what-are-the-rules-for-using-react-hooks) |
-| 163 | [How to ensure Hooks follow the rules in your project?](#163-how-to-ensure-hooks-follow-the-rules-in-your-project) |
-| 164 | [What is `useState` hook?](#164-what-is-usestate-hook) |
-| 165 | [What is `useEffect` hook and its common use cases?](#165-what-is-useeffect-hook-and-its-common-use-cases) |
-| 166 | [What is `useContext` hook?](#166-what-is-usecontext-hook) |
-| 167 | [What is `useReducer` hook?](#167-what-is-usereducer-hook) |
-| 168 | [What is `useCallback` hook?](#168-what-is-usecallback-hook) |
-| 169 | [What is `useMemo` hook?](#169-what-is-usememo-hook) |
-| 170 | [What is `useRef` hook?](#170-what-is-useref-hook) |
-| 171 | [What is `useImperativeHandle` hook?](#171-what-is-useimperativehandle-hook) |
-| 172 | [What is `useLayoutEffect` hook?](#172-what-is-uselayouteffect-hook) |
-| 173 | [How to debug hooks in React?](#173-how-to-debug-hooks-in-react) |
-| 174 | [What are custom hooks and how to create them?](#174-what-are-custom-hooks-and-how-to-create-them) |
-| | **Redux** |
-| 175 | [What is Redux?](#175-what-is-redux) |
-| 176 | [What are the core principles of Redux?](#176-what-are-the-core-principles-of-redux) |
-| 177 | [What are actions in Redux?](#177-what-are-actions-in-redux) |
-| 178 | [What are reducers in Redux?](#178-what-are-reducers-in-redux) |
-| 179 | [What is the Redux store?](#179-what-is-the-redux-store) |
-| 180 | [What is the purpose of `combineReducers`?](#180-what-is-the-purpose-of-combinereducers) |
-| 181 | [What are middleware in Redux?](#181-what-are-middleware-in-redux) |
-| 182 | [What are the common middleware libraries for Redux?](#182-what-are-the-common-middleware-libraries-for-redux) |
-| 183 | [How do you manage side effects in Redux?](#183-how-do-you-manage-side-effects-in-redux) |
-| 184 | [What is the purpose of `connect` function in Redux?](#184-what-is-the-purpose-of-connect-function-in-redux) |
-| 185 | [What is Redux Thunk?](#185-what-is-redux-thunk) |
-| 186 | [What is Redux Saga?](#186-what-is-redux-saga) |
-| 187 | [What is the difference between Redux Thunk and Redux Saga?](#187-what-is-the-difference-between-redux-thunk-and-redux-saga) |
-| 188 | [How do you structure your Redux store?](#188-how-do-you-structure-your-redux-store) |
-| 189 | [How do you test Redux reducers?](#189-how-do-you-test-redux-reducers) |
-| 190 | [What is the purpose of `Provider` component in Redux?](#190-what-is-the-purpose-of-provider-component-in-redux) |
-| 191 | [What are selectors in Redux?](#191-what-are-selectors-in-redux) |
-| 192 | [What is `reselect` library?](#192-what-is-reselect-library) |
-| 193 | [How to create and use selectors with `reselect`?](#193-how-to-create-and-use-selectors-with-reselect) |
-| 194 | [What are the benefits of using `reselect`?](#194-what-are-the-benefits-of-using-reselect) |
-| 195 | [What is Redux Form?](#195-what-is-redux-form) |
-| 196 | [What is the difference between `Redux Form` and `Formik`?](#196-what-is-the-difference-between-redux-form-and-formik) |
-| 197 | [What is the purpose of `initialValues` in Redux Form?](#197-what-is-the-purpose-of-initialvalues-in-redux-form) |
-| 198 | [How do you update `initialValues` in Redux Form?](#198-how-do-you-update-initialvalues-in-redux-form) |
-| | **React Router (Additional)** |
-| 199 | [What is the difference between `Route` and `Redirect` components?](#199-what-is-the-difference-between-route-and-redirect-components) |
-| 200 | [How to implement a nested routing system in React Router?](#200-how-to-implement-a-nested-routing-system-in-react-router) |
-| 201 | [What is the purpose of `withRouter` higher-order component?](#201-what-is-the-purpose-of-withrouter-higher-order-component) |
-| 202 | [How to handle authentication and authorization with React Router?](#202-how-to-handle-authentication-and-authorization-with-react-router) |
-| | **React DevTools and Debugging** |
-| 203 | [What is React DevTools and its benefits?](#203-what-is-react-devtools-and-its-benefits) |
-| 204 | [How to use React DevTools for debugging?](#204-how-to-use-react-devtools-for-debugging) |
-| 205 | [What are some common React debugging techniques?](#205-what-are-some-common-react-debugging-techniques) |
-| 206 | [How to profile React performance?](#206-how-to-profile-react-performance) |
-| | **Testing** |
-| 207 | [What is the purpose of testing in React applications?](#207-what-is-the-purpose-of-testing-in-react-applications) |
-| 208 | [What are the common testing libraries for React?](#208-what-are-the-common-testing-libraries-for-react) |
-| 209 | [How to write unit tests for React components?](#209-how-to-write-unit-tests-for-react-components) |
-| 210 | [How to test React components with Jest?](#210-how-to-test-react-components-with-jest) |
-| 211 | [What are snapshots in Jest and how to use them?](#211-what-are-snapshots-in-jest-and-how-to-use-them) |
-| 212 | [How to perform integration testing in React?](#212-how-to-perform-integration-testing-in-react) |
-| 213 | [What is end-to-end (E2E) testing and how to perform it in React?](#213-what-is-end-to-end-e2e-testing-and-how-to-perform-it-in-react) |
-| 214 | [What are some common pitfalls in testing React applications?](#214-what-are-some-common-pitfalls-in-testing-react-applications) |
-| 215 | [How to mock API calls in React tests?](#215-how-to-mock-api-calls-in-react-tests) |
-| | **General JavaScript Knowledge** |
-| 216 | [What are the different ways to create objects in JavaScript?](#216-what-are-the-different-ways-to-create-objects-in-javascript) |
-| 217 | [What is the difference between `var`, `let`, and `const` in JavaScript?](#217-what-is-the-difference-between-var-let-and-const-in-javascript) |
-| 218 | [What are closures in JavaScript?](#218-what-are-closures-in-javascript) |
-| 219 | [What is event delegation in JavaScript?](#219-what-is-event-delegation-in-javascript) |
-| 220 | [What are JavaScript Promises?](#220-what-are-javascript-promises) |
-| 221 | [What is the purpose of `async/await` in JavaScript?](#221-what-is-the-purpose-of-asyncawait-in-javascript) |
-| 222 | [What is the prototype chain in JavaScript?](#222-what-is-the-prototype-chain-in-javascript) |
-| 223 | [How does JavaScript handle asynchronous operations?](#223-how-does-javascript-handle-asynchronous-operations) |
-| 224 | [What is the difference between `null` and `undefined` in JavaScript?](#224-what-is-the-difference-between-null-and-undefined-in-javascript) |
-| 225 | [What is the `this` keyword in JavaScript?](#225-what-is-the-this-keyword-in-javascript) |
-| 226 | [What is destructuring in JavaScript?](#226-what-is-destructuring-in-javascript) |
-| 227 | [What are JavaScript modules?](#227-what-are-javascript-modules) |
-| 228 | [How do you handle errors in JavaScript?](#228-how-do-you-handle-errors-in-javascript) |
-| 229 | [What are higher-order functions in JavaScript?](#229-what-are-higher-order-functions-in-javascript) |
-| 230 | [What are the different data types in JavaScript?](#230-what-are-the-different-data-types-in-javascript) |
-| | **HTML & CSS Knowledge** |
-| 231 | [What are the different types of selectors in CSS?](#231-what-are-the-different-types-of-selectors-in-css) |
-| 232 | [What is the CSS Box Model?](#232-what-is-the-css-box-model) |
-| 233 | [What is Flexbox in CSS?](#233-what-is-flexbox-in-css) |
-| 234 | [What is CSS Grid Layout?](#234-what-is-css-grid-layout) |
-| 235 | [How do you create a responsive layout in CSS?](#235-how-do-you-create-a-responsive-layout-in-css) |
-| 236 | [What are CSS pseudo-classes and pseudo-elements?](#236-what-are-css-pseudo-classes-and-pseudo-elements) |
-| 237 | [What is the difference between class and ID selectors in CSS?](#237-what-is-the-difference-between-class-and-id-selectors-in-css) |
-| 238 | [How do you center a block element horizontally and vertically using CSS?](#238-how-do-you-center-a-block-element-horizontally-and-vertically-using-css) |
-| 239 | [What are CSS media queries?](#239-what-are-css-media-queries) |
-| 240 | [How do you optimize CSS for performance?](#240-how-do-you-optimize-css-for-performance) |
-| #   | **General Development Knowledge** |
-| 241 | [What is version control and why is it important?](#241-what-is-version-control-and-why-is-it-important) |
-| 242 | [What is the purpose of a build tool?](#242-what-is-the-purpose-of-a-build-tool) |
-| 243 | [How do you optimize a web application for performance?](#243-how-do-you-optimize-a-web-application-for-performance) |
-| 244 | [What are Progressive Web Apps (PWAs)?](#244-what-are-progressive-web-apps-pwas) |
-| 245 | [What is continuous integration/continuous deployment (CI/CD)?](#245-what-is-continuous-integrationcontinuous-deployment-cicd) |
-| 246 | [What is the purpose of a linter?](#246-what-is-the-purpose-of-a-linter) |
-| 247 | [How do you handle cross-browser compatibility issues?](#247-how-do-you-handle-cross-browser-compatibility-issues) |
-| 248 | [What are web accessibility standards?](#248-what-are-web-accessibility-standards) |
-| 249 | [What is a RESTful API?](#249-what-is-a-restful-api) |
-| 250 | [What are the differences between REST and GraphQL?](#250-what-are-the-differences-between-rest-and-graphql) |
-
----
-
-Feel free to ask any of these questions, or if you need more details on any specific topic!
 
 ### 1. What is React?
 **Definition:** React is a JavaScript library for building user interfaces, particularly for single-page applications where a dynamic and interactive user experience is required.
