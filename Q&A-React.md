@@ -2283,7 +2283,7 @@ Here are detailed answers to the questions you provided:
 
 ### 303. How to fetch data with React Hooks?
 - **Example using `useEffect`:**
-  ```jsx
+```jsx
   import { useState, useEffect } from 'react';
 
   function DataFetchingComponent() {
@@ -2299,8 +2299,7 @@ State(null);
 
     return <div>{data ? data.name : 'Loading...'}</div>;
   }
-  ```
-
+```
 ### 304. How to debug React components?
 - **Methods:**
   - **React DevTools:** Provides an interface to inspect React component hierarchy and state.
